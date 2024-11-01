@@ -79,6 +79,16 @@ public class FormularioRegistro {
         gbc.weightx = 1.0; //Permitir expansión horizontal de los campos
         gbc.weighty=0.1; //Permitir expansión vertical moderada
         
+        //Añadir los componentes al formulario
+        gbc.gridx=0; //Columna 0
+        gbc.gridy=0; //Fila 0
+        ventana.add(nombreField, gbc);
         
+        ventana.setVisible(true);
+        
+    }
+    
+    public static void main(String[] args) {
+        new FormularioRegistro();
     }
 }
