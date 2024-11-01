@@ -148,7 +148,14 @@ public class FormularioRegistro {
         gbc.gridx= 1;
         ventana.add(repetirContraseñaField, gbc);
         
-        
+        // Configuración del botón de registro
+        gbc.gridx = 0;
+        gbc.gridy = 8;
+        gbc.gridwidth = 2; // El botón ocupa ambas columnas
+        gbc.weighty = 0.2; // Para que el botón tenga algo de espacio si la ventana se expande
+        gbc.anchor = GridBagConstraints.CENTER; // Centrar el botón
+        ventana.add(registrarButton, gbc);
+
         
         
         
