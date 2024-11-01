@@ -13,7 +13,7 @@ public class FormularioRegistro {
         ventana.setSize(400, 500);
         ventana.setLayout(new GridBagLayout()); //GridBagLayout lo utilizamos para que todo mantenga su tamaño a pesar de que se maximice o minimice la pantalla.
     
-        //Crear los componentes del formulario
+        //Crear los componentes del formulario sin añadirlos a la pantalla
         JLabel nombreLabel = new JLabel("Nombre:");
         JTextField nombreField = new JTextField(15);
         
