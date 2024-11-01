@@ -6,9 +6,10 @@ public class FormularioRegistro {
 	
     public FormularioRegistro () {
     	//Aquí creamos la ventana del formulario del registro
-    	ventana = new JFrame("Formulario de Registro");
-    	ventana.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        ventana.setSize(400, 500);
+    	ventana = new JFrame("Formulario de Registro"); //nombre de ventan
+    	ventana.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);//se cierra el programa al darle a la x
+        ventana.setSize(400, 500); //tamaño de ventana
         ventana.setLayout(new GridBagLayout()); //GridBagLayout lo utilizamos para que todo mantenga su tamaño a pesar de que se maximice o minimice la pantalla.
+        
     }
 }
