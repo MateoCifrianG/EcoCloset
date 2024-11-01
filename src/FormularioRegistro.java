@@ -1,14 +1,22 @@
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
 public class FormularioRegistro {
 	private JFrame ventana; 
@@ -155,23 +163,79 @@ public class FormularioRegistro {
         gbc.weighty = 0.2; // Para que el botón tenga algo de espacio si la ventana se expande
         gbc.anchor = GridBagConstraints.CENTER; // Centrar el botón
         ventana.add(registrarButton, gbc);
+        
+     // Crear un ActionListener para el botón de registro
+        registrarButton.addActionListener(e -> {
+            String contraseña = new String(contraseñaField.getPassword());
+            String repetirContraseña = new String(repetirContraseñaField.getPassword());
 
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+            // Obtener la fecha de nacimiento seleccionada
+            String diaSeleccionado = (String) comboDia.getSelectedItem();
+            String mesSeleccionado = (String) comboMes.getSelectedItem();
+            String anioSeleccionado = (String) comboAnho.getSelectedItem();
+
+            String fechaNacimiento = diaSeleccionado + "/" + mesSeleccionado + "/" + anioSeleccionado;
+
+            // Validar campos obligatorios para el registro
+            if (nombreField.getText().isEmpty() || apellido1Field.getText().isEmpty() ||
+                direccionField.getText().isEmpty() || nacionalidadField.getText().isEmpty() ||
+                diaSeleccionado.equals("Día") || mesSeleccionado.equals("Mes") || anioSeleccionado.equals("Año")) {
+                JOptionPane.showMessageDialog(ventana, "Por favor, completa todos los campos obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
+                return; // No continuar si hay campos vacíos
+            }
+
+            // Comprobar si las contraseñas coinciden, en el caso de que no, pedirla de nuevo
+            if (!contraseña.equals(repetirContraseña)) {
+                JOptionPane.showMessageDialog(ventana, "Las contraseñas no coinciden", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                // Aquí puedes manejar el registro del usuario
+                if (registrarUsuario(nombreField.getText(), apellido1Field.getText(), apellido2Field.getText(), direccionField.getText(), fechaNacimiento, nacionalidadField.getText(), contraseña, repetirContraseña)) {
+                    JOptionPane.showMessageDialog(ventana, "Usuario registrado: " + nombreField.getText());
+                    ventana.dispose(); // Cerrar la ventana del formulario
+                } else {
+                    JOptionPane.showMessageDialog(ventana, "Error al registrar el usuario", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+
+        // Ajustes para hacer que la ventana sea adaptable
+        ventana.setMinimumSize(new Dimension(400, 500)); // Tamaño mínimo para que se vea correctamente
         ventana.setVisible(true);
-        
+    }
+
+ // Método para verificar si ya existe un usuario con el mismo nombre y apellidos
+    private boolean existeUsuario(String nombre, String apellido1, String apellido2) {
+        try (BufferedReader br = new BufferedReader(new FileReader("usuarios1.csv"))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                String[] datos = linea.split(";"); // Separar por ';'
+                if (datos[0].equals(nombre) && datos[1].equals(apellido1) && datos[2].equals(apellido2)) {
+                    return true; // Usuario encontrado
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false; // No se encontró el usuario
+    }
+
+    // Método para registrar el usuario en el archivo CSV
+    private boolean registrarUsuario(String nombre, String apellido1, String apellido2, String direccion, String fechaNacimiento, String nacionalidad, String contraseña, String repetirContraseña) {
+        String lineaRegistro = nombre + ";" + apellido1 + ";" + apellido2 + ";" + direccion + ";" + fechaNacimiento + ";" + nacionalidad + ";" + contraseña + ";" + repetirContraseña + "\n"; // Formato de línea en CSV
+
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("usuarios1.csv", true))) {
+            bw.write(lineaRegistro); // Escribir la línea en el archivo
+            return true; // Registro exitoso
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false; // Error al registrar
+        }
     }
     
+    
     public static void main(String[] args) {
-        new FormularioRegistro();
+    	new FormularioRegistro();
     }
+    
 }
+ 
