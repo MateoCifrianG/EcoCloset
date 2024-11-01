@@ -33,7 +33,7 @@ public class VentanaRegistro {
         problemasLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR)); //Cuando el cursor se pose sobre el JLabel, el cursor cambiará a una mano
         
         
-        
+        //
         
         //Hacer visible la ventana
         ventana.setVisible(true);
