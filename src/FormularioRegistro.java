@@ -1,6 +1,10 @@
 import java.awt.GridBagLayout;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class FormularioRegistro {
@@ -28,5 +32,45 @@ public class FormularioRegistro {
         JTextField direccionField = new JTextField(15);
         
         JLabel fechaNacimientoLabel = new JLabel("Fecha de Nacimiento:");
+        
+        //Crear los JComboBox para día, mes y año:
+        
+          //Días
+        String[] dias = new String[32]; // los 31 días + la opción predeterminada
+        dias[0] = "Día";
+        for (int i = 1; i <= 31; i++) {
+        	dias[i] = Integer.toString(i);
+        	
+        }
+        JComboBox<String> comboDia = new JComboBox<>(dias);
+           //Meses
+        String[] meses = {"Mes","Enero","Febrero","Marzo","Abril","Mayo","Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
+        JComboBox<String> comboMes = new JComboBox<>(meses);
+        
+         	//Años
+        String[] anhos = new String[102]; //Aquí los años van de 1970 al 2070
+        anhos[0] = "Año";
+        for (int i = 1; i < anhos.length; i++) {
+        	anhos[i] = Integer.toString(1970 + i);
+        }
+        
+        JComboBox<String> comboAnio = new JComboBox<>(anhos);
+        
+          //Creamos los label para que aparezcan luego en pantalla
+
+        JLabel nacionalidadLabel = new JLabel("Nacionalidad:");
+        JTextField nacionalidadField = new JTextField(15);
+                  //Para que la contraseña no se vea es necesario poner asteriscos, para ello se utiliza JPasswordField
+        JLabel contraseñaLabel = new JLabel("Contraseña:");
+        JPasswordField contraseñaField = new JPasswordField(15);
+
+        JLabel repetirContraseñaLabel = new JLabel("Repetir Contraseña:");
+        JPasswordField repetirContraseñaField = new JPasswordField(15);
+
+        JButton registrarButton = new JButton("Registrar");
+        
+        
+        
+        
     }
 }
