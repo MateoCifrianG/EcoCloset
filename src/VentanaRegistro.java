@@ -4,6 +4,9 @@ import java.awt.Cursor;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -65,10 +68,52 @@ public class VentanaRegistro {
         ventana.add(problemasLabel, gbc);
         
         
+        //EVENTOS
         
+        //Crear un ActionListener para el botón de registrar
+        registrarButton.addActionListener(e -> {
+        	//Abre el formulario de registro al hacer click en Registrar
+        	new FormularioRegistro(); //Aquí se crea el formulario de registro
+        });
+        
+        //Crear un ActionListener para el botón de iniciar sesión
+        iniciarSesionButton.addActionListener(e -> {
+        	String nombre = nombreField.getText();
+        	String contraseña = new String(contraseñaField.getPassword());
+        	//CONTINUAR cuando se cree la clase de comprobador
+        });
+        
+        //ActioListener para el JLAbel "Problemas al iniciar sesión"
+        problemasLabel.addMouseListener(new MouseAdapter() {
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				//CONTINUAR cuando se cree la clase Asistencia
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				problemasLabel.setText("Problemas al iniciar sesión"); //Cambia el estilo al pasar el ratón				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				problemasLabel.setText("Problemas al iniciar sesión"); //Restaura el estilo al salir el ratón
+				
+			}
+		});
+        	
         
         //Hacer visible la ventana
         ventana.setVisible(true);
+	}
+	
+	
+	// Método para abrir la ventana principal
+	public void abrirVentanaPrincipal(String nombreUsuario) {
+		ventana.dispose(); // se cierra la ventana actual
+		// CONTINUAR cuando se cree la ventana principal
 	}
 	
 	
