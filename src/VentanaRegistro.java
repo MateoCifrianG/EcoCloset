@@ -13,15 +13,14 @@ public class VentanaRegistro {
         ventana.setSize(400, 400); // Aumentar el tamaño para el nuevo enlace
         ventana.setLayout(new GridBagLayout()); //Para que todo mantenga su tamaño
         
-      
+        //Hacer visible la ventana
+        ventana.setVisible(true);
 	}
 	
 	
 	public static void main(String[] args) {
+		new VentanaRegistro();
 		
-		
-		
-
 	}
 
 }
