@@ -82,7 +82,42 @@ public class FormularioRegistro {
         //Añadir los componentes al formulario
         gbc.gridx=0; //Columna 0
         gbc.gridy=0; //Fila 0
+        ventana.add(nombreLabel, gbc);
+        
+        gbc.gridx=1; //Columna 1
         ventana.add(nombreField, gbc);
+        
+        gbc.gridx=0;
+        gbc.gridy=1;
+        ventana.add(apellido1Label, gbc);
+        
+        gbc.gridx=1;
+        ventana.add(apellido1Field, gbc);
+        
+        gbc.gridx=0;
+        gbc.gridy=2;
+        ventana.add(apellido2Label, gbc);
+        
+        gbc.gridx=1;
+        ventana.add(apellido2Field, gbc);
+        
+        gbc.gridx=0;
+        gbc.gridy=3;
+        ventana.add(direccionLabel, gbc);
+        
+        gbc.gridx=1;
+        ventana.add(direccionField, gbc);
+        
+        gbc.gridx=0;
+        gbc.gridy=4;
+        ventana.add(fechaNacimientoLabel, gbc);
+        
+        
+        
+        
+        
+        
+        
         
         ventana.setVisible(true);
         
