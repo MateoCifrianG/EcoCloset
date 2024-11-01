@@ -28,7 +28,7 @@ public class VentanaRegistro {
         JButton registrarButton = new JButton("Registrar");
         
         //Crear un JLabel que actue como un enlace
-        JLabel problemasLabel = new JLabel("Problemas al iniciar sesion");
+        JLabel problemasLabel = new JLabel("Problemas al iniciar sesion"); 
         problemasLabel.setForeground(Color.BLUE);
         problemasLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR)); //Cuando el cursor se pose sobre el JLabel, el cursor cambiará a una mano
         
