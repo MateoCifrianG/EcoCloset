@@ -34,7 +34,7 @@ public class VentanaRegistro {
         JButton registrarButton = new JButton("Registrar");
         
         //Crear un JLabel que actue como un enlace
-        JLabel problemasLabel = new JLabel("Problemas al iniciar sesion"); 
+        JLabel problemasLabel = new JLabel("<html><u>Problemas al iniciar sesion</u></html>"); 
         problemasLabel.setForeground(Color.BLUE);
         problemasLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR)); //Cuando el cursor se pose sobre el JLabel, el cursor cambiará a una mano
         
@@ -94,12 +94,12 @@ public class VentanaRegistro {
 			
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				problemasLabel.setText("Problemas al iniciar sesión"); //Cambia el estilo al pasar el ratón				
+				problemasLabel.setText("<html><u>Problemas al iniciar sesion</u></html>"); //Cambia el estilo al pasar el ratón				
 			}
 			
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				problemasLabel.setText("Problemas al iniciar sesión"); //Restaura el estilo al salir el ratón
+				problemasLabel.setText("<html><u>Problemas al iniciar sesion</u></html>"); //Restaura el estilo al salir el ratón
 				
 			}
 		});
