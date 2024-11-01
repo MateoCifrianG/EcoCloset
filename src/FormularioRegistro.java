@@ -1,4 +1,6 @@
+import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -69,7 +71,13 @@ public class FormularioRegistro {
 
         JButton registrarButton = new JButton("Registrar");
         
-        
+        //Crear un GridBagConstraints para posicionar los componentes
+        //Nos hemos apoyado en ChatGPT para hacer el GridBagConstraints ya que no lo hamos dado en clase
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(10, 10, 10, 10); //Espacio entre componentes
+        gbc.fill = GridBagConstraints.HORIZONTAL; //Para que los componentes ocupen todo el espacio horizontal
+        gbc.weightx = 1.0; //Permitir expansión horizontal de los campos
+        gbc.weighty=0.1; //Permitir expansión vertical moderada
         
         
     }
