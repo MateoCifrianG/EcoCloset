@@ -6,6 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -56,7 +57,7 @@ public class FormularioRegistro {
         	anhos[i] = Integer.toString(1970 + i);
         }
         
-        JComboBox<String> comboAnio = new JComboBox<>(anhos);
+        JComboBox<String> comboAnho = new JComboBox<>(anhos);
         
           //Creamos los label para que aparezcan luego en pantalla
 
@@ -111,6 +112,46 @@ public class FormularioRegistro {
         gbc.gridx=0;
         gbc.gridy=4;
         ventana.add(fechaNacimientoLabel, gbc);
+        
+        
+        //Panel para organizar todos los JComboBox:
+        JPanel fechaPanel = new JPanel();
+        fechaPanel.add(comboDia);
+        fechaPanel.add(comboMes);
+        fechaPanel.add(comboAnho);
+        
+        	//Añadimos Fecha
+        gbc.gridx= 1;
+        ventana.add(fechaPanel, gbc); //Se añade el panel con los JComboBox
+        	
+        	//Añadimos nacionalidad
+        gbc.gridx= 0;
+        gbc.gridy= 5;
+        ventana.add(nacionalidadLabel, gbc);
+        
+        gbc.gridx= 1;
+        ventana.add(nacionalidadField, gbc);
+        
+        	//Añadimos contraseña
+        gbc.gridx= 0;
+        gbc.gridy= 6;
+        ventana.add(contraseñaLabel, gbc);
+        
+        gbc.gridx= 1;
+        ventana.add(contraseñaField, gbc);
+        
+        	//Añadimos repetirContraseña
+        gbc.gridx= 0;
+        gbc.gridy= 7;
+        ventana.add(repetirContraseñaLabel, gbc);
+        
+        gbc.gridx= 1;
+        ventana.add(repetirContraseñaField, gbc);
+        
+        
+        
+        
+        
         
         
         
