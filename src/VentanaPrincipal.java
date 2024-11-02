@@ -69,8 +69,8 @@ public class VentanaPrincipal {
 	
 
 	public static void main(String[] args) {
-		new VentanaPrincipal();
-
+		String nombreUsuario = "usuarioPrueba"; // Esto se podría obtener de otro lado
+		new VentanaPrincipal(nombreUsuario);
 	}
 
 }
