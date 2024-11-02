@@ -74,11 +74,39 @@ public class VentanaPrincipal {
 		
 		//JPanel para el botón de opciones
 		JPanel panelBoton = new JPanel(new FlowLayout(FlowLayout.LEFT)); //Uso FlowLayout para colocar el botón a la izquierda
-		panelBoton.setBackground(new Color(152,251,152));
+		panelBoton.setBackground(new Color(152,251,152)); //Color verde
 		JButton mostrarMenu = new JButton("Mostrar Opciones");
 		JPopupMenu popupMenu = new JPopupMenu();
 		
+		//Añadir opciones al JPopupMenu
+		JMenuItem opcion1=new JMenuItem("Cuenta");
+		//faltaría el actionListener para cuando tengamos la ventana de la cuenta
 		
+		JMenuItem opcion2=new JMenuItem("Cerrar Sesión");
+		opcion2.addActionListener(e -> {
+			ventana.dispose(); //Cerrar la ventana principal
+			new VentanaRegistro(); //Abrir la ventana de registro
+		});
+		
+		
+		JMenuItem opcion3=new JMenuItem("Pedidos");
+		//Falta el actionListener
+		
+		JMenuItem opcion4=new JMenuItem("Ayuda");
+		//Falta el ActionListener
+		
+		popupMenu.add(opcion1);
+		popupMenu.add(opcion2);
+		popupMenu.add(opcion3);
+		popupMenu.add(opcion4);
+		
+		// Acción para mostrar el menú
+		mostrarMenu.addActionListener(e -> popupMenu.show(mostrarMenu, 0, mostrarMenu.getHeight()));
+		panelBoton.add(mostrarMenu);
+		
+		
+		panelInferior.add(panelBoton, BorderLayout.SOUTH); //Añadir el panel del botón al fondo del panel inferior
+		ventana.add(panelInferior);
 		
 		ventana.setVisible(true);
 			
