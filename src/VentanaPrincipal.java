@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 
@@ -7,7 +8,9 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 
 public class VentanaPrincipal {
 	private JFrame ventana;
@@ -54,6 +57,7 @@ public class VentanaPrincipal {
 		JComboBox<String> comboTalla = new JComboBox<>(tallas);
 		comboTalla.setFont(new Font("Courier", Font.BOLD, 15));
 		
+		
 		//Añadimos todo
 		buscador.add(vacio);
 		buscador.add(filtrar);
@@ -61,6 +65,15 @@ public class VentanaPrincipal {
 		buscador.add(comboPrecio); // Añadir JComboBox de precios
 		buscador.add(comboTalla); 
 		//Falta la ropa, tenemos que crear la base de datos de todas las prendas para poder meterla.
+		
+		
+		//Panel donde aparecen los artículos
+		JPanel panelInferior = new JPanel();
+		panelInferior.setBackground(Color.WHITE); //Color del panel inferior
+		panelInferior.setLayout(new BorderLayout()); // Usar BorderLayout para añadir artículos y botón
+		
+		
+		
 		
 		
 		ventana.setVisible(true);
