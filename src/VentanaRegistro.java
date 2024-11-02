@@ -113,7 +113,7 @@ public class VentanaRegistro {
 	// Método para abrir la ventana principal
 	public void abrirVentanaPrincipal(String nombreUsuario) {
 		ventana.dispose(); // se cierra la ventana actual
-		// CONTINUAR cuando se cree la ventana principal
+		new VentanaPrincipal(nombreUsuario); // Pasa el nombre del usuario registrado en la ventana principal
 	}
 	
 	

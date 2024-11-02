@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 public class VentanaPrincipal {
 	private JFrame ventana;
 	
-	public VentanaPrincipal() {
+	public VentanaPrincipal(String nombreUsuario) { 
 		//creamos la ventana
 		ventana = new JFrame("ECOCLOSET");
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
