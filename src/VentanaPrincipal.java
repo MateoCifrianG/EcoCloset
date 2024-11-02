@@ -72,7 +72,11 @@ public class VentanaPrincipal {
 		panelInferior.setBackground(Color.WHITE); //Color del panel inferior
 		panelInferior.setLayout(new BorderLayout()); // Usar BorderLayout para añadir artículos y botón
 		
-		
+		//JPanel para el botón de opciones
+		JPanel panelBoton = new JPanel(new FlowLayout(FlowLayout.LEFT)); //Uso FlowLayout para colocar el botón a la izquierda
+		panelBoton.setBackground(new Color(152,251,152));
+		JButton mostrarMenu = new JButton("Mostrar Opciones");
+		JPopupMenu popupMenu = new JPopupMenu();
 		
 		
 		
