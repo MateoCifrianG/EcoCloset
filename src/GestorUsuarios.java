@@ -1,9 +1,14 @@
 import java.awt.BorderLayout;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -44,6 +49,12 @@ public class GestorUsuarios {
 		tablaUsuarios=new JTable(modeloTabla);
 		JScrollPane scrollTabla=new JScrollPane(tablaUsuarios);
 		
+		//Cargar los usuarios desde el CSV usuarios1
+		listaUsuarios=cargarUsuariosDesdeCSV("usuarios1.csv");
+		
+		
+		
+		
 		
 		//Añado los componentes
 		ventana.add(panelSuperior, BorderLayout.NORTH);
@@ -52,6 +63,23 @@ public class GestorUsuarios {
 		
 		ventana.setVisible(true);
 	}
+		//Método para cargar usuarios desde un csv
+		private List<String[]> cargarUsuariosDesdeCSV(String filePath){
+			List<String[]> usuarios = new ArrayList<>();
+			try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+	            String linea;
+	            while ((linea = reader.readLine()) != null) { //mientras la línea no sea nula
+	                String[] valores = linea.split(";"); // Suponiendo que el separador es ";"
+	                usuarios.add(valores); // Guardar cada línea
+	            }
+	        } catch (IOException e) {
+	            JOptionPane.showMessageDialog(ventana, "Error al leer el archivo CSV: " + e.getMessage());
+	        }
+	        return usuarios; //devuelve la lista de usuarios
+		}
+		
+		
+	
 	
 	
 	
