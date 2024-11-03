@@ -77,7 +77,7 @@ public class GestorUsuarios {
 	        } catch (IOException e) {
 	            JOptionPane.showMessageDialog(ventana, "Error al leer el archivo CSV: " + e.getMessage());
 	        }
-	        return usuarios; //devuelve la lista de los usuarios
+	        return usuarios; //devuelve la lista de usuarios
 		}
 		
 		//Método para actualizar la tabla con usuarios
