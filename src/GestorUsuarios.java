@@ -20,6 +20,7 @@ public class GestorUsuarios {
 		ventana.setSize(800, 600); //Tamaño de la ventana
 		ventana.setLayout(new BorderLayout());
 		
+		//prueba
 		
 		ventana.setVisible(true);
 	}
