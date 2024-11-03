@@ -49,9 +49,9 @@ public class GestorUsuarios {
 		tablaUsuarios=new JTable(modeloTabla);
 		JScrollPane scrollTabla=new JScrollPane(tablaUsuarios);
 		
-		//Cargar los usuarios desde el CSV usuarios1
+		//Cargar los usuarios desde el CSV usuarios1 (métodos debajo)
 		listaUsuarios=cargarUsuariosDesdeCSV("usuarios1.csv");
-		
+		actualizarTabla(listaUsuarios);
 		
 		
 		
@@ -63,7 +63,9 @@ public class GestorUsuarios {
 		
 		ventana.setVisible(true);
 	}
-		//Método para cargar usuarios desde un csv
+		//Para hacer los métodos nos hemos apoyado en ChatGPT y los apuntes de Programación II
+		
+	//Método para cargar usuarios desde un csv
 		private List<String[]> cargarUsuariosDesdeCSV(String filePath){
 			List<String[]> usuarios = new ArrayList<>();
 			try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
@@ -76,6 +78,14 @@ public class GestorUsuarios {
 	            JOptionPane.showMessageDialog(ventana, "Error al leer el archivo CSV: " + e.getMessage());
 	        }
 	        return usuarios; //devuelve la lista de usuarios
+		}
+		
+		//Método para actualizar la tabla con usuarios
+		private void actualizarTabla(List<String[]> usuarios) {
+			modeloTabla.setRowCount(0); //Eliminamos las filas de la tabla
+			for(String[] usuario: usuarios) {
+				modeloTabla.addRow(usuario); //Añadir cada usuario a la tabla
+			}
 		}
 		
 		
