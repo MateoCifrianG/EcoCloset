@@ -12,7 +12,7 @@ public class Pedidos {
 	public Pedidos() {
 		
 		//Creamos la ventana 
-		ventana = new JFrame("Administrador de Pedidos");
+		ventana = new JFrame("Administrador de pedidos");
 	    ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    ventana.setSize(800, 600);
 	    ventana.setLayout(new BorderLayout());
@@ -24,15 +24,14 @@ public class Pedidos {
         JButton botonEliminar = new JButton("Eliminar");
         
         JPanel panelBusqueda = new JPanel(new BorderLayout());
-        panelBusqueda.add(new JLabel("Buscar Pedido: "), BorderLayout.WEST);
+        panelBusqueda.add(new JLabel("Buscar pedido: "), BorderLayout.WEST);
         
         //Añadimos al panel
         panelBusqueda.add(campoBusqueda, BorderLayout.CENTER);
         panelBusqueda.add(botonBuscar, BorderLayout.EAST);
         panelSuperior.add(panelBusqueda, BorderLayout.NORTH);
         panelSuperior.add(botonEliminar, BorderLayout.SOUTH);
-        
-        ventana.setVisible(true);
+ 
 
 	}
 
