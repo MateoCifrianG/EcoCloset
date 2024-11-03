@@ -3,17 +3,26 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.util.List;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
+import bd.BaseDatosRopa;
+import domain.Ropa;
+
 public class VentanaPrincipal {
 	private JFrame ventana;
+	private DefaultListModel<Ropa> modeloCarrito;
+	private JList<Ropa> listaCarrito; // Lista para mostrar los artículos en el carrito
+	private List<Ropa> ropaList;
 	
 	public VentanaPrincipal(String nombreUsuario) { 
 		//creamos la ventana
@@ -57,6 +66,16 @@ public class VentanaPrincipal {
 		JComboBox<String> comboTalla = new JComboBox<>(tallas);
 		comboTalla.setFont(new Font("Courier", Font.BOLD, 15));
 		
+		BaseDatosRopa baseDatosRopa = new BaseDatosRopa();
+		ropaList = baseDatosRopa.getRopaList(); // Guardamos la lista original
+		String[] nombresRopa = new String[ropaList.size() + 1];
+		nombresRopa[0] = "Prendas"; // Opción "No seleccionado" para prendas
+		for (int i = 0; i < ropaList.size(); i++) {
+			nombresRopa[i + 1] = ropaList.get(i).getNombre(); // Rellenar el JComboBox con nombres de prendas
+		}
+		JComboBox<String> comboPrendas = new JComboBox<>(nombresRopa);
+		comboPrendas.setFont(new Font("Courier", Font.BOLD, 15));
+		
 		
 		//Añadimos todo
 		buscador.add(vacio);
@@ -64,7 +83,7 @@ public class VentanaPrincipal {
 		buscador.add(vacio2);
 		buscador.add(comboPrecio); // Añadir JComboBox de precios
 		buscador.add(comboTalla); 
-		//Falta la ropa, tenemos que crear la base de datos de todas las prendas para poder meterla.
+		buscador.add(comboPrendas);
 		
 		
 		//Panel donde aparecen los artículos
