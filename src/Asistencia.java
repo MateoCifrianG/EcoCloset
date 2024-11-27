@@ -2,7 +2,12 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -75,11 +80,30 @@ public class Asistencia {
 				return; // Salir del método si hay un campo vacío
 			}
 			
+			String fecha = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
+			
+			//Guardar en el archivo CSV
+			guardarProblema(usuario, correo, comentario, fecha);
+			
+			//Mostrar mensaje éxito
+			JOptionPane.showMessageDialog(ventanaProblemas, "Mensaje enviado con éxito", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+			ventanaProblemas.dispose();
 		});
 		
 		
 		ventanaProblemas.setVisible(true);
 		
+	}
+	
+	//Método para guardar el mensaje en el archivo CSV
+	private void guardarProblema(String usuario, String correo, String comentario, String fecha) {
+		String lineaRegistro = usuario + ";" + correo + ";" + comentario + ";" + fecha + "\n"; // Formato de línea en CSV
+		
+		try(BufferedWriter bw = new BufferedWriter(new FileWriter("asistencia.csv", true))) {
+			bw.write(lineaRegistro); //Escribir la linea en el archivo
+		}catch(IOException e){
+			e.printStackTrace();
+		}
 	}
 	
 	public static void main(String[] args) {
