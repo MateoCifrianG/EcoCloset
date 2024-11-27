@@ -62,6 +62,21 @@ public class Asistencia {
 		gbc.gridwidth = 2; //Ocupa ambas columnas
 		ventanaProblemas.add(enviarButton, gbc); //Añadir el botón de enviar
 		
+		//Action listener para el botón Enviar
+		enviarButton.addActionListener(e -> {
+			String usuario = usuarioField.getText().trim(); //El trim elimina los espacios en blanco adicionales al inicio y al final del texto 
+			String correo = correoField.getText().trim(); //Obtener correo electrónico
+			String comentario = mensajeArea.getText().trim();
+			
+			//Validar que todos los campos están llenos
+			if (usuario.isEmpty() || correo.isEmpty() || comentario.isEmpty()) {
+				//Mostrar mensaje de error si algún campo está vacío
+				JOptionPane.showMessageDialog(ventanaProblemas, "Todos los campos son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
+				return; // Salir del método si hay un campo vacío
+			}
+			
+		});
+		
 		
 		ventanaProblemas.setVisible(true);
 		
