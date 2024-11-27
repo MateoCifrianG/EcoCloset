@@ -13,5 +13,12 @@ public class Asistencia {
 		
 		
 		ventanaProblemas.setVisible(true);
+		
+	}
+	
+	public static void main(String[] args) {
+		new Asistencia();
+		
 	}
 }
+
