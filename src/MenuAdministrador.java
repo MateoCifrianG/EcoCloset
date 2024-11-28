@@ -32,11 +32,92 @@ public class MenuAdministrador {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ventanaMenu.dispose(); //Cerrar la ventana del menú
-				//new Administrador(); //Crear nueva ventana de administrados (descomentar al crear la clase de Administrador)
+				//new Administrador(); //Crear nueva ventana de administrador (descomentar al crear la clase de Administrador)
 			}
 		});
 		
+		JButton botonEstadisticas=crearBoton("Ver Pedidos");
+		botonEstadisticas.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ventanaMenu.dispose();
+				//Crear y mostrar la ventana de estadísticas
+				new Pedidos(); //Crear nueva ventana de estadísticas
+				
+			}
+		});
 		
+		JButton botonGestionUsuarios = crearBoton("Gestionar Usuarios");
+		botonGestionUsuarios.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//Lógica para gestionar usuarios aquí
+				ventanaMenu.dispose(); //Cerrar la ventana del menú
+				new GestorUsuarios(); //Abrir la ventana para gestionar usuarios
+			}
+		});
+		
+		//Crear un botón para mostrar estadísticas
+		JButton botonEstadisticasGenerales = crearBoton("Ver Estadísticas");
+		botonEstadisticasGenerales.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//Crear y mostrar la nueva ventana de estadísticas
+				// new VentanaEstadisticas(); //Cambia el nombre de la clase si es necesario (descomentar al crear la clase)
+			}
+		});
+		
+		//Crear botón para la asistencia
+		JButton botonAsistencia=crearBoton("Asistencia");
+		botonAsistencia.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//Abrir la ventana de asistencia
+				// new VentanaAsistencia(); //Clase para manejar la asistencia (descomentar al crear la clase)
+				
+			}
+		});
+		
+		//Crear un botón para ir a la ventana principal
+		JButton botonVentanaPrincipal = crearBoton("Ir a Ventana Principal");
+		botonVentanaPrincipal.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new VentanaPrincipal("Administrador"); //Abrir la ventana principal
+				
+			}
+		});
+		
+		//Crear un botón de salir
+		JButton botonSalir = crearBoton("Salir");
+		botonSalir.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ventanaMenu.dispose(); //Cerrar la ventana del menú
+				new VentanaRegistro(); //Abrir la ventana de registro
+			}
+		});
+		
+		//Añadir los botones al panel
+		panel.add(botonGestionProductos);
+		panel.add(botonEstadisticas);
+		panel.add(botonGestionUsuarios);
+		panel.add(botonEstadisticasGenerales);
+		panel.add(botonAsistencia);
+		panel.add(botonVentanaPrincipal);
+		panel.add(botonSalir);
+		
+		
+		//Añadir el panel a la ventana
+		ventanaMenu.add(panel);
+		
+		//Mostar ventana principal
 		ventanaMenu.setVisible(true);
 	}
 	
