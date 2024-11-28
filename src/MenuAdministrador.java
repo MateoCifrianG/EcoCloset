@@ -9,6 +9,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 public class MenuAdministrador {
 	private JFrame ventanaMenu;
@@ -113,6 +114,8 @@ public class MenuAdministrador {
 		panel.add(botonVentanaPrincipal);
 		panel.add(botonSalir);
 		
+		//Establecer un borde y un título para el panel
+		panel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Opciones del Administrador"));
 		
 		//Añadir el panel a la ventana
 		ventanaMenu.add(panel);
@@ -134,6 +137,6 @@ public class MenuAdministrador {
 	}
 	
 	public static void main(String[] args) {
-    	new MenuAdministrador();
+    	SwingUtilities.invokeLater(MenuAdministrador::new);;
     }
 }
