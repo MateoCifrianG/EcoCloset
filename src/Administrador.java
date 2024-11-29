@@ -35,7 +35,28 @@
 	        panelSuperior.add(panelBusqueda, BorderLayout.NORTH);
 	        panelSuperior.add(botonEliminar, BorderLayout.SOUTH);
 	
-	      
+	        // Crear la tabla para mostrar los productos
+	        String[] columnas = {"Nombre", "Marca", "Talla", "Cantidad", "Precio", "Estado"};
+	        modeloTabla = new DefaultTableModel(columnas, 0);
+	        tablaProductos = new JTable(modeloTabla);
+	        JScrollPane scrollTabla = new JScrollPane(tablaProductos);
+	
+	        // Cargar los productos desde el CSV
+	        listaProductos = cargarProductosDesdeCSV("productos.csv");
+	        actualizarTabla(listaProductos);
+	
+	        // Crear el botón para volver al menú
+	        JButton botonVolver = new JButton("Volver al Menú Administrador");
+	        
+	        // Añadir acción para el botón volver
+	        botonVolver.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	                ventana.dispose(); // Cerrar la ventana actual
+	                new MenuAdministrador(); // Aquí llamamos a la clase que representa el menú administrador
+	            }
+	        });
+	
 	
 	    public static void main(String[] args) {
 	        SwingUtilities.invokeLater(Administrador::new);
