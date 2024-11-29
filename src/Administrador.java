@@ -117,7 +117,36 @@
 	        actualizarTabla(productosFiltrados); // Mostrar solo los productos filtrados
 	    }
 	
-	   
+	    // Método para eliminar el producto seleccionado
+	    private void eliminarProductoSeleccionado() {
+	        int filaSeleccionada = tablaProductos.getSelectedRow();
+	        if (filaSeleccionada >= 0) {
+	            String nombreProducto = (String) modeloTabla.getValueAt(filaSeleccionada, 0);
+	            int confirmacion = JOptionPane.showConfirmDialog(ventana, "¿Estás seguro de eliminar el producto: " + nombreProducto + "?", "Confirmación", JOptionPane.YES_NO_OPTION);
+	
+	            if (confirmacion == JOptionPane.YES_OPTION) {
+	                // Eliminar el producto de la lista y del modelo de la tabla
+	                listaProductos.remove(filaSeleccionada);
+	                modeloTabla.removeRow(filaSeleccionada);
+	
+	                // Guardar los cambios en el CSV
+	                guardarProductosEnCSV("productos.csv");
+	            }
+	        } else {
+	            JOptionPane.showMessageDialog(ventana, "Por favor, selecciona un producto para eliminar.");
+	        }
+	    }
+	
+	    // Método para guardar los productos modificados en el archivo CSV
+	    private void guardarProductosEnCSV(String filePath) {
+	        try (PrintWriter writer = new PrintWriter(new FileWriter(filePath))) {
+	            for (String[] producto : listaProductos) {
+	                writer.println(String.join(";", producto)); // Escribir cada producto de nuevo al archivo
+	            }
+	        } catch (IOException e) {
+	            JOptionPane.showMessageDialog(ventana, "Error al guardar el archivo CSV: " + e.getMessage());
+	        }
+	    }
 	
 	    public static void main(String[] args) {
 	        SwingUtilities.invokeLater(Administrador::new);
