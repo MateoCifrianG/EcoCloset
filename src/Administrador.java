@@ -83,7 +83,23 @@
 	        ventana.setVisible(true);
 	    }
 	
-	    
+	    // Método para cargar productos desde un archivo CSV
+	    private List<String[]> cargarProductosDesdeCSV(String filePath) {
+	        List<String[]> productos = new ArrayList<>();
+	        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+	            String line;
+	            while ((line = reader.readLine()) != null) {
+	                String[] valores = line.split(";"); // Suponiendo que el separador es punto y coma
+	                productos.add(valores); // Guardar cada línea como un arreglo de strings
+	            }
+	        } catch (IOException e) {
+	            JOptionPane.showMessageDialog(ventana, "Error al leer el archivo CSV: " + e.getMessage());
+	        }
+	        return productos;
+	    }
+	
+	   
+	
 	    public static void main(String[] args) {
 	        SwingUtilities.invokeLater(Administrador::new);
 	    }
