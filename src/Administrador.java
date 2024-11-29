@@ -57,7 +57,33 @@
 	            }
 	        });
 	
+	        // Añadir componentes a la ventana
+	        ventana.add(panelSuperior, BorderLayout.NORTH);
+	        ventana.add(scrollTabla, BorderLayout.CENTER);
+	        ventana.add(botonVolver, BorderLayout.SOUTH); // Añadir el botón al sur
 	
+	        // Acción para buscar productos
+	        botonBuscar.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	                String busqueda = campoBusqueda.getText();
+	                buscarProducto(busqueda);
+	            }
+	        });
+	
+	        // Acción para eliminar el producto seleccionado
+	        botonEliminar.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	                eliminarProductoSeleccionado();
+	            }
+	        });
+	
+	        // Mostrar la ventana
+	        ventana.setVisible(true);
+	    }
+	
+	    
 	    public static void main(String[] args) {
 	        SwingUtilities.invokeLater(Administrador::new);
 	    }
