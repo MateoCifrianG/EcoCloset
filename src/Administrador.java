@@ -98,6 +98,25 @@
 	        return productos;
 	    }
 	
+	    // Método para actualizar la tabla con productos
+	    private void actualizarTabla(List<String[]> productos) {
+	        modeloTabla.setRowCount(0); // Limpiar la tabla
+	        for (String[] producto : productos) {
+	            modeloTabla.addRow(producto); // Añadir cada producto a la tabla
+	        }
+	    }
+	
+	    // Método para buscar un producto por nombre
+	    private void buscarProducto(String nombre) {
+	        List<String[]> productosFiltrados = new ArrayList<>();
+	        for (String[] producto : listaProductos) {
+	            if (producto[0].toLowerCase().contains(nombre.toLowerCase())) {
+	                productosFiltrados.add(producto); // Añadir producto si coincide con la búsqueda
+	            }
+	        }
+	        actualizarTabla(productosFiltrados); // Mostrar solo los productos filtrados
+	    }
+	
 	   
 	
 	    public static void main(String[] args) {
