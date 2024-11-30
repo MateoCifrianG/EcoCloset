@@ -1,8 +1,14 @@
 import java.awt.BorderLayout;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -76,6 +82,36 @@ public class VentanaAsistencia {
 		
 		
 	}
+	
+	// Método para cargar las asistencias desde el un archivo csv
+	private List<String[]> cargarAsistenciasDesdeCSV(String filePath) {
+		
+		List<String[]> asistencias = new ArrayList<>();
+		
+		try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+			
+			String linea;
+			while ((linea = reader.readLine()) != null) {
+				String[] valores = linea.split(";"); // los datos están separados por un ";"
+				asistencias.add(valores); // guardar cada linea como un Array de strings
+			}
+			
+		}catch (IOException e) {
+			JOptionPane.showMessageDialog(ventana, "Error al leer el archivo CSV: " + e.getMessage());
+		}
+		
+		return asistencias;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public static void main(String[] args) {
        new VentanaAsistencia();
     }
