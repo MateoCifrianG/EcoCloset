@@ -7,6 +7,7 @@ import java.io.IOException;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -33,7 +34,7 @@ public class VentanaCuenta {
 		// Creación de un panel con información del usuario
 		JPanel panelInformacion = new JPanel();
 		panelInformacion.setLayout(new BoxLayout(panelInformacion, BoxLayout.Y_AXIS)); // Disposición vertical
-		panelInformacion.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20)); // Espaciado interno
+		//panelInformacion.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20)); // Espaciado interno
 		panelInformacion.setOpaque(false); // hacer el panel transparente
 		
 		// Titulo
@@ -42,7 +43,7 @@ public class VentanaCuenta {
 		titulo.setForeground(new Color(70, 130, 180)); // Color del texto
 		panelInformacion.add(titulo);
 		
-		// Obtener datos del usuario y mostrarlo
+		// Obtener datos del usuario y mostrarlos
 		String datosUsuario = obtenerDatosUsuario();
 		JLabel datosLabel = new JLabel("<html>" + datosUsuario.replace("\n", "<br>") + "</html>");
 		datosLabel.setFont(new Font("Arial", Font.PLAIN, 14)); // Fuente del texto
@@ -51,6 +52,18 @@ public class VentanaCuenta {
 		
 		//Añadir el panel de informacion al panel principal
 		panelPrincipal.add(panelInformacion, BorderLayout.CENTER);
+		
+		// Creación de un panel inferior para el boton de cerrar
+		JPanel panelInferior = new JPanel();
+		panelInferior.setLayout(new BorderLayout()); // Disposición de borde
+		
+		// Creación del boton para cerrar la ventana
+		JButton cerrarButton = new JButton("Cerrar");
+		cerrarButton.setBackground(new Color(70, 130, 180)); // Color del botón
+		cerrarButton.setForeground(Color.WHITE); // Color del texto del botón
+		cerrarButton.setFont(new Font("Arial", Font.BOLD, 16)); // Fuente del botón
+		//cerrarButton.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Espacio interno del botón
+		cerrarButton.addActionListener(e -> ventanaCuenta.dispose());
 		
 		
 		
