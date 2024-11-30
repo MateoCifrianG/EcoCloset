@@ -99,7 +99,7 @@ public class VentanaPrincipal {
 		
 		//Añadir opciones al JPopupMenu
 		JMenuItem opcion1=new JMenuItem("Cuenta");
-		//faltaría el actionListener para cuando tengamos la ventana de la cuenta
+		opcion1.addActionListener(e -> new VentanaCuenta(nombreUsuario)); // se abre la VentanaCuenta
 		
 		JMenuItem opcion2=new JMenuItem("Cerrar Sesión");
 		opcion2.addActionListener(e -> {
