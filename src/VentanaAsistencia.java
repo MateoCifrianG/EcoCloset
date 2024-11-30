@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
+
 
 import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
@@ -19,9 +19,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.table.DefaultTableColumnModel;
+
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
+
 
 public class VentanaAsistencia {
 
@@ -44,7 +44,7 @@ public class VentanaAsistencia {
 		JPanel panelBusqueda = new JPanel(new BorderLayout());
 		
 		barraBusqueda = new JTextField();
-		JLabel buscarAsistencia = new JLabel("Buscar Asistencia: ");
+		JLabel buscarAsistencia = new JLabel("Buscar usuario: ");
 		JButton botonBuscar = new JButton("Buscar");
 		JButton botonEliminar = new JButton("Eliminar");
 		
@@ -81,6 +81,7 @@ public class VentanaAsistencia {
 				//FALTA AÑADIR LA VENTANA DE ADMINISTRADOR
 				
 			}
+			
 		});
 		
 		// Añadir componentes a la ventana
@@ -99,7 +100,22 @@ public class VentanaAsistencia {
 			}
 		});
 		
+		// ActionListener para eliminar las asistencias seleccionadas
+		botonEliminar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				eliminarAsistenciaSeleccionada();
+				
+			}
+		});
+		
+		// Mostrar la ventana
+		ventana.setVisible(true);
+		
 	}
+	
+	
 	
 	
 	//MÉTODOS PRIVADOS ---------
