@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -13,6 +14,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 
 public class GestorUsuarios {
@@ -53,7 +56,37 @@ public class GestorUsuarios {
 		listaUsuarios=cargarUsuariosDesdeCSV("usuarios1.csv");
 		actualizarTabla(listaUsuarios);
 		
+		//Habilitar la edición de la tabla
+		tablaUsuarios.setDefaultEditor(Object.class, new DefaultCellEditor(new JTextField()));
 		
+		//Listener para detectar cambios en la tabla
+		modeloTabla.addTableModelListener(new TableModelListener() {
+			
+			@Override
+			public void tableChanged(TableModelEvent e) {
+				int row = e.getFirstRow(); //Obtener la fila modificada
+				int column = e.getColumn(); //Obtener la columna modificada
+				
+				//Verificar que la fila y la columna sean válidas
+				if (row>=0 && column>=0) {
+					String nuevoValor=(String) modeloTabla.getValueAt(row, column);
+					
+					//Actualizar la lista de usuarios
+					listaUsuarios.get(row)[column] = nuevoValor;
+					
+					//Verificar si se ha cambiado la contraseña
+					if(column == 6) { //Si la columna es "Contraseña"
+						listaUsuarios.get(row)[7] = nuevoValor; //Actualizar "Repetir Contraseña" con el mismo valor
+						modeloTabla.setValueAt(nuevoValor, row, 7); //Actualizar la tabla para que refleje este cambio
+					}
+					
+					//Guardar cambios en el archivo CSV
+					//guardarUsuariosEnCSV("usuarios1.csv");
+					//prueba
+				}
+				
+			}
+		});
 		
 		
 		//Añado los componentes
@@ -87,11 +120,7 @@ public class GestorUsuarios {
 				modeloTabla.addRow(usuario); //Añadir cada usuario a la tabla
 			}
 		}
-		
-		
-	
-	
-	
+			
 	
 	public static void main(String[] args) {
 		new GestorUsuarios();
