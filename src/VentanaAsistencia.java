@@ -1,4 +1,6 @@
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -65,6 +67,19 @@ public class VentanaAsistencia {
 		// Habilitar la edicióm de la tabla
 		tablaAsistencia.setDefaultEditor(Object.class, new DefaultCellEditor(new JTextField()));
 		
+		// Crear el botñon para volver al menú
+		JButton botonVolver = new JButton("Volver al Menú Administrador");
+		
+		// Añadir ActionListener para el botón volver
+		botonVolver.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ventana.dispose(); // cerrar la ventana actual
+				//FALTA AÑADIR LA VENTANA DE ADMINISTRADOR
+				
+			}
+		});
 		
 		
 		
