@@ -6,8 +6,10 @@ import java.util.Comparator;
 import java.util.List;
 
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
@@ -69,6 +71,17 @@ public class VentanaPedidos {
                 TitledBorder.CENTER, TitledBorder.TOP, new Font("Arial", Font.BOLD, 16), Color.DARK_GRAY)); // Estilo del borde
 
         ventana.add(scrollPane, BorderLayout.CENTER);
+        
+     // boton para cerrar la ventana
+        JButton btnCerrar = new JButton("Cerrar");
+        btnCerrar.setBackground(new Color(70, 130, 180)); // color del botón
+        btnCerrar.setForeground(Color.WHITE); // color del texto del botón
+        btnCerrar.setFont(new Font("Arial", Font.BOLD, 16)); // fuente del botón
+        btnCerrar.addActionListener(e -> ventana.dispose()); // acción del botón
+
+        JPanel panelBoton = new JPanel();
+        panelBoton.add(btnCerrar);
+        ventana.add(panelBoton, BorderLayout.SOUTH);
 
         ventana.setVisible(true);
 
