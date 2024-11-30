@@ -105,6 +105,8 @@ public class VentanaAsistencia {
 		
 		
 		
+		
+		
 
 		
 		
@@ -142,8 +144,17 @@ public class VentanaAsistencia {
 		}
 	}
 	
-	
-	
+	// Método para buscar una asistencia por usuario
+	private void buscarAsistencia(String usuario) {
+		List<String[]> asistenciasFiltradas = new ArrayList<>();
+		for (String[] asistencia : listaAsistencias) {
+			if (asistencia[0].toLowerCase().contains(usuario.toLowerCase())) {
+				asistenciasFiltradas.add(asistencia); // añadir la asistencia si coincide con la busqueda
+			}
+		}
+		actualizarTablaAsistencias(asistenciasFiltradas); // mostrar solo las asistencias filtradas
+	}
+  	
 	
 	
 	
