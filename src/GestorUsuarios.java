@@ -121,6 +121,16 @@ public class GestorUsuarios {
 			}
 		});
         
+        //Acción para eliminar el usuario seleccionado
+        botonEliminar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				eliminarUsuarioSeleccionado();
+				
+			}
+		});
+        
         
 		ventana.setVisible(true);
 	}
@@ -153,9 +163,9 @@ public class GestorUsuarios {
 		private void buscarUsuario(String nombre) {
 			List<String[]> usuariosFiltrados=new ArrayList<>();
 			for(String[] usuario : listaUsuarios) {
-				if(usuario[0].toLowerCase().contains(nombre.toLowerCase())
-						|| usuario[1].toLowerCase().contains(nombre.toLowerCase())
-						|| usuario[2].toLowerCase().contains(nombre.toLowerCase())) {
+				if(usuario[0].toLowerCase().contains(nombre.toLowerCase()) ||
+				   usuario[1].toLowerCase().contains(nombre.toLowerCase()) ||
+				   usuario[2].toLowerCase().contains(nombre.toLowerCase())) {
 					usuariosFiltrados.add(usuario); //Añadir usuario si coincide con la búsqueda
 				}
 			}
