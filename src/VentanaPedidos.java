@@ -1,12 +1,19 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
+import javax.swing.border.TitledBorder;
+
+import domain.Pedido;
 
 public class VentanaPedidos {
 	public VentanaPedidos(String nombreUsuario) {
@@ -37,6 +44,32 @@ public class VentanaPedidos {
 //        Se encuentra en el paquete javax.swing.border y se utiliza para crear objetos de tipo borde (Border), 
 //        que pueden ser utilizados para decorar o delimitar los componentes gráficos de una aplicación
         
+     // obtener pedidos del usuario y ordenar los pedidos por ID
+        List<Pedido> listaPedidosUsuario = cargarPedidos(nombreUsuario);
+        Collections.sort(listaPedidosUsuario, Comparator.comparingInt(Pedido::getId));
+
+        // Mostrar los pedidos en el JTextArea
+        StringBuilder sb = new StringBuilder();
+        for (Pedido pedido : listaPedidosUsuario) {
+            sb.append("ID: ").append(pedido.getId()).append("\n");
+            sb.append("Usuario: ").append(pedido.getNombreUsuario()).append("\n");
+            sb.append("Prendas:\n");
+            for (Ropa prenda : pedido.getPrendas()) {
+                sb.append("  - ").append(prenda.toString()).append("\n");
+            }
+            sb.append("Precio Total: ").append(calcularPrecioTotal(pedido)).append("\n\n");
+        }
+
+        areaTexto.setText(sb.toString()); // poner el texto en el área de texto
+        
+        // Añadir el área de texto a un JScrollPane
+        JScrollPane scrollPane = new JScrollPane(areaTexto);
+        scrollPane.setBorder(BorderFactory.createTitledBorder(
+                BorderFactory.createLineBorder(new Color(100, 149, 237)), "Detalles del Pedido",  // Borde superior
+                TitledBorder.CENTER, TitledBorder.TOP, new Font("Arial", Font.BOLD, 16), Color.DARK_GRAY)); // Estilo del borde
+
+        ventana.add(scrollPane, BorderLayout.CENTER);
+
         ventana.setVisible(true);
 
 	}
