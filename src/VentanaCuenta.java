@@ -42,7 +42,15 @@ public class VentanaCuenta {
 		titulo.setForeground(new Color(70, 130, 180)); // Color del texto
 		panelInformacion.add(titulo);
 		
-		// Componentes de la ventana
+		// Obtener datos del usuario y mostrarlo
+		String datosUsuario = obtenerDatosUsuario();
+		JLabel datosLabel = new JLabel("<html>" + datosUsuario.replace("\n", "<br>") + "</html>");
+		datosLabel.setFont(new Font("Arial", Font.PLAIN, 14)); // Fuente del texto
+		datosLabel.setForeground(Color.DARK_GRAY); // Color del texto de los datos
+		panelInformacion.add(datosLabel);
+		
+		//Añadir el panel de informacion al panel principal
+		panelPrincipal.add(panelInformacion, BorderLayout.CENTER);
 		
 		
 		
