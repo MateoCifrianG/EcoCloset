@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
+import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -60,6 +61,11 @@ public class VentanaAsistencia {
 		// Cargar las asistencias desde el CSV
 		listaAsistencias = cargarAsistenciasDesdeCSV("asistencias.csv"); 
 		actualizarTablaAsistencias(listaAsistencias);
+		
+		// Habilitar la edicióm de la tabla
+		tablaAsistencia.setDefaultEditor(Object.class, new DefaultCellEditor(new JTextField()));
+		
+		
 		
 		
 		
