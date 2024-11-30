@@ -41,4 +41,5 @@ public class Pedido {
 		this.prendas = prendas;
 	}
 
+
 }
