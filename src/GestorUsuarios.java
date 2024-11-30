@@ -1,4 +1,6 @@
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -89,10 +91,24 @@ public class GestorUsuarios {
 			}
 		});
 		
+		//Crear el botón para volver al menú
+		JButton botonVolver=new JButton("Volver al Menú Administrador");
+		
+		//Añadir acción para el botón volver
+		botonVolver.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ventana.dispose(); //Cerrar la ventana actual
+				new MenuAdministrador(); //Aquí llamamos a la clase que representa el menú administrador
+			}
+		});
+		
 		
 		//Añado los componentes
 		ventana.add(panelSuperior, BorderLayout.NORTH);
         ventana.add(scrollTabla, BorderLayout.CENTER);
+        ventana.add(botonVolver, BorderLayout.SOUTH); //Añadir el botón abajo
 		
 		
 		ventana.setVisible(true);
@@ -149,7 +165,6 @@ public class GestorUsuarios {
 					
 					//Guardar los cambios en el CSV
 					guardarUsuariosEnCSV("usuarios1.csv");
-					//
 				}
 			}else {
 				JOptionPane.showMessageDialog(ventana, "Por favor, selecciona un usuario para eliminar");
