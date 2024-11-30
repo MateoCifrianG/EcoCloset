@@ -1,7 +1,9 @@
 import java.awt.BorderLayout;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -81,8 +83,7 @@ public class GestorUsuarios {
 					}
 					
 					//Guardar cambios en el archivo CSV
-					//guardarUsuariosEnCSV("usuarios1.csv");
-					//prueba
+					guardarUsuariosEnCSV("usuarios1.csv");
 				}
 				
 			}
@@ -122,6 +123,17 @@ public class GestorUsuarios {
 		}
 			
 	
+		// Método para guardar los usuarios modificados en el archivo CSV
+	    private void guardarUsuariosEnCSV(String filePath) {
+	        try (PrintWriter writer = new PrintWriter(new FileWriter(filePath))) {
+	            for (String[] usuario : listaUsuarios) {
+	                writer.println(String.join(";", usuario)); // Escribir cada usuario de nuevo al archivo
+	            }
+	        } catch (IOException e) {
+	            JOptionPane.showMessageDialog(ventana, "Error al guardar el archivo CSV: " + e.getMessage());
+	        }
+	    }
+	    
 	public static void main(String[] args) {
 		new GestorUsuarios();
 
