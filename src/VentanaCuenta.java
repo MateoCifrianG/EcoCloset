@@ -1,6 +1,9 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -39,16 +42,60 @@ public class VentanaCuenta {
 		titulo.setForeground(new Color(70, 130, 180)); // Color del texto
 		panelInformacion.add(titulo);
 		
+		// Componentes de la ventana
 		
 		
 		
 		
 		
 		
+		
+		
+		
+		
+		// Añadir Panel Principal a la ventana
+		ventanaCuenta.add(panelPrincipal);
+		ventanaCuenta.setVisible(true);
 		
 		
 	}
 	
 	
 	
-}
+	private String obtenerDatosUsuario() {
+		
+		StringBuilder datos = new StringBuilder();
+        String archivoCSV = "usuarios.csv"; // Asegúrate de usar la ruta correcta
+
+        try (BufferedReader br = new BufferedReader(new FileReader(archivoCSV))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                String[] valores = linea.split(";"); // Cambiar a punto y coma como delimitador
+                if (valores.length >= 7 && valores[0].equalsIgnoreCase(nombreUsuario)) { // Asegurarse de que hay suficientes columnas
+                	datos.append("<br>");
+                    datos.append("<strong>Nombre:</strong> ").append(valores[0]).append("<br>").append("<br>");
+                    datos.append("<strong>Apellido 1:</strong> ").append(valores[1]).append("<br>").append("<br>");
+                    datos.append("<strong>Apellido 2:</strong> ").append(valores[2]).append("<br>").append("<br>");
+                    datos.append("<strong>Dirección:</strong> ").append(valores[3]).append("<br>").append("<br>");
+                    datos.append("<strong>Fecha de nacimiento:</strong> ").append(valores[4]).append("<br>").append("<br>");
+                    datos.append("<strong>Nacionalidad:</strong> ").append(valores[5]).append("<br>").append("<br>");
+                    datos.append("<strong>Contraseña:</strong> ").append(valores[6]).append("<br>").append("<br>");
+                    break; // Salir del bucle si se ha encontrado el usuario
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "Error al leer los datos del usuario.";
+        }
+
+        return datos.length() > 0 ? datos.toString() : "Usuario no encontrado.";
+		
+	
+	}
+	
+	 public static void main(String[] args) {
+	        
+	        new VentanaCuenta("usuarioEjemplo");
+	    }
+	
+}	
