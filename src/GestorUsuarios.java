@@ -121,6 +121,19 @@ public class GestorUsuarios {
 				modeloTabla.addRow(usuario); //Añadir cada usuario a la tabla
 			}
 		}
+		
+		//Método para buscar un usuario por nombre
+		private void buscarUsuario(String nombre) {
+			List<String[]> usuariosFiltrados=new ArrayList<>();
+			for(String[] usuario : listaUsuarios) {
+				if(usuario[0].toLowerCase().contains(nombre.toLowerCase())
+						|| usuario[1].toLowerCase().contains(nombre.toLowerCase())
+						|| usuario[2].toLowerCase().contains(nombre.toLowerCase())) {
+					usuariosFiltrados.add(usuario); //Añadir usuario si coincide con la búsqueda
+				}
+			}
+			actualizarTabla(listaUsuarios); //Mostrar solo los usuarios filtrados
+		}
 			
 	
 		// Método para guardar los usuarios modificados en el archivo CSV
