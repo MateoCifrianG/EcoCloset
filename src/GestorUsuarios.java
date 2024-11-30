@@ -59,6 +59,34 @@ public class GestorUsuarios {
 		//Habilitar la edición de la tabla
 		tablaUsuarios.setDefaultEditor(Object.class, new DefaultCellEditor(new JTextField()));
 		
+		//Listener para detectar cambios en la tabla
+		modeloTabla.addTableModelListener(new TableModelListener() {
+			
+			@Override
+			public void tableChanged(TableModelEvent e) {
+				int row = e.getFirstRow(); //Obtener la fila modificada
+				int column = e.getColumn(); //Obtener la columna modificada
+				
+				//Verificar que la fila y la columna sean válidas
+				if (row>=0 && column>=0) {
+					String nuevoValor=(String) modeloTabla.getValueAt(row, column);
+					
+					//Actualizar la lista de usuarios
+					listaUsuarios.get(row)[column] = nuevoValor;
+					
+					//Verificar si se ha cambiado la contraseña
+					if(column == 6) { //Si la columna es "Contraseña"
+						listaUsuarios.get(row)[7] = nuevoValor; //Actualizar "Repetir Contraseña" con el mismo valor
+						modeloTabla.setValueAt(nuevoValor, row, 7); //Actualizar la tabla para que refleje este cambio
+					}
+					
+					//Guardar cambios en el archivo CSV
+					guardarUsuariosEnCSV("usuarios1.csv");
+				}
+				
+			}
+		});
+		
 		
 		//Añado los componentes
 		ventana.add(panelSuperior, BorderLayout.NORTH);
