@@ -1,6 +1,9 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -64,6 +67,24 @@ public class VentanaCuenta {
 		cerrarButton.setFont(new Font("Arial", Font.BOLD, 16)); // Fuente del botón
 		//cerrarButton.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Espacio interno del botón
 		cerrarButton.addActionListener(e -> ventanaCuenta.dispose());
+		
+		// Añadir MouseListener 
+		cerrarButton.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				cerrarButton.setBackground(new Color(70, 130, 180)); // color original
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				cerrarButton.setBackground(new Color(30, 144, 255)); // color al pasar con el ratón
+				
+			}
+			
+			
+		});
 		
 		
 		
