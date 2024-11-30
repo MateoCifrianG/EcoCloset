@@ -109,7 +109,6 @@ public class GestorUsuarios {
 		ventana.add(panelSuperior, BorderLayout.NORTH);
         ventana.add(scrollTabla, BorderLayout.CENTER);
         ventana.add(botonVolver, BorderLayout.SOUTH); //Añadir el botón abajo
-        //
 		
 		
 		ventana.setVisible(true);
