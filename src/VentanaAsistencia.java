@@ -81,9 +81,10 @@ public class VentanaAsistencia {
 			}
 		});
 		
-		
-		
-		
+		// Añadir componentes a la ventana
+		ventana.add(panelSuperior, BorderLayout.NORTH);
+		ventana.add(scrollTabla, BorderLayout.CENTER);
+		ventana.add(botonVolver, BorderLayout.SOUTH); // Botón volver abajo
 		
 		
 		
