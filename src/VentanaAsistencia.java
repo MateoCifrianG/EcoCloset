@@ -3,7 +3,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -97,31 +99,8 @@ public class VentanaAsistencia {
 			}
 		});
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-
-		
-		
 	}
+	
 	
 	//MÉTODOS PRIVADOS ---------
 	
@@ -166,7 +145,36 @@ public class VentanaAsistencia {
 		actualizarTablaAsistencias(asistenciasFiltradas); // mostrar solo las asistencias filtradas
 	}
   	
+	// Método para borrar la asistencia seleccionada
+	private void eliminarAsistenciaSeleccionada() {
+		int filaSeleccionada = tablaAsistencia.getSelectedRow();
+		if (filaSeleccionada >= 0) {
+			String usuarioAsistencia = (String) modeloTabla.getValueAt(filaSeleccionada, 0);
+			int confimacion = JOptionPane.showConfirmDialog(ventana, "¿Estás seguro de eliminar la asistencia de: " + usuarioAsistencia);
+			
+			if (confimacion == JOptionPane.YES_OPTION) {
+				//Eliminar la asistencia de la lista y del modelo de la tabla
+				listaAsistencias.remove(filaSeleccionada);
+				modeloTabla.removeRow(filaSeleccionada);
+				
+				// Guardar los cambios en el CSV después de la eliminación
+				guardarAsistenciasEnCSV("asistencias.csv");
+				
+			}
+		} else {
+			JOptionPane.showMessageDialog(ventana, "Por favor, selecciona una asistencia para eliminar.");
+		}
+	}
 	
+	private void guardarAsistenciasEnCSV(String filePath) {
+		try (PrintWriter writer = new PrintWriter(new FileWriter(filePath))) {
+			for (String[] asistencia : listaAsistencias) {
+				writer.println(String.join(";", asistencia)); // escribir cada asistencia de nuevo al archivo
+			}
+		} catch (IOException e) {
+			JOptionPane.showMessageDialog(ventana, "Error al guardar el archivo CSV" + e.getMessage());
+		}
+	}
 	
 	
 	
