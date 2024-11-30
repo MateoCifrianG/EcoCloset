@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -13,6 +14,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 
 public class GestorUsuarios {
@@ -53,7 +56,8 @@ public class GestorUsuarios {
 		listaUsuarios=cargarUsuariosDesdeCSV("usuarios1.csv");
 		actualizarTabla(listaUsuarios);
 		
-		
+		//Habilitar la edición de la tabla
+		tablaUsuarios.setDefaultEditor(Object.class, new DefaultCellEditor(new JTextField()));
 		
 		
 		//Añado los componentes
@@ -87,11 +91,7 @@ public class GestorUsuarios {
 				modeloTabla.addRow(usuario); //Añadir cada usuario a la tabla
 			}
 		}
-		
-		
-	
-	
-	
+			
 	
 	public static void main(String[] args) {
 		new GestorUsuarios();
