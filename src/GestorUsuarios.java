@@ -149,6 +149,7 @@ public class GestorUsuarios {
 					
 					//Guardar los cambios en el CSV
 					guardarUsuariosEnCSV("usuarios1.csv");
+					//
 				}
 			}else {
 				JOptionPane.showMessageDialog(ventana, "Por favor, selecciona un usuario para eliminar");
