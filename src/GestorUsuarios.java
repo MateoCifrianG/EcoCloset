@@ -134,7 +134,26 @@ public class GestorUsuarios {
 			}
 			actualizarTabla(listaUsuarios); //Mostrar solo los usuarios filtrados
 		}
+		
+		//Método para eliminar el usuario seleccionado
+		private void eliminarUsuarioSeleccionado() {
+			int filaSeleccionada=tablaUsuarios.getSelectedRow();
+			if(filaSeleccionada>=0) {
+				String nombreUsuario = (String) modeloTabla.getValueAt(filaSeleccionada, 0);
+				int confirmacion=JOptionPane.showConfirmDialog(ventana, "¿Estás seguro de eliminar el usuario: " + nombreUsuario);
 			
+				if(confirmacion==JOptionPane.YES_OPTION) {
+					//Eliminar el usuario de la lista y del modelo de la tabla
+					listaUsuarios.remove(filaSeleccionada);
+					modeloTabla.removeRow(filaSeleccionada);
+					
+					//Guardar los cambios en el CSV
+					guardarUsuariosEnCSV("usuarios1.csv");
+				}
+			}else {
+				JOptionPane.showMessageDialog(ventana, "Por favor, selecciona un usuario para eliminar");
+			}
+		}
 	
 		// Método para guardar los usuarios modificados en el archivo CSV
 	    private void guardarUsuariosEnCSV(String filePath) {
