@@ -4,12 +4,19 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableColumnModel;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 public class VentanaAsistencia {
 
 	private JFrame ventana;
 	private JTextField campoBusqueda;
+	private TableModel modeloTabla;
+	private JTable tablaAsistencia;
 	
 	public VentanaAsistencia() {
 		
@@ -34,8 +41,42 @@ public class VentanaAsistencia {
 		
 		panelSuperior.add(panelBusqueda, BorderLayout.NORTH);
 		panelSuperior.add(botonEliminar, BorderLayout.SOUTH);
+		
+		// Creación de la tabla para mostrar las asistencias
+		String[] cabecera = {"Usuario", "Correo Electrónico", "Mensaje", "Fecha"};
+		modeloTabla = new DefaultTableModel(cabecera, 0); 
+		tablaAsistencia = new JTable(modeloTabla);  
+		tablaAsistencia.setRowHeight(120); // altura de las filas de la tabla
+		JScrollPane scrollTabla = new JScrollPane(tablaAsistencia);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
 		
 		
 	}
+	public static void main(String[] args) {
+       new VentanaAsistencia();
+    }
 }
