@@ -170,7 +170,7 @@ public class GestorUsuarios {
 					usuariosFiltrados.add(usuario); //Añadir usuario si coincide con la búsqueda
 				}
 			}
-			actualizarTabla(listaUsuarios); //Mostrar solo los usuarios filtrados
+			actualizarTabla(usuariosFiltrados); //Mostrar solo los usuarios filtrados
 		}
 		
 		//Método para eliminar el usuario seleccionado
