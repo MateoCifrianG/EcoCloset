@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
@@ -177,7 +178,7 @@ public class GestorUsuarios {
 			int filaSeleccionada=tablaUsuarios.getSelectedRow();
 			if(filaSeleccionada>=0) {
 				String nombreUsuario = (String) modeloTabla.getValueAt(filaSeleccionada, 0);
-				int confirmacion=JOptionPane.showConfirmDialog(ventana, "¿Estás seguro de eliminar el usuario: " + nombreUsuario);
+				int confirmacion=JOptionPane.showConfirmDialog(ventana, "¿Estás seguro de eliminar el usuario: " + nombreUsuario+ "?", "Confirmación", JOptionPane.YES_NO_OPTION);
 			
 				if(confirmacion==JOptionPane.YES_OPTION) {
 					//Eliminar el usuario de la lista y del modelo de la tabla
@@ -204,7 +205,7 @@ public class GestorUsuarios {
 	    }
 	    
 	public static void main(String[] args) {
-		new GestorUsuarios();
+		SwingUtilities.invokeLater(GestorUsuarios::new);
 
 	}
 
