@@ -110,7 +110,18 @@ public class GestorUsuarios {
         ventana.add(scrollTabla, BorderLayout.CENTER);
         ventana.add(botonVolver, BorderLayout.SOUTH); //Añadir el botón abajo
 		
-		
+		//Acción para buscar usuarios
+        botonBuscar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String busqueda = campoBusqueda.getText();
+				buscarUsuario(busqueda);
+				
+			}
+		});
+        
+        
 		ventana.setVisible(true);
 	}
 		//Para hacer los métodos nos hemos apoyado en ChatGPT y los apuntes de Programación II
