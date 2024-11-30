@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -21,9 +22,10 @@ public class VentanaAsistencia {
 
 	private JFrame ventana;
 	private JTextField campoBusqueda;
-	private TableModel modeloTabla;
+	private DefaultTableModel modeloTabla;
 	private JTable tablaAsistencia;
-	
+	private List<String[]> listaAsistencias;
+	 
 	public VentanaAsistencia() {
 		
 		// Ceación de la VentanaAsistencia
@@ -48,13 +50,16 @@ public class VentanaAsistencia {
 		panelSuperior.add(panelBusqueda, BorderLayout.NORTH);
 		panelSuperior.add(botonEliminar, BorderLayout.SOUTH);
 		
-		// Creación de la tabla para mostrar las asistencias
+		// Creación de la TABLA para mostrar las asistencias
 		String[] cabecera = {"Usuario", "Correo Electrónico", "Mensaje", "Fecha"};
 		modeloTabla = new DefaultTableModel(cabecera, 0); 
 		tablaAsistencia = new JTable(modeloTabla);  
 		tablaAsistencia.setRowHeight(120); // altura de las filas de la tabla
 		JScrollPane scrollTabla = new JScrollPane(tablaAsistencia);
 		
+		// Cargar las asistencias desde el CSV
+		listaAsistencias = cargarAsistenciasDesdeCSV("asistencias.csv"); 
+		actualizarTablaAsistencias(listaAsistencias);
 		
 		
 		
@@ -83,6 +88,8 @@ public class VentanaAsistencia {
 		
 	}
 	
+	//MÉTODOS PRIVADOS ---------
+	
 	// Método para cargar las asistencias desde el un archivo csv
 	private List<String[]> cargarAsistenciasDesdeCSV(String filePath) {
 		
@@ -102,6 +109,15 @@ public class VentanaAsistencia {
 		
 		return asistencias;
 		
+	}
+	
+	// Método para actualizar la tabla con asistencias
+	private void actualizarTablaAsistencias(List<String[]> asistencias) {
+		modeloTabla.setRowCount(0); // Vaciar la tabla
+		 
+		for (String[] asistencia : asistencias) {
+			modeloTabla.addRow(asistencia); // Añadir cada asistencia a la tabla
+		}
 	}
 	
 	
