@@ -86,6 +86,12 @@ public class VentanaCuenta {
 			}
 
 		});
+		
+		// Añadir el botón al panel inferior y hacer que ocupe todo el ancho
+		panelInferior.add(cerrarButton, BorderLayout.CENTER);
+		
+		// Añadir el panel inferior al panel principal
+		panelPrincipal.add(panelInferior, BorderLayout.SOUTH);
 
 		// Añadir Panel Principal a la ventana
 		ventanaCuenta.add(panelPrincipal);
