@@ -138,7 +138,7 @@ public class VentanaPedidos {
         return listaPedidosUsuario; 
     }
 
-    // método para calcular el precio total de un pedido
+    // método para calcular el precio total de un pedido (
     private double calcularPrecioTotal(Pedido pedido) {
         double total = 0.0;
         for (Ropa prenda : pedido.getPrendas()) {
