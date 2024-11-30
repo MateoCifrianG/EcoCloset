@@ -35,7 +35,7 @@ public class VentanaPrincipal {
 			//Compra
 		JPanel panelCompraVenta = new JPanel(new GridLayout(1, 2, 10, 10));
 		JButton compra = new JButton("COMPRA");
-		compra.setFont(new Font("Courier", Font.BOLD, 20));
+		compra.setFont(new Font("Courier", Font.BOLD, 20)); 
 		
 			//Venta
 		JButton venta = new JButton("VENTA");

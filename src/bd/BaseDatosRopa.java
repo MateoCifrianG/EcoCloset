@@ -52,7 +52,7 @@ public class BaseDatosRopa {
 	
 	
 	// Método para actualizar la cantidad en el CSV
-	public void actualizarCantidadEnCSV (Ropa prenda) {
+	public void actualizarCantidadEnCSV (Ropa prenda) { 
 		
 		List<String> lineas = new ArrayList<String>(); // lista para almacenar las lineas del nuevo archivo
 		boolean eliminado = false; // para verificar si se eliminó la prenda
