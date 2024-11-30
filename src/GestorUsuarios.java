@@ -173,7 +173,7 @@ public class GestorUsuarios {
 			actualizarTabla(usuariosFiltrados); //Mostrar solo los usuarios filtrados
 		}
 		
-		//Método para eliminar el usuario seleccionado
+		//Método para eliminar el usuario seleccionado 
 		private void eliminarUsuarioSeleccionado() {
 			int filaSeleccionada=tablaUsuarios.getSelectedRow();
 			if(filaSeleccionada>=0) {
