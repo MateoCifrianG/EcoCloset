@@ -51,7 +51,12 @@ public class VentanaVenta {
         JButton añadirButton = new JButton("Añadir");
         frame.add(añadirButton);
 
-        
+        añadirButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+            }
+        });
         
     }
 }
