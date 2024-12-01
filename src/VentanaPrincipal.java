@@ -128,6 +128,12 @@ public class VentanaPrincipal {
 		ventana.add(panelInferior);
 		
 		ventana.setVisible(true);
+		
+		// Añadir acción para el botón "COMPRA" --> hacer el método
+		compra.addActionListener(e -> crearPedido()); // Crear un pedido al pulsar el botón "COMPRA"
+			
+		// Añadir acción para el botón "FILTRAR" --> hacer el método
+		filtrar.addActionListener(e -> filtrarArticulos(comboPrecio, comboTalla, comboPrendas));
 			
 	}
 	
