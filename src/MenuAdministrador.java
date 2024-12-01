@@ -67,7 +67,7 @@ public class MenuAdministrador {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				//Crear y mostrar la nueva ventana de estadísticas
-				// new VentanaEstadisticas(); //Cambia el nombre de la clase si es necesario (descomentar al crear la clase)
+				new VentanaEstadisticas(); //Cambia el nombre de la clase si es necesario
 			}
 		});
 		
