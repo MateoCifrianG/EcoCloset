@@ -14,5 +14,8 @@ public class VentanaVenta {
         frame.setSize(400, 300);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setLayout(new GridLayout(7, 2));
+        
+        String[] prendas = {"Camisa", "Pantalón", "Vestido", "Chaqueta", "Abrigo", "Falda", "Shorts", "Zapatos"};
+        JComboBox<String> prendaComboBox = new JComboBox<>(prendas);
     }
 }
