@@ -1,4 +1,4 @@
-package elementos;
+package gui;
  import javax.swing.*;
 
 import bd.BaseDatosRopa;

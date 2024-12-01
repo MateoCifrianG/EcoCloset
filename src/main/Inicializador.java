@@ -1,7 +1,7 @@
 //inicializador de la ventana principal
 package main;
 
-import elementos.VentanaRegistro;
+import gui.VentanaRegistro;
 
 public class Inicializador {
 
