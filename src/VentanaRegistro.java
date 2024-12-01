@@ -1,139 +1,123 @@
-import java.awt.Color;
-
-import java.awt.Cursor;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
 
 public class VentanaRegistro {
-	
-	private JFrame ventana;
-	
-	public VentanaRegistro() {
-		// CREACIÓN DE LA VENTANA DE REGISTRO
+
+    private JFrame ventana;
+    private JProgressBar barraProgreso;
+    private JButton iniciarSesionButton;
+    private JLabel mensaje;
+
+    public VentanaRegistro() {
+        // CREACIÓN DE LA VENTANA DE REGISTRO
         ventana = new JFrame("Registro");
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        ventana.setSize(400, 400); // Aumentar el tamaño para el nuevo enlace
-        ventana.setLayout(new GridBagLayout()); //Para que todo mantenga su tamaño
-        
-        //Crear los componentes de la ventana
+        ventana.setSize(400, 400);
+        ventana.setLayout(new GridBagLayout());
+
+        // Crear los componentes de la ventana
         JLabel nombreLabel = new JLabel("Nombre: ");
         JTextField nombreField = new JTextField(20);
         JLabel contraseñaLabel = new JLabel("Contraseña: ");
         JPasswordField contraseñaField = new JPasswordField(20);
-        JButton iniciarSesionButton = new JButton("Iniciar Sesión");
+        iniciarSesionButton = new JButton("Iniciar Sesión");
         JButton registrarButton = new JButton("Registrar");
-        
-        //Crear un JLabel que actue como un enlace
-        JLabel problemasLabel = new JLabel("<html><u>Problemas al iniciar sesion</u></html>"); 
-        problemasLabel.setForeground(Color.BLUE);
-        problemasLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR)); //Cuando el cursor se pose sobre el JLabel, el cursor cambiará a una mano
-        
-        //Crear un GridBagConstraints para posicionar los componentes
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(10, 10, 10, 10); //Espacio entre los componentes
-        
-        //Ahora añadimos los componentes creados a la ventana
-        gbc.gridx = 0; //Columna 0
-        gbc.gridy = 0; //Fila 0
-        ventana.add(nombreLabel, gbc);
-        gbc.gridx = 1; //Columna 1
-        ventana.add(nombreField, gbc);
-        
-        gbc.gridx = 0; //Columna 0
-        gbc.gridy = 1; //Fila 1
-        ventana.add(contraseñaLabel, gbc);
-        gbc.gridx = 1; //Columna 1
-        ventana.add(contraseñaField, gbc);
-        
-        gbc.gridx = 0; //Columna 0
-        gbc.gridy = 2; //Fila 2
-        gbc.gridwidth = 2; //Ocupa ambas columnas
-        ventana.add(iniciarSesionButton, gbc);
-        
-        gbc.gridy = 3; //Fila 3
-        ventana.add(registrarButton, gbc);
-        
-        //Agregar el JLabel como enlace
-        gbc.gridy = 4; //Fila4
-        ventana.add(problemasLabel, gbc);
-        
-        
-        //EVENTOS
-        
-        //Crear un ActionListener para el botón de registrar
-        registrarButton.addActionListener(e -> {
-        	//Abre el formulario de registro al hacer click en Registrar
-        	new FormularioRegistro(); //Aquí se crea el formulario de registro
-        });
-        
-        iniciarSesionButton.addActionListener(e -> {
-            String nombre = nombreField.getText();
-            String contraseña = new String(contraseñaField.getPassword());
 
-            // Verificar las credenciales usando la clase Comprobador
-            if (Comprobador.verificarUsuario(nombre, contraseña)) {
-                if (nombre.equals("administrador") && contraseña.equals("admin")) {
-                    // Si el nombre de usuario es "Admin" y la contraseña es "admin", abrir VentanaAdmin
-                    ventana.dispose(); // Cerrar la ventana actual
-                    new MenuAdministrador(); // Abrir ventana de administrador
-                } else {
-                    abrirVentanaPrincipal(nombre); // Abrir ventana principal para otros usuarios
-                }
-            } else {
-                // Mostrar mensaje de error
-                JOptionPane.showMessageDialog(ventana, "Nombre de usuario o contraseña incorrectos.", "Error", JOptionPane.ERROR_MESSAGE);
+        // Barra de progreso
+        barraProgreso = new JProgressBar(0, 100);
+        barraProgreso.setStringPainted(true);
+        barraProgreso.setVisible(false);
+
+        // Crear un JLabel para mensajes
+        mensaje = new JLabel(" ");
+        mensaje.setHorizontalAlignment(SwingConstants.CENTER);
+
+        // Crear un GridBagConstraints para posicionar los componentes
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(10, 10, 10, 10);
+
+        // Añadir los componentes creados a la ventana
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        ventana.add(nombreLabel, gbc);
+        gbc.gridx = 1;
+        ventana.add(nombreField, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        ventana.add(contraseñaLabel, gbc);
+        gbc.gridx = 1;
+        ventana.add(contraseñaField, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.gridwidth = 2;
+        ventana.add(iniciarSesionButton, gbc);
+
+        gbc.gridy = 3;
+        ventana.add(registrarButton, gbc);
+
+        gbc.gridy = 4;
+        ventana.add(barraProgreso, gbc);
+
+        gbc.gridy = 5;
+        ventana.add(mensaje, gbc);
+
+        // Acción del botón
+        iniciarSesionButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                iniciarSesionButton.setEnabled(false); // Deshabilitar el botón mientras carga
+                barraProgreso.setVisible(true); // Mostrar la barra de progreso
+                verificarCredenciales(nombreField.getText(), new String(contraseñaField.getPassword())); // Verificar credenciales
             }
         });
-        
-        //ActioListener para el JLAbel "Problemas al iniciar sesión"
-        problemasLabel.addMouseListener(new MouseAdapter() {
-			
-			@Override
-			public void mouseExited(MouseEvent e) {
-				new Asistencia(); 
 
-			}
-			
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				problemasLabel.setText("<html><u>Problemas al iniciar sesion</u></html>"); //Cambia el estilo al pasar el ratón				
-			}
-			
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				problemasLabel.setText("<html><u>Problemas al iniciar sesion</u></html>"); //Restaura el estilo al salir el ratón
-				
-			}
-		});
-        	
-        
-        //Hacer visible la ventana
+        // Hacer visible la ventana
         ventana.setVisible(true);
-	}
-	
-	
-	// Método para abrir la ventana principal
-	public void abrirVentanaPrincipal(String nombreUsuario) {
-		ventana.dispose(); // se cierra la ventana actual
-		new VentanaPrincipal(nombreUsuario); // Pasa el nombre del usuario registrado en la ventana principal
-	}
-	
-	
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(VentanaRegistro::new);
-		
-	}
+    }
 
+    private void verificarCredenciales(String nombre, String contraseña) {
+        // Crear un hilo que simula la verificación
+        Thread hilo = new Thread(() -> {
+            try {
+                
+                if (Comprobador.verificarUsuario(nombre, contraseña)) { 
+                    for (int i = 0; i <= 100; i++) {
+                        Thread.sleep(50); 
+                        barraProgreso.setValue(i);
+                    }
+                  
+                    SwingUtilities.invokeLater(() -> {
+                        mensaje.setText("¡Inicio de sesión exitoso!");
+                        abrirVentanaPrincipal(nombre); // Abrir ventana principal
+                    });
+                } else {
+                   
+                    SwingUtilities.invokeLater(() -> {
+                        mensaje.setText("Usuario o contraseña incorrectos.");
+                        barraProgreso.setVisible(false); // Ocultar barra
+                        iniciarSesionButton.setEnabled(true); // Reactivar botón
+                    });
+                }
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+        });
+        hilo.start(); // Iniciar el hilo
+    }
+
+
+    // Método para abrir la ventana principal
+    public void abrirVentanaPrincipal(String nombreUsuario) {
+        ventana.dispose(); // Cerrar la ventana actual
+        JOptionPane.showMessageDialog(null, "Bienvenido, " + nombreUsuario + "!");
+       
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(VentanaRegistro::new);
+    }
 }
