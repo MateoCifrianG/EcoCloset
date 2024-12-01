@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
@@ -140,14 +141,31 @@ public class VentanaPrincipal {
 	}
 	
 	// Método para abrir la ventana de pedidos
-			private void mostrarPedidos() {
-			    System.out.println("Mostrando pedidos para: " + nombreUsuario);
-			    for (Pedido pedido : listaPedidos) {
-			        System.out.println(pedido); // Suponiendo que Pedido tiene un método toString
-			    }
-			    new VentanaPedidos(nombreUsuario); // Crear y mostrar la ventana de pedidos
-			}
+	private void mostrarPedidos() {
+		System.out.println("Mostrando pedidos para: " + nombreUsuario);
+		for (Pedido pedido : listaPedidos) {
+			 System.out.println(pedido); // Suponiendo que Pedido tiene un método toString
+		}
+	new VentanaPedidos(nombreUsuario); // Crear y mostrar la ventana de pedidos
+	}
 	
+	public void abrirVentanaRegistro() {
+		new VentanaRegistro(); // Abre la ventana de registro
+	}
+
+	public void agregarAlCarrito(Ropa ropa) {
+	    if (ropa.getCantidad() > 0) { // Verifica si hay stock disponible
+	        modeloCarrito.addElement(ropa); 
+	        ropa.setCantidad(ropa.getCantidad() - 1); 
+	        actualizarStockEnCSV(ropa); // Actualiza el stock en el CSV --> crear el método
+	        actualizarTotales(); 
+	        JOptionPane.showMessageDialog(ventana, ropa.getNombre() + " ha sido añadido al carrito."); 
+	    } else {
+	        JOptionPane.showMessageDialog(ventana, "No hay stock disponible para " + ropa.getNombre() + "."); 
+	    }
+	}
+	
+
 
 	public static void main(String[] args) {
 		String nombreUsuario = "usuarioPrueba"; // Esto se podría obtener de otro lado
