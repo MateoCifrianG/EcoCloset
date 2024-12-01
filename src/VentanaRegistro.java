@@ -89,25 +89,28 @@ public class VentanaRegistro {
         // Crear un hilo que simula la verificación
         Thread hilo = new Thread(() -> {
             try {
-                // Verificar si el usuario es el administrador
-                if (nombre.equals("admin") && contraseña.equals("admin")) {
+                // Simular el progreso de la barra de progreso
+                for (int i = 0; i <= 100; i++) {
+                    Thread.sleep(20); // Simula una carga
+                    barraProgreso.setValue(i);
+                }
+
+                // Verificar las credenciales después del progreso
+                if (nombre.equals("administrador") && contraseña.equals("admin")) {
                     // Si es admin, se abre el menú de administrador
                     SwingUtilities.invokeLater(() -> {
                         mensaje.setText("¡Acceso administrador exitoso!");
                         ventana.dispose(); // Cerrar la ventana actual
                         new MenuAdministrador(); // Abrir ventana del administrador
                     });
-                } else if (Comprobador.verificarUsuario(nombre, contraseña)) { 
+                } else if (Comprobador.verificarUsuario(nombre, contraseña)) {
                     // Si no es admin pero las credenciales son correctas, se abre la ventana principal
-                    for (int i = 0; i <= 100; i++) {
-                        Thread.sleep(20); 
-                        barraProgreso.setValue(i);
-                    }
                     SwingUtilities.invokeLater(() -> {
                         mensaje.setText("¡Inicio de sesión exitoso!");
                         abrirVentanaPrincipal(nombre); // Abrir ventana principal
                     });
                 } else {
+                    // Si las credenciales son incorrectas
                     SwingUtilities.invokeLater(() -> {
                         mensaje.setText("Usuario o contraseña incorrectos.");
                         barraProgreso.setVisible(false); // Ocultar barra
