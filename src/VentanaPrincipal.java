@@ -253,7 +253,17 @@ public class VentanaPrincipal {
 		listaArticulosPanel.revalidate(); 
 		listaArticulosPanel.repaint(); //mostrar los cmabios
 	}
-	
+	// Método para actualizar totales
+			private void actualizarTotales() {
+				totalArticulosLabel.setText("Total artículos: " + modeloCarrito.getSize()); // Actualizar el total de artículos
+		
+				// Calcular el precio total
+				double precioTotal = 0;
+				for (int i = 0; i < modeloCarrito.getSize(); i++) {
+					precioTotal += modeloCarrito.getElementAt(i).getPrecio(); // Sumar el precio de cada artículo
+				}
+				totalPrecioLabel.setText("Precio total: " + precioTotal); // Actualizar el precio total
+			}
 	
 
 	public static void main(String[] args) {
