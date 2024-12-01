@@ -15,7 +15,7 @@ import javax.swing.*;
 	            @Override
 	            public void actionPerformed(ActionEvent e) {
 	                ventanaPrincipal.getVentana().dispose(); // Cerrar la ventana actual usando el método getter
-	                ventanaPrincipal.abrirVentanaCuenta();
+	                ventanaPrincipal.abrirVentanaCuenta(); 
 	            }
 	        };
 	    }
