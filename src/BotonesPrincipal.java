@@ -29,5 +29,16 @@ import javax.swing.*;
 	            }
 	        };
 	    }
+	    // Método para obtener el ActionListener para añadir al carrito
+
+	    public ActionListener getAñadirCarritoAction(Ropa ropa) {
+	        return new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	                ventanaPrincipal.getModeloCarrito().addElement(ropa); // Agregar al carrito
+	                JOptionPane.showMessageDialog(ventanaPrincipal.getVentana(), ropa.getNombre() + " añadido al carrito.");
+	            }
+	        };
+	    }
 	
 }
