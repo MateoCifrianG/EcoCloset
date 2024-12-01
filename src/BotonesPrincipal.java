@@ -19,4 +19,15 @@ import javax.swing.*;
 	            }
 	        };
 	    }
+	    // Método para obtener el ActionListener de Cerrar Sesión
+	    public ActionListener getCerrarSesionListener() {
+	        return new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	                ventanaPrincipal.getVentana().dispose(); // Cerrar la ventana actual usando el método getter
+	                ventanaPrincipal.abrirVentanaRegistro(); // Llama al método para abrir la ventana de registro
+	            }
+	        };
+	    }
+	
 }
