@@ -266,7 +266,14 @@ public class VentanaPrincipal {
 			}
 			// Método para crear un pedido
 			// Método para crear un pedido
-			
+			private void crearPedido() {
+			    List<Ropa> prendasCompradas = new ArrayList<>();
+			    for (int i = 0; i < modeloCarrito.getSize(); i++) {
+			        prendasCompradas.add(modeloCarrito.getElementAt(i)); // Obtener las prendas del carrito
+			    }
+		
+			    
+			}
 
 	public static void main(String[] args) {
 		String nombreUsuario = "usuarioPrueba"; // Esto se podría obtener de otro lado
