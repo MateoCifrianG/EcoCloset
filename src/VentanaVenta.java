@@ -79,4 +79,13 @@ public class VentanaVenta {
         });
         frame.setVisible(true);
     }
+    private void guardarEnCSV(Ropa ropa) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("productos.csv", true))) {
+            writer.write(ropa.getNombre() + ";" + ropa.getMarca() + ";" + ropa.getTalla() + ";" + ropa.getCantidad() + ";" + ropa.getPrecio() + ";" + ropa.getEstado() );
+            writer.newLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(frame, "Error al guardar en CSV.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 }
