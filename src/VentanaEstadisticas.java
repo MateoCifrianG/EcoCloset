@@ -1,6 +1,9 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import domain.Pedido;
@@ -26,6 +29,13 @@ public class VentanaEstadisticas {
 	ventanaEstadisticas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	ventanaEstadisticas.setSize(600, 500);
 	ventanaEstadisticas.setLocationRelativeTo(null); //Centrar la ventana
+	
+	//Crear el panel principal
+	panelEstadisticas=new JPanel();
+	panelEstadisticas.setLayout(new BorderLayout(10, 10));
+	panelEstadisticas.setBackground(new Color(255, 255, 255));
+	panelEstadisticas.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+	
 	
 	ventanaEstadisticas.setVisible(true);
 	
