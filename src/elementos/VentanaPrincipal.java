@@ -1,3 +1,4 @@
+package elementos;
  import javax.swing.*;
 
 import bd.BaseDatosRopa;
@@ -14,6 +15,7 @@ import java.io.IOException;
 import domain.Pedido;
 import domain.Ropa;
 import domain.Usuario;
+import main.Inicializador;
 
 public class VentanaPrincipal {
 	private JFrame ventana; // Mantener una referencia a la ventana

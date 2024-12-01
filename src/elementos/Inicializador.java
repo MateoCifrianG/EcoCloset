@@ -1,11 +1,11 @@
 //inicializador de la ventana principal
-package main;
+package elementos;
 
-public class Inicializador {
+ public class Inicializador {
 
 	public static void main(String[] args) {
 
-        new VentanaRegistro();// 
+        new VentanaRegistro();
 
 	}
 }
