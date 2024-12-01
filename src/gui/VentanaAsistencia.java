@@ -31,7 +31,7 @@ public class VentanaAsistencia {
 	private DefaultTableModel modeloTabla;
 	private JTable tablaAsistencia;
 	private List<String[]> listaAsistencias;
-	 
+	  
 	public VentanaAsistencia() {
 		
 		// Ceación de la VentanaAsistencia
