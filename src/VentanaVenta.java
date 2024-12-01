@@ -54,7 +54,13 @@ public class VentanaVenta {
         añadirButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+            	// Obtener los datos del formulario
+                String prenda = (String) prendaComboBox.getSelectedItem();
+                String marca = marcaField.getText();
+                String talla = (String) tallaComboBox.getSelectedItem();
+                int cantidad = (Integer) cantidadComboBox.getSelectedItem(); // Obtener cantidad del JComboBox
+                double precio = Double.parseDouble(precioField.getText());
+                String estado = (String) estadoComboBox.getSelectedItem();
             }
         });
         
