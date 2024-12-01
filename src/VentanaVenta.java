@@ -65,6 +65,9 @@ public class VentanaVenta {
                 Ropa nuevaRopa = new Ropa(prenda, marca, talla, cantidad, precio, estado);
               // Guardar en el CSV
                 guardarEnCSV(nuevaRopa);
+             // Mostrar mensaje de confirmación
+                JOptionPane.showMessageDialog(frame, "Ropa añadida correctamente.");
+                frame.dispose();
             }
         });
         
