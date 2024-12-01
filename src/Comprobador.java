@@ -32,7 +32,7 @@ public class Comprobador {
     
 //    public static boolean obtenerDatosUsuarios(String nombreIngresado, String contraseñaIngresada) {
 //		
-//		List<Usuario> lUsuarios = new ArrayList<Usuario>(); 
+//		List<Usuario> lUsuarios = new ArrayList<Usuario>();
 //		
 //		// cargar el driver de SQLite para JDBC
 //		// se hace una vez en todo el programa
