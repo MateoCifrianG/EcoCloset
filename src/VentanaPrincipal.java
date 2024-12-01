@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
 import bd.BaseDatosRopa;
+import domain.Pedido;
 import domain.Ropa;
 
 public class VentanaPrincipal {
@@ -23,6 +24,8 @@ public class VentanaPrincipal {
 	private DefaultListModel<Ropa> modeloCarrito;
 	private JList<Ropa> listaCarrito; // Lista para mostrar los artículos en el carrito
 	private List<Ropa> ropaList;
+	private String nombreUsuario;
+	private List<Pedido> listaPedidos; // Almacena los pedidos del usuario
 	
 	public VentanaPrincipal(String nombreUsuario) { 
 		//creamos la ventana
@@ -127,15 +130,23 @@ public class VentanaPrincipal {
 		panelInferior.add(panelBoton, BorderLayout.SOUTH); //Añadir el panel del botón al fondo del panel inferior
 		ventana.add(panelInferior);
 		
-		ventana.setVisible(true);
-		
 		// Añadir acción para el botón "COMPRA" --> hacer el método
 		compra.addActionListener(e -> crearPedido()); // Crear un pedido al pulsar el botón "COMPRA"
 			
 		// Añadir acción para el botón "FILTRAR" --> hacer el método
 		filtrar.addActionListener(e -> filtrarArticulos(comboPrecio, comboTalla, comboPrendas));
-			
+		
+		ventana.setVisible(true);
 	}
+	
+	// Método para abrir la ventana de pedidos
+			private void mostrarPedidos() {
+			    System.out.println("Mostrando pedidos para: " + nombreUsuario);
+			    for (Pedido pedido : listaPedidos) {
+			        System.out.println(pedido); // Suponiendo que Pedido tiene un método toString
+			    }
+			    new VentanaPedidos(nombreUsuario); // Crear y mostrar la ventana de pedidos
+			}
 	
 
 	public static void main(String[] args) {
