@@ -77,6 +77,6 @@ public class VentanaVenta {
                 estadoComboBox.setSelectedIndex(0); // Restablecer a la primera opción
             }
         });
-        
+        frame.setVisible(true);
     }
 }
