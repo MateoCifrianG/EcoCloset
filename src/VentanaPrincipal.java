@@ -180,7 +180,7 @@ import java.awt.*;
 																											// mostrar el
 																											// menú
 			panelBoton.add(mostrarMenu);
-	
+	 
 			// Añadir el panel del botón al fondo del panel inferior
 			panelInferior.add(panelBoton, BorderLayout.SOUTH); // Añadir el panel del botón al fondo del panel inferior
 	
