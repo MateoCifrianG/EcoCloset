@@ -186,7 +186,7 @@ public class Pedidos {
         }
         return total;
     }
-
+//solucion
     private void buscarPedido(String busqueda) {
         List<Pedido> pedidosFiltrados = new ArrayList<>();
         for (Pedido pedido : listaPedidos) {
