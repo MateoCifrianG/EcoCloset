@@ -6,14 +6,14 @@
 	import java.io.*;
 	import java.util.ArrayList;
 	import java.util.List;
-	
+	 
 	public class Administrador {
 	    private JFrame ventana;
 	    private JTable tablaProductos;
 	    private DefaultTableModel modeloTabla;
 	    private JTextField campoBusqueda;
 	    private List<String[]> listaProductos;
-	
+	 
 	    public Administrador() {
 	        // CREACION DE LA VENTANA DEL ADMINISTRADOR
 	        ventana = new JFrame("Administrador de Productos");
@@ -117,7 +117,7 @@
 	        actualizarTabla(productosFiltrados); // Mostrar solo los productos filtrados
 	    }
 	
-	    // Método para eliminar el producto seleccionado
+	    // Método para eliminar el producto seleccionado.
 	    private void eliminarProductoSeleccionado() {
 	        int filaSeleccionada = tablaProductos.getSelectedRow();
 	        if (filaSeleccionada >= 0) {
