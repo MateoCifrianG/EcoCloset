@@ -5,9 +5,7 @@ import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import domain.Pedido;
 import domain.Ropa;
-import domain.Usuario;
 public class VentanaVenta {
     private JFrame frame;
 
