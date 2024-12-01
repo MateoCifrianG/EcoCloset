@@ -289,7 +289,12 @@ public class VentanaPrincipal {
 			            // Mostrar los pedidos en una nueva ventana
 				        mostrarPedidos();
 			        }
-			    }
+				        modeloCarrito.clear(); // Limpiar el carrito después de realizar el pedido
+				        actualizarTotales(); // Actualizar los totales después de vaciar el carrito
+				    } else {
+				        JOptionPane.showMessageDialog(ventana, "El carrito está vacío.");
+				    }
+			        
 			    
 			}
 
