@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public class Comprobador {
     // Ruta del archivo CSV
-    private static final String RUTA_CSV = "usuarios.csv";
+    private static final String RUTA_CSV = "usuarios1.csv";
 
     // Método para verificar y obtener la información del usuario
     public static String[] obtenerDatosUsuario(String nombreIngresado, String contraseñaIngresada) {
