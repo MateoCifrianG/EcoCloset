@@ -96,7 +96,7 @@ public class VentanaEstadisticas {
     private void cargarDatos() {
         cargarProductos("productos.csv");
         cargarPedidos("pedidos.csv");
-        cargarUsuarios("usuarios.csv");
+        cargarUsuarios("usuarios1.csv");
     }
 
     private void cargarProductos(String archivo) {
