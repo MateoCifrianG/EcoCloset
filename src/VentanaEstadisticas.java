@@ -20,7 +20,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 import domain.Pedido;
 import domain.Ropa;
@@ -186,7 +189,14 @@ public class VentanaEstadisticas {
                 }
             }
         });
-	}
+     // Añadir el campo de filtro y la tabla al panel de búsqueda
+        panelBusqueda.add(filtroField, BorderLayout.NORTH);
+        panelBusqueda.add(scrollPaneMarcas, BorderLayout.CENTER);
+
+        // Añadir panel de búsqueda al panel de estadísticas
+        panelEstadisticas.add(panelBusqueda, BorderLayout.CENTER);
+    }
+	
 	
 	
 	
