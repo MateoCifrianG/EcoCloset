@@ -15,6 +15,7 @@ public class VentanaVenta {
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setLayout(new GridLayout(7, 2));
         
+        // Crear los campos de entrada
         String[] prendas = {"Camisa", "Pantalón", "Vestido", "Chaqueta", "Abrigo", "Falda", "Shorts", "Zapatos"};
         JComboBox<String> prendaComboBox = new JComboBox<>(prendas);
         
@@ -22,5 +23,8 @@ public class VentanaVenta {
         
         String[] tallas = {"XS", "S", "M", "L", "XL", "XXL"};
         JComboBox<String> tallaComboBox = new JComboBox<>(tallas);
+        
+        // Crear un JComboBox para la cantidad
+
     }
 }
