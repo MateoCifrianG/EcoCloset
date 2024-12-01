@@ -294,10 +294,27 @@ public class VentanaPrincipal {
 				    } else {
 				        JOptionPane.showMessageDialog(ventana, "El carrito está vacío.");
 				    }
-			        
-			    
 			}
-
+			private int obtenerSiguienteId() {
+				String filePath = "pedidos.csv"; // Ruta del archivo CSV
+				int maxId = 0; // Variable para almacenar el ID máximo encontrado
+		
+				try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+					String line;
+					while ((line = reader.readLine()) != null) {
+						String[] valores = line.split(";"); // Suponiendo que el separador es un punto y coma
+						int id = Integer.parseInt(valores[0]); // El primer valor es el ID
+						if (id > maxId) {
+							maxId = id; // Actualizar el ID máximo
+						}
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+					JOptionPane.showMessageDialog(ventana, "Error al leer el archivo CSV para obtener el ID.");
+				}
+		
+				return maxId + 1; // Retornar el siguiente ID
+			}
 	public static void main(String[] args) {
 		String nombreUsuario = "usuarioPrueba"; // Esto se podría obtener de otro lado
 		new VentanaPrincipal(nombreUsuario);
