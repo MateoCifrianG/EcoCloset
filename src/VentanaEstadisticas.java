@@ -196,6 +196,28 @@ public class VentanaEstadisticas {
         // Añadir panel de búsqueda al panel de estadísticas
         panelEstadisticas.add(panelBusqueda, BorderLayout.CENTER);
     }
+	private JPanel crearTarjeta(String titulo, String valor, Color color) {
+        JPanel tarjeta = new JPanel();
+        tarjeta.setLayout(new BoxLayout(tarjeta, BoxLayout.Y_AXIS));
+        tarjeta.setBackground(color);
+        tarjeta.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        JLabel labelTitulo = new JLabel(titulo);
+        labelTitulo.setFont(new Font("Arial", Font.BOLD, 18));
+        labelTitulo.setForeground(Color.BLACK);
+        labelTitulo.setAlignmentX(Component.CENTER_ALIGNMENT);
+        
+        JLabel labelValor = new JLabel(valor);
+        labelValor.setFont(new Font("Arial", Font.BOLD, 24));
+        labelValor.setForeground(Color.BLACK);
+        labelValor.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        tarjeta.add(labelTitulo);
+        tarjeta.add(Box.createRigidArea(new Dimension(0, 10))); // Espacio
+        tarjeta.add(labelValor);
+        
+        return tarjeta;
+    }
 	
 	
 	
