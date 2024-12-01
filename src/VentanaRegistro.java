@@ -24,7 +24,7 @@ public class VentanaRegistro {
         JPasswordField contraseñaField = new JPasswordField(20);
         iniciarSesionButton = new JButton("Iniciar Sesión");
         JButton registrarButton = new JButton("Registrar");
-
+ 
         // Barra de progreso
         barraProgreso = new JProgressBar(0, 100);
         barraProgreso.setStringPainted(true);
