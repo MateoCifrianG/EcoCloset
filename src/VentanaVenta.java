@@ -68,6 +68,13 @@ public class VentanaVenta {
              // Mostrar mensaje de confirmación
                 JOptionPane.showMessageDialog(frame, "Ropa añadida correctamente.");
                 frame.dispose();
+                // Limpiar los campos
+                marcaField.setText("");
+                precioField.setText("");
+                prendaComboBox.setSelectedIndex(0); // Restablecer a la primera opción
+                tallaComboBox.setSelectedIndex(0); // Restablecer a la primera opción
+                cantidadComboBox.setSelectedIndex(0); // Restablecer a la primera opción
+                estadoComboBox.setSelectedIndex(0); // Restablecer a la primera opción
             }
         });
         
