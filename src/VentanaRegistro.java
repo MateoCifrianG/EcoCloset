@@ -86,7 +86,7 @@ public class VentanaRegistro {
                 
                 if (Comprobador.verificarUsuario(nombre, contraseña)) { 
                     for (int i = 0; i <= 100; i++) {
-                        Thread.sleep(50); 
+                        Thread.sleep(20); 
                         barraProgreso.setValue(i);
                     }
                   
