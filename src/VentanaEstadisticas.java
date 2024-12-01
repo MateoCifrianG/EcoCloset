@@ -2,6 +2,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -112,6 +113,36 @@ public class VentanaEstadisticas {
 			e.printStackTrace();
 		}
 	}
+	
+	private void agregarEstadisticas() {
+        int totalProductos = productos.size();
+        int totalPedidos = pedidos.size(); // Esto ahora refleja solo los pedidos únicos, no por prendas
+        int totalUsuarios = usuarios.size();
+
+        // Crear un panel para las estadísticas
+        JPanel panelEstadisticasContenedor = new JPanel();
+        panelEstadisticasContenedor.setLayout(new GridLayout(1, 3, 10, 10));
+        panelEstadisticasContenedor.setBackground(new Color(255, 255, 255));
+
+        JPanel tarjetaProductos = crearTarjeta("Total Productos", String.valueOf(totalProductos), new Color(135, 206, 235)); // --> crear metodo tarjetas
+        JPanel tarjetaPedidos = crearTarjeta("Total Pedidos", String.valueOf(totalPedidos), new Color(255, 160, 122));
+        JPanel tarjetaUsuarios = crearTarjeta("Total Usuarios", String.valueOf(totalUsuarios), new Color(144, 238, 144));
+
+        panelEstadisticasContenedor.add(tarjetaProductos);
+        panelEstadisticasContenedor.add(tarjetaPedidos);
+        panelEstadisticasContenedor.add(tarjetaUsuarios);
+        
+     // Añadir el panel de estadísticas en la parte norte
+        panelEstadisticas.add(panelEstadisticasContenedor, BorderLayout.NORTH);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public static void main(String[] args) {
     	new VentanaEstadisticas();
