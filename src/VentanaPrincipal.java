@@ -172,9 +172,9 @@ public class VentanaPrincipal {
 	}
 	
 	private void actualizarStockEnCSV(Ropa prenda) {
-	    String filePath = "productos.csv"; // Ruta del archivo CSV
+	    String filePath = "productos.csv"; 
 	    File inputFile = new File(filePath);
-	    File tempFile = new File("temp_ropa.csv"); // Archivo temporal
+	    File tempFile = new File("temp_ropa.csv");
 
 	    try (BufferedReader reader = new BufferedReader(new FileReader(inputFile));
 	         BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))) {
@@ -183,27 +183,37 @@ public class VentanaPrincipal {
 	        while ((line = reader.readLine()) != null) {
 	            String[] valores = line.split(";"); // Suponiendo que el separador es un punto y coma
 
-	            // Comprueba si la línea corresponde a la prenda que se está actualizando
+	            // comprueba que la línea corresponde a la prenda que se está actualizando
 	            if (valores[0].equals(prenda.getNombre()) && valores[1].equals(prenda.getMarca())
 	                && valores[2].equals(prenda.getTalla())) {
 	                int stockActual = Integer.parseInt(valores[3]); // Stock actual
 	                if (stockActual > 1) {
-	                    // Si el stock es mayor que 1, escribe la línea con el stock actualizado
+	                    // Ssi el stock es mayor que 1, escribe la línea con el stock actualizado
 	                    writer.write(valores[0] +	 ";" + valores[1] + ";" + valores[2] + ";"
 	                        + (stockActual - 1) + ";" + valores[4] + ";" + valores[5]);
-	                } // Si el stock es 1, no se escribe la línea (se eliminará)
+	                } 
 	            } else {
-	                // Si no es la prenda que se está actualizando, simplemente se copia la línea
+	       
 	                writer.write(line);
 	            }
-	            writer.newLine(); // Nueva línea después de cada prenda
+	            writer.newLine(); 
 	        }
 
 	    } catch (IOException e) {
 	        e.printStackTrace();
 	        JOptionPane.showMessageDialog(ventana, "Error al actualizar el archivo CSV.");
-	    	}
 	    }
+
+	    // Renombrar el archivo temporal al original
+	    inputFile.delete(); // Elimina el archivo original
+	    tempFile.renameTo(inputFile); // Renombra el temporal
+	}
+
+
+// Método para abrir la ventana de la cuenta
+private void abrirVentanaCuenta() {
+	new VentanaCuenta(nombreUsuario); // Abre la ventana de la cuenta pasando el nombre del usuario
+}
 	
 	
 
