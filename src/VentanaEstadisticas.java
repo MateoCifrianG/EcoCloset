@@ -284,4 +284,4 @@ public class VentanaEstadisticas {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(VentanaEstadisticas::new);
     }
-}
+} 
