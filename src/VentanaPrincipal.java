@@ -279,6 +279,14 @@ public class VentanaPrincipal {
 			        // Crear un nuevo pedido con las prendas compradas
 			        Pedido nuevoPedido = new Pedido(nuevoId, usuarioActual, prendasCompradas);
 			        listaPedidos.add(nuevoPedido); // Añadir el pedido a la lista
+			        
+			     // Guardar cada prenda comprada en el CSV
+			        for (Ropa prenda : prendasCompradas) {
+			            guardarPrendaEnCSV(nuevoId, usuarioActual.getNombre(), prenda);
+			            // Actualizar la cantidad de la prenda en el CSV
+			            BaseDatosRopa baseDatosRopa = new BaseDatosRopa();
+			            baseDatosRopa.actualizarCantidadEnCSV(prenda); // Aquí se restará el stock y se eliminará si llega a 0
+			        }
 			    }
 			    
 			}
