@@ -190,13 +190,15 @@ public class Pedidos {
     private void buscarPedido(String busqueda) {
         List<Pedido> pedidosFiltrados = new ArrayList<>();
         for (Pedido pedido : listaPedidos) {
-            if (String.valueOf(pedido.getId()).contains(busqueda) || 
-                pedido.getUsuario().toLowerCase().contains(busqueda.toLowerCase())) {
+            String usuario = (pedido.getUsuario() == null) ? "" : pedido.getUsuario().toString(); // Aseguramos que sea un String
+            
+            if (String.valueOf(pedido.getId()).contains(busqueda) || usuario.toLowerCase().contains(busqueda.toLowerCase())) {
                 pedidosFiltrados.add(pedido);
             }
         }
         actualizarTabla(pedidosFiltrados);
     }
+
 
     private void eliminarPedidoSeleccionado() {
         int filaSeleccionada = tablaPedidos.getSelectedRow();
