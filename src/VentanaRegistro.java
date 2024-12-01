@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
 public class VentanaRegistro {
 	
@@ -102,7 +103,7 @@ public class VentanaRegistro {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				new Asistencia(); 
-				
+
 			}
 			
 			@Override
@@ -131,7 +132,7 @@ public class VentanaRegistro {
 	
 	
 	public static void main(String[] args) {
-		new VentanaRegistro();
+		SwingUtilities.invokeLater(VentanaRegistro::new);
 		
 	}
 
