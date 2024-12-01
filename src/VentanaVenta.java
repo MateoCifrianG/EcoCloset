@@ -63,6 +63,8 @@ public class VentanaVenta {
                 String estado = (String) estadoComboBox.getSelectedItem();
              // Crear objeto Ropa
                 Ropa nuevaRopa = new Ropa(prenda, marca, talla, cantidad, precio, estado);
+              // Guardar en el CSV
+                guardarEnCSV(nuevaRopa);
             }
         });
         
