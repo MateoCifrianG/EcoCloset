@@ -29,7 +29,7 @@ public class Asistencia {
 		JLabel usuarioLabel = new JLabel("Usuario");
 		JTextField usuarioField = new JTextField(20);
 		
-		JLabel correoLabel = new JLabel("Correo Electrónico:");
+		JLabel correoLabel = new JLabel("Correo Electrónico:"); 
 		JTextField correoField = new JTextField(20); //Campo para el correo electrónico
 		
 		JLabel mensajeLabel = new JLabel("Comentario:");

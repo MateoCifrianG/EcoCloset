@@ -24,7 +24,7 @@ public class VentanaRegistro {
         JPasswordField contraseñaField = new JPasswordField(20);
         iniciarSesionButton = new JButton("Iniciar Sesión");
         JButton registrarButton = new JButton("Registrar");
-
+ 
         // Barra de progreso
         barraProgreso = new JProgressBar(0, 100);
         barraProgreso.setStringPainted(true);
@@ -64,6 +64,12 @@ public class VentanaRegistro {
 
         gbc.gridy = 5;
         ventana.add(mensaje, gbc);
+        
+     // Crear un ActionListener para el botón de registrar
+        registrarButton.addActionListener(e -> {
+            // Abre el formulario de registro cuando se hace click en el botón de registrar
+            new FormularioRegistro();  // Aquí se crea el formulario de registro
+        });
 
         // Acción del botón
         iniciarSesionButton.addActionListener(new ActionListener() {

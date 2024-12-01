@@ -33,7 +33,7 @@ public class VentanaEstadisticas {
 		pedidos=new ArrayList<>();
 		usuarios=new ArrayList<>();
 	
-	
+	 
 	//Crear la ventana
 	ventanaEstadisticas=new JFrame("Estadísticas");
 	ventanaEstadisticas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
