@@ -61,6 +61,8 @@ public class VentanaVenta {
                 int cantidad = (Integer) cantidadComboBox.getSelectedItem(); // Obtener cantidad del JComboBox
                 double precio = Double.parseDouble(precioField.getText());
                 String estado = (String) estadoComboBox.getSelectedItem();
+             // Crear objeto Ropa
+                Ropa nuevaRopa = new Ropa(prenda, marca, talla, cantidad, precio, estado);
             }
         });
         
