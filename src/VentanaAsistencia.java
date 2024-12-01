@@ -19,7 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -197,6 +197,6 @@ public class VentanaAsistencia {
 	
 	
 	public static void main(String[] args) {
-       new VentanaAsistencia();
+		SwingUtilities.invokeLater(VentanaAsistencia::new);
     }
 }
