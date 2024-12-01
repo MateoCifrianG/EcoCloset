@@ -286,6 +286,8 @@ public class VentanaPrincipal {
 			            // Actualizar la cantidad de la prenda en el CSV
 			            BaseDatosRopa baseDatosRopa = new BaseDatosRopa();
 			            baseDatosRopa.actualizarCantidadEnCSV(prenda); // Aquí se restará el stock y se eliminará si llega a 0
+			            // Mostrar los pedidos en una nueva ventana
+				        mostrarPedidos();
 			        }
 			    }
 			    
