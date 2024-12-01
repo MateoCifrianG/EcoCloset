@@ -92,7 +92,7 @@ public class VentanaRegistro {
                   
                     SwingUtilities.invokeLater(() -> {
                         mensaje.setText("¡Inicio de sesión exitoso!");
-                        abrirVentanaPrincipal(nombre); // Abrir ventana principal
+                        abrirVentanaPrincipal(nombre); // Abrir ventana principall
                     });
                 } else {
                    
