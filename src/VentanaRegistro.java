@@ -11,6 +11,7 @@ import java.awt.event.MouseListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -76,11 +77,23 @@ public class VentanaRegistro {
         	new FormularioRegistro(); //Aquí se crea el formulario de registro
         });
         
-        //Crear un ActionListener para el botón de iniciar sesión
         iniciarSesionButton.addActionListener(e -> {
-        	String nombre = nombreField.getText();
-        	String contraseña = new String(contraseñaField.getPassword());
-        	//CONTINUAR cuando se cree la clase de comprobador
+            String nombre = nombreField.getText();
+            String contraseña = new String(contraseñaField.getPassword());
+
+            // Verificar las credenciales usando la clase Comprobador
+            if (Comprobador.verificarUsuario(nombre, contraseña)) {
+                if (nombre.equals("administrador") && contraseña.equals("admin")) {
+                    // Si el nombre de usuario es "Admin" y la contraseña es "admin", abrir VentanaAdmin
+                    ventana.dispose(); // Cerrar la ventana actual
+                    new MenuAdministrador(); // Abrir ventana de administrador
+                } else {
+                    abrirVentanaPrincipal(nombre); // Abrir ventana principal para otros usuarios
+                }
+            } else {
+                // Mostrar mensaje de error
+                JOptionPane.showMessageDialog(ventana, "Nombre de usuario o contraseña incorrectos.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         });
         
         //ActioListener para el JLAbel "Problemas al iniciar sesión"
@@ -88,7 +101,7 @@ public class VentanaRegistro {
 			
 			@Override
 			public void mouseExited(MouseEvent e) {
-				//CONTINUAR cuando se cree la clase Asistencia
+				new Asistencia(); 
 				
 			}
 			
