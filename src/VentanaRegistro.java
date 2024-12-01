@@ -114,6 +114,7 @@ public class VentanaRegistro {
     public void abrirVentanaPrincipal(String nombreUsuario) {
         ventana.dispose(); // Cerrar la ventana actual
         JOptionPane.showMessageDialog(null, "Bienvenido, " + nombreUsuario + "!");
+        new VentanaPrincipal(nombreUsuario);
        
     }
 
