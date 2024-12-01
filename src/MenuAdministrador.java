@@ -33,7 +33,7 @@ public class MenuAdministrador {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ventanaMenu.dispose(); //Cerrar la ventana del menú
-				//new Administrador(); //Crear nueva ventana de administrador (descomentar al crear la clase de Administrador)
+				new Administrador(); //Crear nueva ventana de administrador
 			}
 		});
 		
