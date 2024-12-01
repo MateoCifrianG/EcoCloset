@@ -32,5 +32,19 @@ public class VentanaVenta {
 
         String[] estados = {"Nuevo", "Usado"};
         JComboBox<String> estadoComboBox = new JComboBox<>(estados);
+        
+     // Crear etiquetas
+        frame.add(new JLabel("Prenda:"));
+        frame.add(prendaComboBox);
+        frame.add(new JLabel("Marca:"));
+        frame.add(marcaField);
+        frame.add(new JLabel("Talla:"));
+        frame.add(tallaComboBox);
+        frame.add(new JLabel("Cantidad:"));
+        frame.add(cantidadComboBox); // Cambiado a JComboBox
+        frame.add(new JLabel("Precio:"));
+        frame.add(precioField);
+        frame.add(new JLabel("Estado:"));
+        frame.add(estadoComboBox);
     }
 }
