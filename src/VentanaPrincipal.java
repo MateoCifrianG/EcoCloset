@@ -315,6 +315,21 @@ public class VentanaPrincipal {
 		
 				return maxId + 1; // Retornar el siguiente ID
 			}
+			// Método para guardar el pedido en un archivo CSV
+			// Método para guardar el pedido en un archivo CSV
+			private void guardarPrendaEnCSV(int id, String nombreUsuario, Ropa prenda) {
+				String filePath = "pedidos.csv"; // Ruta del archivo CSV
+				try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
+					// Escribir los datos de la prenda en formato CSV
+					writer.write(id + ";" + nombreUsuario + ";" + prenda.getNombre() + ";" + prenda.getTalla() + ";"
+							+ prenda.getEstado() + ";" + prenda.getCantidad() + ";" + prenda.getPrecio() + ";"
+							+ prenda.getMarca() + ";");
+					writer.write("\n"); // Nueva línea después de cada prenda
+				} catch (IOException e) {
+					e.printStackTrace();
+					JOptionPane.showMessageDialog(ventana, "Error al guardar el pedido en el archivo CSV.");
+				}
+			}
 	public static void main(String[] args) {
 		String nombreUsuario = "usuarioPrueba"; // Esto se podría obtener de otro lado
 		new VentanaPrincipal(nombreUsuario);
