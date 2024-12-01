@@ -14,7 +14,7 @@ package gui;
 	    private DefaultTableModel modeloTabla;
 	    private JTextField campoBusqueda;
 	    private List<String[]> listaProductos;
-	 
+	  
 	    public Administrador() {
 	        // CREACION DE LA VENTANA DEL ADMINISTRADOR
 	        ventana = new JFrame("Administrador de Productos");
