@@ -8,7 +8,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -76,6 +78,7 @@ public class VentanaEstadisticas {
 	
 	private void cargarDatos() {
 		cargarProductos("productos.csv");
+		cargarUsuarios("usuarios1.csv");
 		
 	}
 	
@@ -94,6 +97,22 @@ public class VentanaEstadisticas {
 				e.printStackTrace();
 		}
 	}
+	
+	private void cargarUsuarios(String archivo) {
+		try(BufferedReader br = new BufferedReader(new FileReader(archivo))){
+			String linea;
+			while ((linea = br.readLine()) != null) {
+				String[] partes = linea.split(";");
+				if(partes.length>0) {
+					Usuario usuario=new Usuario(partes[0]);
+					usuarios.add(usuario);
+				}
+			}
+		}catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public static void main(String[] args) {
     	new VentanaEstadisticas();
     }
