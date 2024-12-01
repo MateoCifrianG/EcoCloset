@@ -96,7 +96,7 @@ public class VentanaRegistro {
                     barraProgreso.setValue(i);
                 }
 
-                // Verificar las credenciales después del progreso
+                // Verificar las credenciales después del progreso.
                 if (nombre.equals("administrador") && contraseña.equals("admin")) {
                     // Si es admin, se abre el menú de administrador
                     SwingUtilities.invokeLater(() -> {
