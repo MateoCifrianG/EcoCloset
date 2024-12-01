@@ -95,7 +95,6 @@ public class VentanaRegistro {
                         abrirVentanaPrincipal(nombre); // Abrir ventana principall
                     });
                 } else {
-                   
                     SwingUtilities.invokeLater(() -> {
                         mensaje.setText("Usuario o contraseña incorrectos.");
                         barraProgreso.setVisible(false); // Ocultar barra
@@ -108,7 +107,7 @@ public class VentanaRegistro {
         });
         hilo.start(); // Iniciar el hilo
     }
-
+//p
 
     // Método para abrir la ventana principal
     public void abrirVentanaPrincipal(String nombreUsuario) {
