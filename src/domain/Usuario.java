@@ -1,5 +1,7 @@
 package domain;
 
+import java.awt.Component;
+
 public class Usuario {
 
 	private String nombre; //Nombre del usuario
@@ -17,5 +19,7 @@ public class Usuario {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
+	
 
 }
