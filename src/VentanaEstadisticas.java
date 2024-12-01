@@ -11,12 +11,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 import domain.Pedido;
 import domain.Ropa;
 import domain.Usuario;
@@ -134,6 +139,28 @@ public class VentanaEstadisticas {
         
      // Añadir el panel de estadísticas en la parte norte
         panelEstadisticas.add(panelEstadisticasContenedor, BorderLayout.NORTH);
+        
+     //  mapa para contar la cantidad de prendas por marca
+        Map<String, Integer> marcasCount = new HashMap<>();
+        for (Ropa producto : productos) {
+            marcasCount.put(producto.getMarca(), marcasCount.getOrDefault(producto.getMarca(), 0) + producto.getCantidad());
+        }
+
+        // JTable para mostrar las estadísticas de marcas
+        String[] columnNames = {"Marca", "Número de Prendas"};
+        DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
+
+        // agregar datos a la tabla
+        for (Map.Entry<String, Integer> entry : marcasCount.entrySet()) {
+            tableModel.addRow(new Object[]{entry.getKey(), entry.getValue()});
+        }
+
+        // Creamos la tabla
+        JTable tableMarcas = new JTable(tableModel);
+        tableMarcas.setFillsViewportHeight(true);
+        JScrollPane scrollPaneMarcas = new JScrollPane(tableMarcas);
+        scrollPaneMarcas.setBorder(BorderFactory.createTitledBorder("Estadísticas de Marcas"));
+        
 	}
 	
 	
