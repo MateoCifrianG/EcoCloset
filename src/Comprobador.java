@@ -49,7 +49,7 @@ public class Comprobador {
 //			
 //			String sql = "SELECT * FROM usuarios";
 //			ResultSet rs = stmt.executeQuery(sql);
-//			while (rs.next()) {
+//			while (rs.next()) { 
 //				  
 //				String nombreUsuario = rs.getString("Nombre");
 //				String contraseña = rs.getString("Contraseña");	
