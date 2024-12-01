@@ -4,6 +4,9 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,6 +74,26 @@ public class VentanaEstadisticas {
 	
 	}
 	
+	private void cargarDatos() {
+		cargarProductos("productos.csv");
+		
+	}
+	
+	private void cargarProductos(String archivo) {
+		try(BufferedReader br=new BufferedReader(new FileReader(archivo))){
+			String linea;
+			while ((linea = br.readLine()) != null) {
+				String[] partes = linea.split(";");
+				if(partes.length==6) {
+					Ropa prenda = new Ropa(partes[0], partes[1], partes[2], Integer.parseInt(partes[3]),
+                            Double.parseDouble(partes[4]), partes[5]);
+					productos.add(prenda);
+					}
+				}
+			}catch(IOException e) {
+				e.printStackTrace();
+		}
+	}
 	public static void main(String[] args) {
     	new VentanaEstadisticas();
     }
