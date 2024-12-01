@@ -49,7 +49,7 @@ public class GestorUsuarios {
 		panelBusqueda.add(botonBuscar, BorderLayout.EAST);
 		
 		panelSuperior.add(panelBusqueda, BorderLayout.NORTH);
-		panelSuperior.add(botonEliminar, BorderLayout.SOUTH);
+		panelSuperior.add(botonEliminar, BorderLayout.SOUTH); 
 		
 		//Crear la tabla para mostrar los usuarios
 		String[] columnas= {"Nombre", "Apellido1", "Apellido2", "Dirección", "Fecha de Nacimiento", "Nacionalidad", "Contraseña", "Repetir Contraseña"};
