@@ -271,7 +271,15 @@ public class VentanaPrincipal {
 			    for (int i = 0; i < modeloCarrito.getSize(); i++) {
 			        prendasCompradas.add(modeloCarrito.getElementAt(i)); // Obtener las prendas del carrito
 			    }
+			    if (!prendasCompradas.isEmpty()) {
+			        // Crear un nuevo pedido
+			        int nuevoId = obtenerSiguienteId(); // Obtenemos el siguiente ID
+			        Usuario usuarioActual = new Usuario(nombreUsuario); // Crear un objeto Usuario con el nombre actual
 		
+			        // Crear un nuevo pedido con las prendas compradas
+			        Pedido nuevoPedido = new Pedido(nuevoId, usuarioActual, prendasCompradas);
+			        listaPedidos.add(nuevoPedido); // Añadir el pedido a la lista
+			    }
 			    
 			}
 
