@@ -17,5 +17,10 @@ public class VentanaVenta {
         
         String[] prendas = {"Camisa", "Pantalón", "Vestido", "Chaqueta", "Abrigo", "Falda", "Shorts", "Zapatos"};
         JComboBox<String> prendaComboBox = new JComboBox<>(prendas);
+        
+        JTextField marcaField = new JTextField();
+        
+        String[] tallas = {"XS", "S", "M", "L", "XL", "XXL"};
+        JComboBox<String> tallaComboBox = new JComboBox<>(tallas);
     }
 }
