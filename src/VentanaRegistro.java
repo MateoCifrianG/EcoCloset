@@ -64,6 +64,12 @@ public class VentanaRegistro {
 
         gbc.gridy = 5;
         ventana.add(mensaje, gbc);
+        
+     // Crear un ActionListener para el botón de registrar
+        registrarButton.addActionListener(e -> {
+            // Abre el formulario de registro cuando se hace click en el botón de registrar
+            new FormularioRegistro();  // Aquí se crea el formulario de registro
+        });
 
         // Acción del botón
         iniciarSesionButton.addActionListener(new ActionListener() {
