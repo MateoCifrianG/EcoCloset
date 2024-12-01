@@ -11,6 +11,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
+import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -33,6 +35,7 @@ public class VentanaPrincipal {
 	private List<Ropa> ropaList;
 	private String nombreUsuario;
 	private List<Pedido> listaPedidos; // Almacena los pedidos del usuario
+	private JPanel listaArticulosPanel;
 	
 	public VentanaPrincipal(String nombreUsuario) { 
 		//creamos la ventana
@@ -210,10 +213,46 @@ public class VentanaPrincipal {
 	}
 
 
-// Método para abrir la ventana de la cuenta
-private void abrirVentanaCuenta() {
-	new VentanaCuenta(nombreUsuario); // Abre la ventana de la cuenta pasando el nombre del usuario
-}
+	// Método para abrir la ventana de la cuenta
+	private void abrirVentanaCuenta() {
+		new VentanaCuenta(nombreUsuario); // Abre la ventana de la cuenta pasando el nombre del usuario
+	}
+	
+	// Método para cargar artículos en el panel
+	private void cargarArticulos(List<Ropa> lista) {
+		listaArticulosPanel.removeAll(); // Limpiar el panel de artículos existente
+		for (Ropa ropa : lista) {
+			 // Crear un panel para cada artículo
+				JPanel articuloPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+				articuloPanel.setBorder(BorderFactory.createLineBorder(Color.GRAY)); // Añadir un borde para separar los artículos
+				
+				// Mostrar el nombre, talla, precio y marca
+				JLabel nombreLabel = new JLabel(ropa.getNombre() + " - Talla: " + ropa.getTalla() + " - Precio: "+ ropa.getPrecio() + " - Marca: " + ropa.getMarca());
+				JButton añadirCarrito = new JButton("Añadir al Carrito");
+				añadirCarrito.setBackground(Color.CYAN); // Establece el color de fondo a cyan
+				
+				// Añadir acción para el botón "Añadir al Carrito"
+				añadirCarrito.addActionListener(e -> {
+				// Verifica si hay stock disponible antes de añadir al carrito
+				if (ropa.getCantidad() > 0) {
+					modeloCarrito.addElement(ropa); 
+					ropa.setCantidad(ropa.getCantidad() - 1); 
+					actualizarTotales(); // Actualizar totales al agregar ropa al carrito --> hacer funcion
+					JOptionPane.showMessageDialog(ventana, ropa.getNombre() + " ha sido añadido al carrito."); 
+					} else {
+					    JOptionPane.showMessageDialog(ventana, "No hay stock disponible para " + ropa.getNombre() + "."); 
+					}
+				});
+				
+				articuloPanel.add(nombreLabel);
+				articuloPanel.add(Box.createHorizontalGlue()); 
+				articuloPanel.add(añadirCarrito);
+				listaArticulosPanel.add(articuloPanel); // Añadir el panel del artículo a la lista
+		}
+		
+		listaArticulosPanel.revalidate(); 
+		listaArticulosPanel.repaint(); //mostrar los cmabios
+	}
 	
 	
 
