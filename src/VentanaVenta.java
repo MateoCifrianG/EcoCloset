@@ -46,5 +46,12 @@ public class VentanaVenta {
         frame.add(precioField);
         frame.add(new JLabel("Estado:"));
         frame.add(estadoComboBox);
+        
+     // Botón de añadir
+        JButton añadirButton = new JButton("Añadir");
+        frame.add(añadirButton);
+
+        
+        
     }
 }
