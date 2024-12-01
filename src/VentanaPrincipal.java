@@ -371,9 +371,9 @@ public class VentanaPrincipal {
 		
 			    cargarArticulos(ropaFiltrada); // Cargar los artículos filtrados
 			}
-	public static void main(String[] args) {
-		String nombreUsuario = "usuarioPrueba"; // Esto se podría obtener de otro lado
-		new VentanaPrincipal(nombreUsuario);
-	}
-
-}
+			public static void main(String[] args) {
+				// Se necesita un nombre de usuario para inicializar la ventana principal
+				String nombreUsuario = "usuarioPrueba"; // Esto se podría obtener de otro lado
+				new VentanaPrincipal(nombreUsuario);
+			}
+		}
