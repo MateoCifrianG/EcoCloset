@@ -84,7 +84,7 @@ public class VentanaRegistro {
         // Hacer visible la ventana
         ventana.setVisible(true);
     }
-
+//arreglado
     private void verificarCredenciales(String nombre, String contraseña) {
         // Crear un hilo que simula la verificación
         Thread hilo = new Thread(() -> {
