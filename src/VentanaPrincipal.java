@@ -3,6 +3,12 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 
 import javax.swing.DefaultListModel;
@@ -156,7 +162,7 @@ public class VentanaPrincipal {
 	public void agregarAlCarrito(Ropa ropa) {
 	    if (ropa.getCantidad() > 0) { // Verifica si hay stock disponible
 	        modeloCarrito.addElement(ropa); 
-	        ropa.setCantidad(ropa.getCantidad() - 1); 
+	        ropa.setCantidad(ropa.getCantidad() - 1); 	        
 	        actualizarStockEnCSV(ropa); // Actualiza el stock en el CSV --> crear el método
 	        actualizarTotales(); 
 	        JOptionPane.showMessageDialog(ventana, ropa.getNombre() + " ha sido añadido al carrito."); 
@@ -165,7 +171,41 @@ public class VentanaPrincipal {
 	    }
 	}
 	
+	private void actualizarStockEnCSV(Ropa prenda) {
+	    String filePath = "productos.csv"; // Ruta del archivo CSV
+	    File inputFile = new File(filePath);
+	    File tempFile = new File("temp_ropa.csv"); // Archivo temporal
 
+	    try (BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+	         BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))) {
+
+	        String line;
+	        while ((line = reader.readLine()) != null) {
+	            String[] valores = line.split(";"); // Suponiendo que el separador es un punto y coma
+
+	            // Comprueba si la línea corresponde a la prenda que se está actualizando
+	            if (valores[0].equals(prenda.getNombre()) && valores[1].equals(prenda.getMarca())
+	                && valores[2].equals(prenda.getTalla())) {
+	                int stockActual = Integer.parseInt(valores[3]); // Stock actual
+	                if (stockActual > 1) {
+	                    // Si el stock es mayor que 1, escribe la línea con el stock actualizado
+	                    writer.write(valores[0] +	 ";" + valores[1] + ";" + valores[2] + ";"
+	                        + (stockActual - 1) + ";" + valores[4] + ";" + valores[5]);
+	                } // Si el stock es 1, no se escribe la línea (se eliminará)
+	            } else {
+	                // Si no es la prenda que se está actualizando, simplemente se copia la línea
+	                writer.write(line);
+	            }
+	            writer.newLine(); // Nueva línea después de cada prenda
+	        }
+
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	        JOptionPane.showMessageDialog(ventana, "Error al actualizar el archivo CSV.");
+	    	}
+	    }
+	
+	
 
 	public static void main(String[] args) {
 		String nombreUsuario = "usuarioPrueba"; // Esto se podría obtener de otro lado
