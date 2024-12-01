@@ -88,7 +88,8 @@ public class VentanaRegistro {
 			
 			@Override
 			public void mouseExited(MouseEvent e) {
-				//CONTINUAR cuando se cree la clase Asistencia
+				// Aquí delegamos la apertura de la ventana de problemas a la clase VentanaProblemas
+                new Asistencia(); 
 				
 			}
 			
