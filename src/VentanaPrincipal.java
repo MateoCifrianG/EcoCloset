@@ -330,6 +330,47 @@ public class VentanaPrincipal {
 					JOptionPane.showMessageDialog(ventana, "Error al guardar el pedido en el archivo CSV.");
 				}
 			}
+			// Método para filtrar artículos
+			private void filtrarArticulos(JComboBox<String> comboPrecio, JComboBox<String> comboTalla,
+			        JComboBox<String> comboPrendas) {
+			    String precioSeleccionado = (String) comboPrecio.getSelectedItem();
+			    String tallaSeleccionada = (String) comboTalla.getSelectedItem();
+			    String prendaSeleccionada = (String) comboPrendas.getSelectedItem();
+		
+			    List<Ropa> ropaFiltrada = new ArrayList<>();
+		
+			    // Filtrar prendas según la selección
+			    for (Ropa ropa : ropaList) {
+			        boolean coincide = true;
+		
+			        // Filtrar por precio solo si no está en la opción "Precio"
+			        if (!precioSeleccionado.equals("Precio")) {
+			            String[] rangos = precioSeleccionado.split("-");
+			            int precioMin = Integer.parseInt(rangos[0]);
+			            int precioMax = rangos.length > 1 ? Integer.parseInt(rangos[1]) : Integer.MAX_VALUE;
+		
+			            if (ropa.getPrecio() < precioMin || ropa.getPrecio() > precioMax) {
+			                coincide = false;
+			            }
+			        }
+		
+			        // Filtrar por talla solo si no está en la opción "Talla"
+			        if (!tallaSeleccionada.equals("Talla") && !ropa.getTalla().equals(tallaSeleccionada)) {
+			            coincide = false;
+			        }
+		
+			        // Filtrar por prenda solo si no está en la opción "Prendas"
+			        if (!prendaSeleccionada.equals("Prendas") && !ropa.getNombre().equals(prendaSeleccionada)) {
+			            coincide = false;
+			        }
+		
+			        if (coincide) {
+			            ropaFiltrada.add(ropa); // Añadir a la lista filtrada
+			        }
+			    }
+		
+			    cargarArticulos(ropaFiltrada); // Cargar los artículos filtrados
+			}
 	public static void main(String[] args) {
 		String nombreUsuario = "usuarioPrueba"; // Esto se podría obtener de otro lado
 		new VentanaPrincipal(nombreUsuario);
