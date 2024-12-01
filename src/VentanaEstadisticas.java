@@ -160,7 +160,32 @@ public class VentanaEstadisticas {
         tableMarcas.setFillsViewportHeight(true);
         JScrollPane scrollPaneMarcas = new JScrollPane(tableMarcas);
         scrollPaneMarcas.setBorder(BorderFactory.createTitledBorder("Estadísticas de Marcas"));
-        
+     // Crear un campo de texto para filtrar
+        JTextField filtroField = new JTextField();
+        filtroField.setToolTipText("Buscar por marca o cantidad");
+        filtroField.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String filtro = filtroField.getText().toLowerCase();
+                TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(tableModel);
+                tableMarcas.setRowSorter(sorter);
+
+                // Definir el filtro
+                if (filtro.trim().length() == 0) {
+                    sorter.setRowFilter(null); // Si está vacío, mostrar todo
+                } else {
+                    // Filtrar por marca o cantidad
+                    List<RowFilter<Object, Object>> filters = new ArrayList<>();
+                    filters.add(RowFilter.regexFilter("(?i)" + filtro, 0)); // Filtrar por marca (insensible a mayúsculas)
+                    try {
+                        filters.add(RowFilter.numberFilter(RowFilter.ComparisonType.EQUAL, Integer.parseInt(filtro), 1)); // Filtrar por cantidad
+                    } catch (NumberFormatException ex) {
+                        // Ignorar si no es un número
+                    }
+                    sorter.setRowFilter(RowFilter.orFilter(filters)); // Aplicar filtro combinado
+                }
+            }
+        });
 	}
 	
 	
