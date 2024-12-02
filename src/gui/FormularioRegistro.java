@@ -56,14 +56,14 @@ public class FormularioRegistro {
         }
         JComboBox<String> comboDia = new JComboBox<>(dias);
            //Meses
-        String[] meses = {"Mes","Enero","Febrero","Marzo","Abril","Mayo","Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
+        String[] meses = {"Mes","Enero","Febrero","Marzo","Abril","Mayo","Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
         JComboBox<String> comboMes = new JComboBox<>(meses);
         
          	//Años
-        String[] anhos = new String[102]; //Aquí los años van de 1970 al 2070
+        String[] anhos = new String[102]; //Aquí los años van de 1930 al 2030
         anhos[0] = "Año";
         for (int i = 1; i < anhos.length; i++) {
-        	anhos[i] = Integer.toString(1970 + i);
+        	anhos[i] = Integer.toString(1930 + i);
         }
         
         JComboBox<String> comboAnho = new JComboBox<>(anhos);
