@@ -79,7 +79,7 @@ public class MenuAdministrador {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				//Abrir la ventana de asistencia
-				// new VentanaAsistencia(); //Clase para manejar la asistencia (descomentar al crear la clase)
+				new VentanaAsistencia(); //Clase para manejar la asistencia
 				
 			}
 		});
