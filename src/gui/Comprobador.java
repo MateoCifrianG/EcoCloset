@@ -45,7 +45,7 @@ public class Comprobador {
 //		
 //		// conectar a la base de datos
 //		try {
-//			Connection conn = DriverManager.getConnection("jdbc:sqlite:resources/usuarios.sqlite");
+//			Connection conn = DriverManager.getConnection("jdbc:sqlite:resources/db/usuarios.db");
 //			Statement stmt = conn.createStatement();
 //			
 //			String sql = "SELECT * FROM usuarios";
