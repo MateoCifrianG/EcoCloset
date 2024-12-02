@@ -103,7 +103,7 @@ public class VentanaCuenta {
 	private String obtenerDatosUsuario() {
 
 		StringBuilder datos = new StringBuilder();
-		String archivoCSV = "usuarios1.csv"; // Asegúrate de usar la ruta correcta//
+		String archivoCSV = "usuarios1.csv"; // Asegúrate de usar la ruta correcta
 
 		try (BufferedReader br = new BufferedReader(new FileReader(archivoCSV))) {
 			String linea;
