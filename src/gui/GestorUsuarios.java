@@ -37,7 +37,7 @@ public class GestorUsuarios {
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventana.setSize(800, 600); //Tamaño de la ventana
 		ventana.setLayout(new BorderLayout());
-		
+		 
 		//Panel superior con campo de búsqueda y botón de eliminar
 		JPanel panelSuperior= new JPanel(new BorderLayout());
 		campoBusqueda = new JTextField();

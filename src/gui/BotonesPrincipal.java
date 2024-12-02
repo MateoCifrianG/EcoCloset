@@ -18,7 +18,7 @@ import javax.swing.*;
 	                ventanaPrincipal.getVentana().dispose(); // Cerrar la ventana actual usando el método getter
 	                ventanaPrincipal.abrirVentanaCuenta(); 
 	            }
-	        };
+	        }; 
 	    }
 	    // Método para obtener el ActionListener de Cerrar Sesión
 	    public ActionListener getCerrarSesionListener() {

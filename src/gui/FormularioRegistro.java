@@ -21,7 +21,7 @@ import javax.swing.SwingUtilities;
 
 public class FormularioRegistro {
 	private JFrame ventana; 
-	
+	 
     public FormularioRegistro () {
     	//Aquí creamos la ventana del formulario del registro
     	ventana = new JFrame("Formulario de Registro"); //nombre de ventan

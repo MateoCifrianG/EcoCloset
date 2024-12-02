@@ -26,7 +26,7 @@ public class MenuAdministrador {
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridLayout(7, 1, 10, 10)); //Siete botones en vertical
 		panel.setBackground(new Color(240, 240, 240)); //Color de fondo
-		
+		 
 		//Estilo de los botones
 		JButton botonGestionProductos=crearBoton("Gestionar Productos");
 		botonGestionProductos.addActionListener(new ActionListener() {

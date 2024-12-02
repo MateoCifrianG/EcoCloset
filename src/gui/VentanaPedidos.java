@@ -41,7 +41,7 @@ public class VentanaPedidos {
         titulo.setFont(new Font("Arial", Font.BOLD, 24)); // Cambia la fuente y tamaño
         titulo.setForeground(new Color(70, 130, 180)); // color del texto
         ventana.add(titulo, BorderLayout.NORTH);
-        
+         
         // cargar y mostrar los pedidos del usuario
         JTextArea areaTexto = new JTextArea();
         areaTexto.setEditable(false); // hacer que el área de texto no sea editable
