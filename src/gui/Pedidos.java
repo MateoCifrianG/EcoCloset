@@ -48,7 +48,12 @@ public class Pedidos {
         // Crear la tabla para mostrar los pedidos
         String[] columnas = {"ID Pedido", "Usuario", "Prendas", "Precio Total"};
         modeloTabla = new DefaultTableModel(columnas, 0) {
-            @Override
+            /**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override
             public boolean isCellEditable(int row, int column) {
                 return column == 2; // Solo la columna "Prendas" será editable
             }

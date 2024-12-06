@@ -1,8 +1,7 @@
 Chaqueta;UrbanStyle;S;19;19.99;Nuevo
-Sudadera;ChicThreads;XL;11;39.99;Usado
 Camiseta;Trendsetters;M;7;24.99;Desgastado
 Pantalon;CoutureCraft;S;1;59.99;Nuevo
-Chaqueta;CasualVibe;L;49;14.99;Semi-nuevo
+Chaqueta;CasualVibe;L;48;14.99;Semi-nuevo
 Sudadera;CozyFashion;XL;10;34.99;Usado
 Camiseta;FreshLook;XS;6;27.99;Nuevo
 Pantalon;VintageVogue;XXL;4;54.99;Desgastado
@@ -10,10 +9,10 @@ Chaqueta;StyleHaven;S;30;18.99;Nuevo
 Sudadera;UrbanChill;M;6;42.99;Usado
 Camiseta;ArtisticThreads;L;8;22.99;Desgastado
 Pantalon;SustainableStyles;XL;2;48.99;Semi-nuevo
-Chaqueta;ModernMuse;XXL;17;16.99;Nuevo
+Chaqueta;ModernMuse;XXL;16;16.99;Nuevo
 Sudadera;RelaxedFit;XS;11;36.99;Usado
 Camiseta;FashionForward;S;12;31.99;Nuevo
-Chaqueta;EtherealEssence;XL;4;21.99;Nuevo
+Chaqueta;EtherealEssence;XL;3;21.99;Nuevo
 Sudadera;ComfortZone;XXL;14;40.99;Usado
 Camiseta;RevampedStyles;M;5;28.99;Nuevo
 Pantalon;CrispLines;S;8;52.99;Desgastado
@@ -21,7 +20,6 @@ Chaqueta;TimelessThreads;L;15;17.99;Nuevo
 Sudadera;EarthyBlend;XL;3;45.99;Semi-nuevo
 Camiseta;CharmingFits;XXL;8;23.99;Nuevo
 Pantalon;EnergizedWear;XS;6;56.99;Usado
-Chaqueta;WanderlustWardrobe;M;12;19.49;Nuevo
 Zapatos;Nike;M;3;100.0;Nuevo
 Vestido;ElegantAffair;M;5;79.99;Nuevo
 Falda;BohoChic;S;10;34.99;Desgastado
@@ -42,3 +40,4 @@ Chaqueta;BlueBanana;XXL;1;110.0;Usado
 Chaqueta;asfaf;XS;1;10.0;Nuevo
 Pantalón;Nike;M;1;500.0;Usado
 Pantalón;Nike;XS;1;600.0;Nuevo
+Camisa;nike;XS;1;50.0;Nuevo

@@ -104,10 +104,10 @@ public class VentanaRegistro {
                         ventana.dispose(); // Cerrar la ventana actual
                         new MenuAdministrador(); // Abrir ventana del administrador
                     });
-                } else if (Comprobador.verificarUsuario(nombre, contraseña)) {
+                } else if (Comprobador.obtenerDatosUsuarios(nombre, contraseña) == true) {
                     // Si no es admin pero las credenciales son correctas, se abre la ventana principal
                     SwingUtilities.invokeLater(() -> {
-                        mensaje.setText("¡Inicio de sesión exitoso!");
+                        mensaje.setText("¡Inicio de sesión exitoso!");  
                         abrirVentanaPrincipal(nombre); // Abrir ventana principal
                     });
                 } else {
