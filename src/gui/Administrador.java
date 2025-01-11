@@ -48,7 +48,7 @@ package gui;
 	
 	        // Crear el botón para volver al menú
 	        JButton botonVolver = new JButton("Volver al Menú Administrador");
-	        //Prueba
+	        
 	        // Añadir acción para el botón volver
 	        botonVolver.addActionListener(new ActionListener() {
 	            @Override
