@@ -46,8 +46,6 @@ package gui;
 	        listaProductos = cargarProductosDesdeCSV("productos.csv");
 	        actualizarTabla(listaProductos);
 	        
-	        //Prueba
-	        
 	        // Crear el botón para volver al menú
 	        JButton botonVolver = new JButton("Volver al Menú Administrador");
 	        
