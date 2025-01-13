@@ -242,7 +242,7 @@ public class FormularioRegistro {
             return false; // Error al registrar
         }
     }
-    //pr
+    
     //--------------------------------------------------------------------------
     public void registrarUsuarioBD(String nombre, String apellido1, String apellido2, String direccion, String fechaNacimiento, String nacionalidad, String contraseña, String repetirContraseña) {
     	
