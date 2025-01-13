@@ -107,7 +107,7 @@ public class Asistencia {
 		}
 	}
 	
-	public static void main(String[] args) {
+	public styatic void main(String[] args) {
 		new Asistencia();
 		
 	}

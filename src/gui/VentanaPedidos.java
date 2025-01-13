@@ -70,7 +70,7 @@ public class VentanaPedidos {
                 sb.append("  - ").append(prenda.toString()).append("\n");
             }
             sb.append("Precio Total: ").append(calcularPrecioTotal(pedido)).append("\n\n");
-        }
+        } 
 
         areaTexto.setText(sb.toString()); // poner el texto en el área de texto
         

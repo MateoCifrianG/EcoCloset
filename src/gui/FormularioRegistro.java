@@ -8,6 +8,12 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -18,6 +24,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+
+import domain.Usuario;
 
 public class FormularioRegistro {
 	private JFrame ventana; 
@@ -184,21 +192,23 @@ public class FormularioRegistro {
                 JOptionPane.showMessageDialog(ventana, "Por favor, completa todos los campos obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
                 return; // No continuar si hay campos vacíos
             }
-
+ 
             // Comprobar si las contraseñas coinciden, en el caso de que no, pedirla de nuevo
             if (!contraseña.equals(repetirContraseña)) {
                 JOptionPane.showMessageDialog(ventana, "Las contraseñas no coinciden", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
+            } else {  
+            	registrarUsuarioBD(nombreField.getText(), apellido1Field.getText(), apellido2Field.getText(), direccionField.getText(), fechaNacimiento, nacionalidadField.getText(), contraseña, repetirContraseña);
+            	ventana.dispose();
                 // Aquí puedes manejar el registro del usuario
-                if (registrarUsuario(nombreField.getText(), apellido1Field.getText(), apellido2Field.getText(), direccionField.getText(), fechaNacimiento, nacionalidadField.getText(), contraseña, repetirContraseña)) {
-                    JOptionPane.showMessageDialog(ventana, "Usuario registrado: " + nombreField.getText());
-                    ventana.dispose(); // Cerrar la ventana del formulario
-                } else {
-                    JOptionPane.showMessageDialog(ventana, "Error al registrar el usuario", "Error", JOptionPane.ERROR_MESSAGE);
-                }
+//                if (registrarUsuarioBD(nombreField.getText(), apellido1Field.getText(), apellido2Field.getText(), direccionField.getText(), fechaNacimiento, nacionalidadField.getText(), contraseña, repetirContraseña)) {
+//                    JOptionPane.showMessageDialog(ventana, "Usuario registrado: " + nombreField.getText());
+//                    ventana.dispose(); // Cerrar la ventana del formulario
+//                } else {
+//                    JOptionPane.showMessageDialog(ventana, "Error al registrar el usuario", "Error", JOptionPane.ERROR_MESSAGE);
+//                } 
             }
         });
-
+ 
         // Ajustes para hacer que la ventana sea adaptable
         ventana.setMinimumSize(new Dimension(400, 500)); // Tamaño mínimo para que se vea correctamente
         ventana.setVisible(true);
@@ -232,6 +242,55 @@ public class FormularioRegistro {
             return false; // Error al registrar
         }
     }
+    
+    //--------------------------------------------------------------------------
+    public void registrarUsuarioBD(String nombre, String apellido1, String apellido2, String direccion, String fechaNacimiento, String nacionalidad, String contraseña, String repetirContraseña) {
+    	
+    	// cargar el driver de SQLite para JDBC
+    	// se hace una vez en todo el programa
+   		try { 
+   			Class.forName("org.sqlite.JDBC"); 
+   		} catch (ClassNotFoundException e) { 
+   			System.out.println("No se ha podido cargar el driver de la base de datos"); 
+   		}
+   		
+   	// conectar a la base de datos
+   			try {
+   				Connection conn = DriverManager.getConnection("jdbc:sqlite:resources/db/usuarios.db");
+   				
+   				
+   				String sql = "INSERT INTO Usuarios VALUES(?, ?, ?, ?, ?, ?, ?, ?);";
+   				PreparedStatement ps = conn.prepareStatement(sql);
+   				
+   				
+   				ps.setString(1, nombre); 
+   				ps.setString(2, apellido1);
+   				ps.setString(3, apellido2);
+   				ps.setString(4, direccion);
+   				ps.setString(5, fechaNacimiento);
+   				ps.setString(6, nacionalidad);
+   				ps.setString(7, contraseña);
+   				ps.setString(8, repetirContraseña);
+   				
+   				ps.executeUpdate();
+   				
+   				ps.close();
+   				
+   				System.out.println("Usuario registrado con éxito.");
+
+   		        
+   		        conn.close();
+   				
+   			} catch (SQLException e1) {
+   				e1.printStackTrace();
+   			}
+			
+   			
+    	
+    }
+    
+    
+    // ------------------------------------------------------------------------
     
     
     public static void main(String[] args) {

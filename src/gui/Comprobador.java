@@ -24,7 +24,7 @@ public class Comprobador {
                 // Separar la línea del archivo por el delimitador ';'
                 String[] campos = linea.split(";");
 
-                if (campos.length >= 7) {
+                if (campos.length >= 7) {  
                     String nombreUsuario = campos[0].trim();  // Campo del nombre (usuario)
                     String contraseñaUsuario = campos[6].trim();  // Campo de la contraseña
 
@@ -60,7 +60,7 @@ public class Comprobador {
 			String sql = "SELECT * FROM Usuarios";
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) { 
-				  
+				    
 				String nombreUsuario = rs.getString("Nombre");
 				String contraseña = rs.getString("Contraseña");	
 				
