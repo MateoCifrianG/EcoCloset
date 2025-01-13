@@ -184,7 +184,7 @@ public class FormularioRegistro {
             String anioSeleccionado = (String) comboAnho.getSelectedItem();
 
             String fechaNacimiento = diaSeleccionado + "/" + mesSeleccionado + "/" + anioSeleccionado;
-
+//prueba
             // Validar campos obligatorios para el registro
             if (nombreField.getText().isEmpty() || apellido1Field.getText().isEmpty() ||
                 direccionField.getText().isEmpty() || nacionalidadField.getText().isEmpty() ||
