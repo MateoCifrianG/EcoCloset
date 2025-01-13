@@ -42,6 +42,8 @@ package gui;
 	        tablaProductos = new JTable(modeloTabla);
 	        JScrollPane scrollTabla = new JScrollPane(tablaProductos);
 	
+	        tablaProductos.getColumnModel().getColumn(5).setCellRenderer(new RendererAdminColor());
+	        
 	        // Cargar los productos desde el CSV
 	        listaProductos = cargarProductosDesdeCSV("productos.csv");
 	        actualizarTabla(listaProductos);
