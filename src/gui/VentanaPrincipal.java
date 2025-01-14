@@ -12,9 +12,14 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+
 import domain.Pedido;
 import domain.Ropa;
 import domain.Usuario;
+import es.deusto.prog3.jdbc.p1.Cliente;
 import main.Inicializador;
 
 public class VentanaPrincipal {
@@ -311,15 +316,24 @@ public class VentanaPrincipal {
 		listaArticulosPanel.repaint(); // Repaint para mostrar los cambios
 	}
 
+	//Método recursivo para calcular el precio total
+	public static double precioTotal(DefaultListModel<Ropa> carrito, int indice) {
+		//Caso base: si llegamos al final de la lista, el precio total es 0
+		if(indice ==  carrito.size()) {
+			return 0;
+		}
+		
+		//Sino, suma el precio actual y avanza en la lista
+		return carrito.get(indice).getPrecio() + precioTotal(carrito, indice+1);	
+	}
+	
+	
 	// Método para actualizar totales
 	private void actualizarTotales() {
 		totalArticulosLabel.setText("Total artículos: " + modeloCarrito.getSize()); // Actualizar el total de artículos
-
-		// Calcular el precio total
-		double precioTotal = 0;
-		for (int i = 0; i < modeloCarrito.getSize(); i++) {
-			precioTotal += modeloCarrito.getElementAt(i).getPrecio(); // Sumar el precio de cada artículo
-		}
+		
+		double precioTotal=precioTotal(modeloCarrito, 0);
+		
 		totalPrecioLabel.setText("Precio total: " + precioTotal); // Actualizar el precio total
 	}
 
@@ -392,8 +406,30 @@ public class VentanaPrincipal {
 		} catch (IOException e) {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(ventana, "Error al guardar el pedido en el archivo CSV.");
-		}
+		} 
 	}
+	
+// BASE DE DATOS sql -------------------------------------------------------------------------------------------------
+	
+	private void guardarPrendaEnBD (int id, String nombreUsuario, Ropa prenda) {
+		//Se abre la conexión y se obtiene el Statement
+				try (Connection con = DriverManager.getConnection("jdbc:sqlite:resources/db/pedidos.db");
+				     Statement stmt = con.createStatement()) {
+					//Se define la plantilla de la sentencia SQL
+					String sql = "INSERT INTO Productos (Nombre, Marca, Talla, Cantidad, Precio, Estado) VALUES ('%s', '%s', '%s','%i', '%d '%s');";
+					
+					stmt.executeUpdate(String.format(sql, prenda.getNombre(), prenda.getTalla(), prenda.getEstado(), 
+							prenda.getCantidad(), prenda.getPrecio(), prenda.getMarca())); {					
+							
+						
+					}			
+				} catch (Exception ex) { 
+					System.err.format("\n* Error al insertar datos de la BD de pedidos: %s", ex.getMessage());
+					ex.printStackTrace();						
+				}	
+	}
+	
+// ----------------------------------------------------------------------------------------------------------------------
 
 	// Método para filtrar artículos
 	// Método para filtrar artículos

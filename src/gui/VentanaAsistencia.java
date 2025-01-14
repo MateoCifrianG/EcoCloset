@@ -1,5 +1,7 @@
 package gui;
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -10,7 +12,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-
+import javax.swing.BorderFactory;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -20,6 +22,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
@@ -31,7 +34,7 @@ public class VentanaAsistencia {
 	private DefaultTableModel modeloTabla;
 	private JTable tablaAsistencia;
 	private List<String[]> listaAsistencias;
-	 
+	  
 	public VentanaAsistencia() {
 		
 		// Ceación de la VentanaAsistencia
@@ -62,6 +65,19 @@ public class VentanaAsistencia {
 		tablaAsistencia = new JTable(modeloTabla);  
 		tablaAsistencia.setRowHeight(120); // altura de las filas de la tabla
 		JScrollPane scrollTabla = new JScrollPane(tablaAsistencia);
+		
+		// Renderizado personalizado para la cabecera
+		tablaAsistencia.getTableHeader().setDefaultRenderer((table, value, isSelected, hasFocus, row, column) -> {
+		JLabel cabecera2 = new JLabel(value.toString());
+		
+		cabecera2.setHorizontalAlignment(SwingConstants.CENTER);
+		cabecera2.setFont(new Font("Verdana", Font.BOLD, 15));
+		cabecera2.setBackground(Color.decode("#ff9580"));
+		cabecera2.setBorder(BorderFactory.createLineBorder(Color.decode("#f2401d"), 2));
+		cabecera2.setOpaque(true);
+		
+		return cabecera2;
+	});
 		
 		// Cargar las asistencias desde el CSV
 		listaAsistencias = cargarAsistenciasDesdeCSV("asistencias.csv"); 

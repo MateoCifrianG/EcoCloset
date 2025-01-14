@@ -17,6 +17,7 @@ public class VentanaRegistro {
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ventana.setSize(400, 400);
         ventana.setLayout(new GridBagLayout());
+        ventana.getContentPane().setBackground(Color.decode("#cff9ff"));
 
         // Crear los componentes de la ventana
         JLabel nombreLabel = new JLabel("Nombre: ");
@@ -104,10 +105,10 @@ public class VentanaRegistro {
                         ventana.dispose(); // Cerrar la ventana actual
                         new MenuAdministrador(); // Abrir ventana del administrador
                     });
-                } else if (Comprobador.verificarUsuario(nombre, contraseña)) {
+                } else if (Comprobador.obtenerDatosUsuarios(nombre, contraseña) == true) {
                     // Si no es admin pero las credenciales son correctas, se abre la ventana principal
                     SwingUtilities.invokeLater(() -> {
-                        mensaje.setText("¡Inicio de sesión exitoso!");
+                        mensaje.setText("¡Inicio de sesión exitoso!");  
                         abrirVentanaPrincipal(nombre); // Abrir ventana principal
                     });
                 } else {
@@ -124,8 +125,6 @@ public class VentanaRegistro {
         });
         hilo.start(); // Iniciar el hilo
     }
-
-//p
 
     // Método para abrir la ventana principal
     public void abrirVentanaPrincipal(String nombreUsuario) {

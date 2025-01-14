@@ -48,7 +48,12 @@ public class Pedidos {
         // Crear la tabla para mostrar los pedidos
         String[] columnas = {"ID Pedido", "Usuario", "Prendas", "Precio Total"};
         modeloTabla = new DefaultTableModel(columnas, 0) {
-            @Override
+            /**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override
             public boolean isCellEditable(int row, int column) {
                 return column == 2; // Solo la columna "Prendas" será editable
             }
@@ -58,6 +63,20 @@ public class Pedidos {
         tablaPedidos.setRowHeight(60);
         JScrollPane scrollTabla = new JScrollPane(tablaPedidos);
 
+     // Renderizado personalizado para la cabecera
+        tablaPedidos.getTableHeader().setDefaultRenderer((table, value, isSelected, hasFocus, row, column) -> {
+		JLabel cabecera = new JLabel(value.toString());
+		
+		cabecera.setHorizontalAlignment(SwingConstants.CENTER);
+		cabecera.setFont(new Font("Verdana", Font.BOLD, 15));
+		cabecera.setBackground(Color.decode("#ff9580"));
+		cabecera.setBorder(BorderFactory.createLineBorder(Color.decode("#f2401d"), 2));
+		cabecera.setOpaque(true);
+		
+		return cabecera;
+	});
+        
+        
         // Cargar los pedidos desde el archivo CSV
         listaPedidos = cargarPedidos();
         actualizarTabla(listaPedidos);

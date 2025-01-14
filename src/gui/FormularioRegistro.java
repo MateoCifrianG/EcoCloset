@@ -1,5 +1,6 @@
 package gui;
- import java.awt.Dimension;
+ import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -8,6 +9,12 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -19,16 +26,18 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
+import domain.Usuario;
+
 public class FormularioRegistro {
 	private JFrame ventana; 
-	
+	 
     public FormularioRegistro () {
     	//Aquí creamos la ventana del formulario del registro
     	ventana = new JFrame("Formulario de Registro"); //nombre de ventan
     	ventana.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);//se cierra el programa al darle a la x
         ventana.setSize(400, 500); //tamaño de ventana
         ventana.setLayout(new GridBagLayout()); //GridBagLayout lo utilizamos para que todo mantenga su tamaño a pesar de que se maximice o minimice la pantalla.
-        
+        ventana.getContentPane().setBackground(Color.decode("#cff9ff"));
     
         //Crear los componentes del formulario sin añadirlos a la pantalla
         JLabel nombreLabel = new JLabel("Nombre:");
@@ -56,14 +65,14 @@ public class FormularioRegistro {
         }
         JComboBox<String> comboDia = new JComboBox<>(dias);
            //Meses
-        String[] meses = {"Mes","Enero","Febrero","Marzo","Abril","Mayo","Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
+        String[] meses = {"Mes","Enero","Febrero","Marzo","Abril","Mayo","Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
         JComboBox<String> comboMes = new JComboBox<>(meses);
         
          	//Años
-        String[] anhos = new String[102]; //Aquí los años van de 1970 al 2070
+        String[] anhos = new String[102]; //Aquí los años van de 1930 al 2030
         anhos[0] = "Año";
         for (int i = 1; i < anhos.length; i++) {
-        	anhos[i] = Integer.toString(1970 + i);
+        	anhos[i] = Integer.toString(1930 + i);
         }
         
         JComboBox<String> comboAnho = new JComboBox<>(anhos);
@@ -128,6 +137,7 @@ public class FormularioRegistro {
         fechaPanel.add(comboDia);
         fechaPanel.add(comboMes);
         fechaPanel.add(comboAnho);
+        fechaPanel.setBackground(Color.decode("#cff9ff"));
         
         	//Añadimos Fecha
         gbc.gridx= 1;
@@ -184,21 +194,23 @@ public class FormularioRegistro {
                 JOptionPane.showMessageDialog(ventana, "Por favor, completa todos los campos obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
                 return; // No continuar si hay campos vacíos
             }
-
+ 
             // Comprobar si las contraseñas coinciden, en el caso de que no, pedirla de nuevo
             if (!contraseña.equals(repetirContraseña)) {
                 JOptionPane.showMessageDialog(ventana, "Las contraseñas no coinciden", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
+            } else {  
+            	registrarUsuarioBD(nombreField.getText(), apellido1Field.getText(), apellido2Field.getText(), direccionField.getText(), fechaNacimiento, nacionalidadField.getText(), contraseña, repetirContraseña);
+            	ventana.dispose();
                 // Aquí puedes manejar el registro del usuario
-                if (registrarUsuario(nombreField.getText(), apellido1Field.getText(), apellido2Field.getText(), direccionField.getText(), fechaNacimiento, nacionalidadField.getText(), contraseña, repetirContraseña)) {
-                    JOptionPane.showMessageDialog(ventana, "Usuario registrado: " + nombreField.getText());
-                    ventana.dispose(); // Cerrar la ventana del formulario
-                } else {
-                    JOptionPane.showMessageDialog(ventana, "Error al registrar el usuario", "Error", JOptionPane.ERROR_MESSAGE);
-                }
+//                if (registrarUsuarioBD(nombreField.getText(), apellido1Field.getText(), apellido2Field.getText(), direccionField.getText(), fechaNacimiento, nacionalidadField.getText(), contraseña, repetirContraseña)) {
+//                    JOptionPane.showMessageDialog(ventana, "Usuario registrado: " + nombreField.getText());
+//                    ventana.dispose(); // Cerrar la ventana del formulario
+//                } else {
+//                    JOptionPane.showMessageDialog(ventana, "Error al registrar el usuario", "Error", JOptionPane.ERROR_MESSAGE);
+//                } 
             }
         });
-
+ 
         // Ajustes para hacer que la ventana sea adaptable
         ventana.setMinimumSize(new Dimension(400, 500)); // Tamaño mínimo para que se vea correctamente
         ventana.setVisible(true);
@@ -232,6 +244,55 @@ public class FormularioRegistro {
             return false; // Error al registrar
         }
     }
+    
+    //--------------------------------------------------------------------------
+    public void registrarUsuarioBD(String nombre, String apellido1, String apellido2, String direccion, String fechaNacimiento, String nacionalidad, String contraseña, String repetirContraseña) {
+    	
+    	// cargar el driver de SQLite para JDBC
+    	// se hace una vez en todo el programa
+   		try { 
+   			Class.forName("org.sqlite.JDBC"); 
+   		} catch (ClassNotFoundException e) { 
+   			System.out.println("No se ha podido cargar el driver de la base de datos"); 
+   		}
+   		
+   	// conectar a la base de datos
+   			try {
+   				Connection conn = DriverManager.getConnection("jdbc:sqlite:resources/db/usuarios.db");
+   				
+   				
+   				String sql = "INSERT INTO Usuarios VALUES(?, ?, ?, ?, ?, ?, ?, ?);";
+   				PreparedStatement ps = conn.prepareStatement(sql);
+   				
+   				
+   				ps.setString(1, nombre); 
+   				ps.setString(2, apellido1);
+   				ps.setString(3, apellido2);
+   				ps.setString(4, direccion);
+   				ps.setString(5, fechaNacimiento);
+   				ps.setString(6, nacionalidad);
+   				ps.setString(7, contraseña);
+   				ps.setString(8, repetirContraseña);
+   				
+   				ps.executeUpdate();
+   				
+   				ps.close();
+   				
+   				System.out.println("Usuario registrado con éxito.");
+
+   		        
+   		        conn.close();
+   				
+   			} catch (SQLException e1) {
+   				e1.printStackTrace();
+   			}
+			
+   			
+    	
+    }
+    
+    
+    // ------------------------------------------------------------------------
     
     
     public static void main(String[] args) {

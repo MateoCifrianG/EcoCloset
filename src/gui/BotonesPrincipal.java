@@ -1,10 +1,17 @@
 package gui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.*;
 
 import domain.Ropa;
 	
+
+
+import javax.swing.JOptionPane;
+
+import domain.Ropa;
+ 	
 	public class BotonesPrincipal {
 	    private VentanaPrincipal ventanaPrincipal;
 	
@@ -20,7 +27,7 @@ import domain.Ropa;
 	                ventanaPrincipal.getVentana().dispose(); // Cerrar la ventana actual usando el método getter
 	                ventanaPrincipal.abrirVentanaCuenta(); 
 	            }
-	        };
+	        }; 
 	    }
 	    // Método para obtener el ActionListener de Cerrar Sesión
 	    public ActionListener getCerrarSesionListener() {

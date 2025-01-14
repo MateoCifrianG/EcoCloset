@@ -1,4 +1,5 @@
 package gui;
+import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -26,6 +27,7 @@ public class Asistencia {
 		ventanaProblemas = new JFrame("Problemas al iniciar sesión");
 		ventanaProblemas.setSize(400,400);
 		ventanaProblemas.setLayout(new GridBagLayout());
+		ventanaProblemas.getContentPane().setBackground(Color.decode("#cff9ff"));
 		
 		JLabel usuarioLabel = new JLabel("Usuario");
 		JTextField usuarioField = new JTextField(20);
