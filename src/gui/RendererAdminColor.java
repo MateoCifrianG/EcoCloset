@@ -21,6 +21,7 @@ public class RendererAdminColor implements TableCellRenderer{
 		
 		// Configurar la fuente en estilo NORMAL (no negrita)
         celda.setFont(table.getFont().deriveFont(Font.PLAIN));
+        celda.setHorizontalAlignment(JLabel.CENTER);
 		
 		if(estado.equals("Nuevo")){
 			celda.setBackground(Color.decode("#64f595"));
