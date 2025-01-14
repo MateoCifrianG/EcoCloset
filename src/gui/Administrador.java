@@ -89,7 +89,7 @@ import javax.swing.table.DefaultTableModel;
 	                   celda.setIcon(iconoRedimensionado);
 	                   celda.setText(nombre);
 	                   
-	        		}else if(nombre.equals("Pantalon")) {
+	        		}else if(nombre.equals("Pantalon") || nombre.equals("Pantalón")) {
 	        			ImageIcon iconoOriginal = new ImageIcon(getClass().getResource("/images/pantalones.png"));
 
 	                    Image imagenRedimensionada = iconoOriginal.getImage().getScaledInstance(25, 30, Image.SCALE_SMOOTH);
@@ -223,6 +223,17 @@ import javax.swing.table.DefaultTableModel;
 	                   
 	        		}else if(nombre.equals("Sandalias")) {
 	        			ImageIcon iconoOriginal = new ImageIcon(getClass().getResource("/images/sandalias.png"));
+
+	                    Image imagenRedimensionada = iconoOriginal.getImage().getScaledInstance(25, 15, Image.SCALE_SMOOTH);
+
+	                    ImageIcon iconoRedimensionado = new ImageIcon(imagenRedimensionada);
+
+	                   // Asignar el icono redimensionado al JLabel
+	                   celda.setIcon(iconoRedimensionado);
+	                   celda.setText(nombre);
+ 
+	        		}else if(nombre.equals("Camisa")) {
+	        			ImageIcon iconoOriginal = new ImageIcon(getClass().getResource("/images/camisa.png"));
 
 	                    Image imagenRedimensionada = iconoOriginal.getImage().getScaledInstance(25, 15, Image.SCALE_SMOOTH);
 
