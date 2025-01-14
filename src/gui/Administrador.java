@@ -45,6 +45,8 @@ import javax.swing.table.DefaultTableModel;
 	
 	        tablaProductos.getColumnModel().getColumn(5).setCellRenderer(new RendererAdminColor());
 	        
+	        tablaProductos.setRowHeight(35); //Tamaño de las celdas
+	        
 	        //Creo un renderer para que aparezcan las imágenes de las prendas
 	        class iconoRenderer extends DefaultTableCellRenderer {
 	            @Override
