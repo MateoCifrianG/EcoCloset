@@ -137,6 +137,7 @@ public class FormularioRegistro {
         fechaPanel.add(comboDia);
         fechaPanel.add(comboMes);
         fechaPanel.add(comboAnho);
+        fechaPanel.setBackground(Color.decode("#cff9ff"));
         
         	//Añadimos Fecha
         gbc.gridx= 1;
