@@ -1,6 +1,7 @@
 package gui;
 	import javax.swing.*;
-	import javax.swing.table.DefaultTableModel;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 	import java.awt.*;
 	import java.awt.event.ActionEvent;
 	import java.awt.event.ActionListener;
@@ -43,6 +44,212 @@ package gui;
 	        JScrollPane scrollTabla = new JScrollPane(tablaProductos);
 	
 	        tablaProductos.getColumnModel().getColumn(5).setCellRenderer(new RendererAdminColor());
+	        
+	        //Creo un renderer para que aparezcan las imágenes de las prendas
+	        class iconoRenderer extends DefaultTableCellRenderer {
+	            @Override
+	            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+	            	String nombre=(String) value;
+	        		JLabel celda=new JLabel();
+	        		celda.setHorizontalAlignment(celda.CENTER);
+	        		
+	        		if(nombre.equals("Chaqueta")){	        			
+	        			ImageIcon iconoOriginal = new ImageIcon(getClass().getResource("/images/chaqueta.png"));
+
+	                    // Redimensionar la imagen a 25x30 píxeles
+	                    Image imagenRedimensionada = iconoOriginal.getImage().getScaledInstance(25, 30, Image.SCALE_SMOOTH);
+
+	                    // Crear un nuevo ImageIcon con la imagen redimensionada
+	                   ImageIcon iconoRedimensionado = new ImageIcon(imagenRedimensionada);
+
+	                   // Asignar el icono redimensionado al JLabel
+	                   celda.setIcon(iconoRedimensionado);
+	                   celda.setText(nombre);
+	        		}else if(nombre.equals("Sudadera")) {
+	        			ImageIcon iconoOriginal = new ImageIcon(getClass().getResource("/images/sudadera.png"));
+
+	                    Image imagenRedimensionada = iconoOriginal.getImage().getScaledInstance(25, 30, Image.SCALE_SMOOTH);
+
+	                    ImageIcon iconoRedimensionado = new ImageIcon(imagenRedimensionada);
+
+	                   // Asignar el icono redimensionado al JLabel
+	                   celda.setIcon(iconoRedimensionado);
+	                   celda.setText(nombre);
+	                   
+	        		}else if(nombre.equals("Camiseta")) {
+	        			ImageIcon iconoOriginal = new ImageIcon(getClass().getResource("/images/camiseta.png"));
+
+	                    Image imagenRedimensionada = iconoOriginal.getImage().getScaledInstance(25, 30, Image.SCALE_SMOOTH);
+
+	                    ImageIcon iconoRedimensionado = new ImageIcon(imagenRedimensionada);
+
+	                   // Asignar el icono redimensionado al JLabel
+	                   celda.setIcon(iconoRedimensionado);
+	                   celda.setText(nombre);
+	                   
+	        		}else if(nombre.equals("Pantalon")) {
+	        			ImageIcon iconoOriginal = new ImageIcon(getClass().getResource("/images/pantalones.png"));
+
+	                    Image imagenRedimensionada = iconoOriginal.getImage().getScaledInstance(25, 30, Image.SCALE_SMOOTH);
+
+	                    ImageIcon iconoRedimensionado = new ImageIcon(imagenRedimensionada);
+
+	                   // Asignar el icono redimensionado al JLabel
+	                   celda.setIcon(iconoRedimensionado);
+	                   celda.setText(nombre);
+	                   
+	        		}else if(nombre.equals("Zapatos")) {
+	        			ImageIcon iconoOriginal = new ImageIcon(getClass().getResource("/images/zapatos.png"));
+
+	                    Image imagenRedimensionada = iconoOriginal.getImage().getScaledInstance(25, 30, Image.SCALE_SMOOTH);
+
+	                    ImageIcon iconoRedimensionado = new ImageIcon(imagenRedimensionada);
+
+	                   // Asignar el icono redimensionado al JLabel
+	                   celda.setIcon(iconoRedimensionado);
+	                   celda.setText(nombre);
+	                   
+	        		}else if(nombre.equals("Vestido")) {
+	        			ImageIcon iconoOriginal = new ImageIcon(getClass().getResource("/images/vestido.png"));
+
+	                    Image imagenRedimensionada = iconoOriginal.getImage().getScaledInstance(25, 30, Image.SCALE_SMOOTH);
+
+	                    ImageIcon iconoRedimensionado = new ImageIcon(imagenRedimensionada);
+
+	                   // Asignar el icono redimensionado al JLabel
+	                   celda.setIcon(iconoRedimensionado);
+	                   celda.setText(nombre);
+	                   
+	        		}else if(nombre.equals("Falda")) {
+	        			ImageIcon iconoOriginal = new ImageIcon(getClass().getResource("/images/falda.png"));
+
+	                    Image imagenRedimensionada = iconoOriginal.getImage().getScaledInstance(25, 30, Image.SCALE_SMOOTH);
+
+	                    ImageIcon iconoRedimensionado = new ImageIcon(imagenRedimensionada);
+
+	                   // Asignar el icono redimensionado al JLabel
+	                   celda.setIcon(iconoRedimensionado);
+	                   celda.setText(nombre);
+	                   
+	        		}else if(nombre.equals("Shorts")) {
+	        			ImageIcon iconoOriginal = new ImageIcon(getClass().getResource("/images/shorts.png"));
+
+	                    Image imagenRedimensionada = iconoOriginal.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH);
+
+	                    ImageIcon iconoRedimensionado = new ImageIcon(imagenRedimensionada);
+
+	                   // Asignar el icono redimensionado al JLabel
+	                   celda.setIcon(iconoRedimensionado);
+	                   celda.setText(nombre);
+	                   
+	        		}else if(nombre.equals("Cardigan")) {
+	        			ImageIcon iconoOriginal = new ImageIcon(getClass().getResource("/images/cardigan.png"));
+
+	                    Image imagenRedimensionada = iconoOriginal.getImage().getScaledInstance(25, 30, Image.SCALE_SMOOTH);
+
+	                    ImageIcon iconoRedimensionado = new ImageIcon(imagenRedimensionada);
+
+	                   // Asignar el icono redimensionado al JLabel
+	                   celda.setIcon(iconoRedimensionado);
+	                   celda.setText(nombre);
+	                   
+	        		}else if(nombre.equals("Mono")) {
+	        			ImageIcon iconoOriginal = new ImageIcon(getClass().getResource("/images/mono.png"));
+
+	                    Image imagenRedimensionada = iconoOriginal.getImage().getScaledInstance(25, 30, Image.SCALE_SMOOTH);
+
+	                    ImageIcon iconoRedimensionado = new ImageIcon(imagenRedimensionada);
+
+	                   // Asignar el icono redimensionado al JLabel
+	                   celda.setIcon(iconoRedimensionado);
+	                   celda.setText(nombre);
+	                   
+	        		}else if(nombre.equals("Botas")) {
+	        			ImageIcon iconoOriginal = new ImageIcon(getClass().getResource("/images/botas.png"));
+
+	                    Image imagenRedimensionada = iconoOriginal.getImage().getScaledInstance(25, 30, Image.SCALE_SMOOTH);
+
+	                    ImageIcon iconoRedimensionado = new ImageIcon(imagenRedimensionada);
+
+	                   // Asignar el icono redimensionado al JLabel
+	                   celda.setIcon(iconoRedimensionado);
+	                   celda.setText(nombre);
+	                   
+	        		}else if(nombre.equals("Zapatillas")) {
+	        			ImageIcon iconoOriginal = new ImageIcon(getClass().getResource("/images/zapatillas.png"));
+
+	                    Image imagenRedimensionada = iconoOriginal.getImage().getScaledInstance(25, 15, Image.SCALE_SMOOTH);
+
+	                    ImageIcon iconoRedimensionado = new ImageIcon(imagenRedimensionada);
+
+	                   // Asignar el icono redimensionado al JLabel
+	                   celda.setIcon(iconoRedimensionado);
+	                   celda.setText(nombre);
+	                   
+	        		}else if(nombre.equals("Leggings")) {
+	        			ImageIcon iconoOriginal = new ImageIcon(getClass().getResource("/images/leggings.png"));
+
+	                    Image imagenRedimensionada = iconoOriginal.getImage().getScaledInstance(25, 23, Image.SCALE_SMOOTH);
+
+	                    ImageIcon iconoRedimensionado = new ImageIcon(imagenRedimensionada);
+
+	                   // Asignar el icono redimensionado al JLabel
+	                   celda.setIcon(iconoRedimensionado);
+	                   celda.setText(nombre);
+	                   
+	        		}else if(nombre.equals("Tunica")) {
+	        			ImageIcon iconoOriginal = new ImageIcon(getClass().getResource("/images/tunica.png"));
+
+	                    Image imagenRedimensionada = iconoOriginal.getImage().getScaledInstance(25, 20, Image.SCALE_SMOOTH);
+
+	                    ImageIcon iconoRedimensionado = new ImageIcon(imagenRedimensionada);
+
+	                   // Asignar el icono redimensionado al JLabel
+	                   celda.setIcon(iconoRedimensionado);
+	                   celda.setText(nombre);
+	                   
+	        		}else if(nombre.equals("Chaleco")) {
+	        			ImageIcon iconoOriginal = new ImageIcon(getClass().getResource("/images/chaleco.png"));
+
+	                    Image imagenRedimensionada = iconoOriginal.getImage().getScaledInstance(21, 25, Image.SCALE_SMOOTH);
+
+	                    ImageIcon iconoRedimensionado = new ImageIcon(imagenRedimensionada);
+
+	                   // Asignar el icono redimensionado al JLabel
+	                   celda.setIcon(iconoRedimensionado);
+	                   celda.setText(nombre);
+	                   
+	        		}else if(nombre.equals("Sandalias")) {
+	        			ImageIcon iconoOriginal = new ImageIcon(getClass().getResource("/images/sandalias.png"));
+
+	                    Image imagenRedimensionada = iconoOriginal.getImage().getScaledInstance(25, 15, Image.SCALE_SMOOTH);
+
+	                    ImageIcon iconoRedimensionado = new ImageIcon(imagenRedimensionada);
+
+	                   // Asignar el icono redimensionado al JLabel
+	                   celda.setIcon(iconoRedimensionado);
+	                   celda.setText(nombre);
+ 
+	        		}else {
+	        			// Para otras marcas, solo mostramos el texto
+	                    celda.setText(nombre);
+	                    celda.setIcon(null);  // No mostrar ninguna imagen
+	        		}
+	        		
+	        		// Asegurarnos de que el fondo de selección y el color de texto se vean bien al seleccionar la celda
+	                if (isSelected) {
+	                    celda.setBackground(table.getSelectionBackground());
+	                    celda.setOpaque(true); // Necesario para que el color de fondo funcione
+	                } else {
+	                    celda.setBackground(Color.WHITE); // Fondo blanco por defecto
+	                }
+	        		
+	        		return celda;
+	            }
+	        }
+	        
+	        tablaProductos.getColumnModel().getColumn(0).setCellRenderer(new iconoRenderer());
+	        
 	        
 	        // Cargar los productos desde el CSV
 	        listaProductos = cargarProductosDesdeCSV("productos.csv");
