@@ -316,15 +316,24 @@ public class VentanaPrincipal {
 		listaArticulosPanel.repaint(); // Repaint para mostrar los cambios
 	}
 
+	//Método recursivo para calcular el precio total
+	public static double precioTotal(DefaultListModel<Ropa> carrito, int indice) {
+		//Caso base: si llegamos al final de la lista, el precio total es 0
+		if(indice ==  carrito.size()) {
+			return 0;
+		}
+		
+		//Sino, suma el precio actual y avanza en la lista
+		return carrito.get(indice).getPrecio() + precioTotal(carrito, indice+1);	
+	}
+	
+	
 	// Método para actualizar totales
 	private void actualizarTotales() {
 		totalArticulosLabel.setText("Total artículos: " + modeloCarrito.getSize()); // Actualizar el total de artículos
-
-		// Calcular el precio total
-		double precioTotal = 0;
-		for (int i = 0; i < modeloCarrito.getSize(); i++) {
-			precioTotal += modeloCarrito.getElementAt(i).getPrecio(); // Sumar el precio de cada artículo
-		}
+		
+		double precioTotal=precioTotal(modeloCarrito, 0);
+		
 		totalPrecioLabel.setText("Precio total: " + precioTotal); // Actualizar el precio total
 	}
 
