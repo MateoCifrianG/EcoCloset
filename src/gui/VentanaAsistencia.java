@@ -68,15 +68,15 @@ public class VentanaAsistencia {
 		
 		// Renderizado personalizado para la cabecera
 		tablaAsistencia.getTableHeader().setDefaultRenderer((table, value, isSelected, hasFocus, row, column) -> {
-		JLabel cabecera = new JLabel(value.toString());
+		JLabel cabecera2 = new JLabel(value.toString());
 		
-		cabecera.setHorizontalAlignment(SwingConstants.CENTER);
-		cabecera.setFont(new Font("Verdana", Font.BOLD, 15));
-		cabecera.setBackground(Color.decode("#ff9580"));
-		cabecera.setBorder(BorderFactory.createLineBorder(Color.decode("#f2401d"), 2));
-		cabecera.setOpaque(true);
+		cabecera2.setHorizontalAlignment(SwingConstants.CENTER);
+		cabecera2.setFont(new Font("Verdana", Font.BOLD, 15));
+		cabecera2.setBackground(Color.decode("#ff9580"));
+		cabecera2.setBorder(BorderFactory.createLineBorder(Color.decode("#f2401d"), 2));
+		cabecera2.setOpaque(true);
 		
-		return cabecera;
+		return cabecera2;
 	});
 		
 		// Cargar las asistencias desde el CSV
