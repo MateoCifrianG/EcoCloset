@@ -17,6 +17,7 @@ public class VentanaRegistro {
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ventana.setSize(400, 400);
         ventana.setLayout(new GridBagLayout());
+        ventana.getContentPane().setBackground(Color.decode("#cff9ff"));
 
         // Crear los componentes de la ventana
         JLabel nombreLabel = new JLabel("Nombre: ");
