@@ -19,7 +19,6 @@ import java.sql.Statement;
 import domain.Pedido;
 import domain.Ropa;
 import domain.Usuario;
-import es.deusto.prog3.jdbc.p1.Cliente;
 import main.Inicializador;
 
 public class VentanaPrincipal {
