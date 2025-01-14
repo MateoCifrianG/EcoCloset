@@ -201,6 +201,19 @@ public class VentanaEstadisticas {
         JScrollPane scrollPaneMarcas = new JScrollPane(tableMarcas);
         scrollPaneMarcas.setBorder(BorderFactory.createTitledBorder("Estadísticas de Marcas"));
 
+     // Renderizado personalizado para la cabecera
+        tableMarcas.getTableHeader().setDefaultRenderer((table, value, isSelected, hasFocus, row, column) -> {
+		JLabel cabecera = new JLabel(value.toString());
+		
+		cabecera.setHorizontalAlignment(SwingConstants.CENTER);
+		cabecera.setFont(new Font("Verdana", Font.BOLD, 13));
+		cabecera.setBackground(Color.decode("#ff9580"));
+		cabecera.setBorder(BorderFactory.createLineBorder(Color.decode("#f2401d"), 2));
+		cabecera.setOpaque(true);
+		
+		return cabecera;
+	});
+        
         // Crear un panel para el área de búsqueda
         JPanel panelBusqueda = new JPanel(new BorderLayout());
 
