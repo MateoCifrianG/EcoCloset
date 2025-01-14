@@ -1,5 +1,6 @@
 package gui;
- import java.awt.Dimension;
+ import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -36,7 +37,7 @@ public class FormularioRegistro {
     	ventana.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);//se cierra el programa al darle a la x
         ventana.setSize(400, 500); //tamaño de ventana
         ventana.setLayout(new GridBagLayout()); //GridBagLayout lo utilizamos para que todo mantenga su tamaño a pesar de que se maximice o minimice la pantalla.
-        
+        ventana.getContentPane().setBackground(Color.decode("#cff9ff"));
     
         //Crear los componentes del formulario sin añadirlos a la pantalla
         JLabel nombreLabel = new JLabel("Nombre:");
