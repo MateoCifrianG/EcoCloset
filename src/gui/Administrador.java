@@ -42,7 +42,20 @@ import javax.swing.table.DefaultTableModel;
 	        modeloTabla = new DefaultTableModel(columnas, 0);
 	        tablaProductos = new JTable(modeloTabla);
 	        JScrollPane scrollTabla = new JScrollPane(tablaProductos);
-	
+	        
+	     // Renderizado personalizado para la cabecera
+        	tablaProductos.getTableHeader().setDefaultRenderer((table, value, isSelected, hasFocus, row, column) -> {
+			JLabel result = new JLabel(value.toString());
+			
+			result.setHorizontalAlignment(SwingConstants.CENTER);
+			result.setFont(new Font("Verdana", Font.BOLD, 15));
+			result.setBackground(Color.decode("#ff9580"));
+			result.setBorder(BorderFactory.createLineBorder(Color.decode("#f2401d"), 2));
+			result.setOpaque(true);
+			
+			return result;
+		});
+        	
 	        tablaProductos.getColumnModel().getColumn(5).setCellRenderer(new RendererAdminColor());
 	        
 	        tablaProductos.setRowHeight(35); //Tamaño de las celdas
