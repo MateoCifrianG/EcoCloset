@@ -235,7 +235,7 @@ import javax.swing.table.DefaultTableModel;
 	        		}else if(nombre.equals("Camisa")) {
 	        			ImageIcon iconoOriginal = new ImageIcon(getClass().getResource("/images/camisa.png"));
 
-	                    Image imagenRedimensionada = iconoOriginal.getImage().getScaledInstance(25, 15, Image.SCALE_SMOOTH);
+	                    Image imagenRedimensionada = iconoOriginal.getImage().getScaledInstance(20, 25, Image.SCALE_SMOOTH);
 
 	                    ImageIcon iconoRedimensionado = new ImageIcon(imagenRedimensionada);
 
