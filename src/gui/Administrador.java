@@ -45,15 +45,15 @@ import javax.swing.table.DefaultTableModel;
 	        
 	     // Renderizado personalizado para la cabecera
         	tablaProductos.getTableHeader().setDefaultRenderer((table, value, isSelected, hasFocus, row, column) -> {
-			JLabel result = new JLabel(value.toString());
+			JLabel cabecera = new JLabel(value.toString());
 			
-			result.setHorizontalAlignment(SwingConstants.CENTER);
-			result.setFont(new Font("Verdana", Font.BOLD, 15));
-			result.setBackground(Color.decode("#ff9580"));
-			result.setBorder(BorderFactory.createLineBorder(Color.decode("#f2401d"), 2));
-			result.setOpaque(true);
+			cabecera.setHorizontalAlignment(SwingConstants.CENTER);
+			cabecera.setFont(new Font("Verdana", Font.BOLD, 15));
+			cabecera.setBackground(Color.decode("#ff9580"));
+			cabecera.setBorder(BorderFactory.createLineBorder(Color.decode("#f2401d"), 2));
+			cabecera.setOpaque(true);
 			
-			return result;
+			return cabecera;
 		});
         	
 	        tablaProductos.getColumnModel().getColumn(5).setCellRenderer(new RendererAdminColor());
