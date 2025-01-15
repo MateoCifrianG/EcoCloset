@@ -284,7 +284,7 @@ public class FormularioRegistro {
    			}    	
     }
 
-    //
+    //de
     
     public static void main(String[] args) {
     	new FormularioRegistro();
