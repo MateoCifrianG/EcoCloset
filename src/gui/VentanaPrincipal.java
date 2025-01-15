@@ -269,7 +269,7 @@ public class VentanaPrincipal {
 	}
 
 	// Método para abrir la ventana de la cuenta
-	private void abrirVentanaCuenta() {
+	public void abrirVentanaCuenta() {
 		new VentanaCuenta(nombreUsuario); // Abre la ventana de la cuenta pasando el nombre del usuario
 	}
 
