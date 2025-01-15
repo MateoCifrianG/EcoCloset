@@ -111,7 +111,7 @@ public class VentanaAsistencia {
 
     private void buscarAsistenciaEnBD(String usuario) {
         List<String[]> asistenciasFiltradas = new ArrayList<>();
-        String consultaSQL = "SELECT usuario, correo, mensaje, fecha FROM asistencias WHERE usuario LIKE ?";
+        String consultaSQL = "SELECT Id, Usuario, Correo, Mensaje, Fecha FROM Asistencias WHERE Usuario LIKE ?";
 
         try (Connection conexion = DriverManager.getConnection(url);
              PreparedStatement ps = conexion.prepareStatement(consultaSQL)) {
@@ -121,10 +121,11 @@ public class VentanaAsistencia {
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
                     String[] asistencia = {
-                        rs.getString("usuario"),
-                        rs.getString("correo"),
-                        rs.getString("mensaje"),
-                        rs.getString("fecha")
+                    	rs.getString("Id"),
+                        rs.getString("Usuario"),
+                        rs.getString("Correo"),
+                        rs.getString("Mensaje"),
+                        rs.getString("Fecha")
                     };
                     asistenciasFiltradas.add(asistencia);
                 }
