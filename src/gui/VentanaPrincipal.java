@@ -32,6 +32,14 @@ public class VentanaPrincipal {
 	private JLabel totalArticulosLabel; // Label para mostrar el total de artículos
 	private JLabel totalPrecioLabel; // Label para mostrar el precio total
 	
+	public VentanaPrincipal getVentana() {
+	    return this;
+	}
+	
+	public void dispose() {
+        ventana.dispose();
+    }
+	
 	public VentanaPrincipal(String nombreUsuario) {
 		// CREACION DE LA VENTANA
 		ventana = new JFrame("ECOCLOSET");

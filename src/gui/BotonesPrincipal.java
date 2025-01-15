@@ -41,7 +41,7 @@ import javax.swing.JOptionPane;
 	            @Override
 	            public void actionPerformed(ActionEvent e) {
 	                ventanaPrincipal.getModeloCarrito().addElement(ropa); // Agregar al carrito
-	                JOptionPane.showMessageDialog(ventanaPrincipal.getVentana(), ropa.getNombre() + " añadido al carrito.");
+	                JOptionPane.showInputDialog(ventanaPrincipal.getVentana(), ropa.getNombre() + " añadido al carrito.");
 	            }
 	        };
 	    }
