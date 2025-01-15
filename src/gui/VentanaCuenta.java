@@ -139,4 +139,98 @@ public class VentanaCuenta {
 	        return datos.toString();
 	    }
 
+<<<<<<< HEAD
+=======
+//		try (BufferedReader br = new BufferedReader(new FileReader(archivoCSV))) {
+//			String linea;
+//			while ((linea = br.readLine()) != null) {
+//				String[] valores = linea.split(";"); // Cambiar a punto y coma como delimitador
+//				if (valores.length >= 7 && valores[0].equalsIgnoreCase(nombreUsuario)) { // Asegurarse de que hay
+//																							// suficientes columnas
+//					datos.append("<br>");
+//					datos.append("<strong>Nombre:</strong> ").append(valores[0]).append("<br>").append("<br>");
+//					datos.append("<strong>Apellido 1:</strong> ").append(valores[1]).append("<br>").append("<br>");
+//					datos.append("<strong>Apellido 2:</strong> ").append(valores[2]).append("<br>").append("<br>");
+//					datos.append("<strong>Dirección:</strong> ").append(valores[3]).append("<br>").append("<br>");
+//					datos.append("<strong>Fecha de nacimiento:</strong> ").append(valores[4]).append("<br>")
+//							.append("<br>");
+//					datos.append("<strong>Nacionalidad:</strong> ").append(valores[5]).append("<br>").append("<br>");
+//					datos.append("<strong>Contraseña:</strong> ").append(valores[6]).append("<br>").append("<br>");
+//					break; // Salir del bucle si se ha encontrado el usuario
+//				}
+//			}
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//			return "Error al leer los datos del usuario.";
+//		}
+//
+//		return datos.length() > 0 ? datos.toString() : "Usuario no encontrado."; 
+//
+//	}
+
+	public static void main(String[] args) {
+
+		new VentanaCuenta("usuarioEjemplo");
+	}
+	 
+	public String obtenerDatosUsuarioBD(String nombre) {
+    	
+		StringBuilder datos = new StringBuilder();
+		
+    	// cargar el driver de SQLite para JDBC
+    	// se hace una vez en todo el programa
+   		try { 
+   			Class.forName("org.sqlite.JDBC"); 
+   		} catch (ClassNotFoundException e) { 
+   			System.out.println("No se ha podido cargar el driver de la base de datos"); 
+   		}
+   		
+   		//Prueba
+   	// conectar a la base de datos
+   			try {
+   				Connection conn = DriverManager.getConnection("jdbc:sqlite:resources/db/usuarios.db");
+   				
+   				Statement stmt = conn.createStatement();
+   				
+   				String sql = "SELECT * FROM Usuarios WHERE Nombre = " + nombre + ";";
+   				
+   				ResultSet rs = stmt.executeQuery(sql); 				
+   				 
+   				while (rs.next()) { 
+   					String Nombre = rs.getString("Nombre");  
+   					String apellido1 = rs.getString("Apellido1");
+   					String apellido2 = rs.getString("Apellido2");
+   					String direccion = rs.getString("Direccion");  
+   					String fecha = rs.getString("FechaNac");
+   					String nacionalidad = rs.getString("Nacionalidad");
+   					String contraseña = rs.getString("Contraseña");
+   				
+	   				datos.append("<br>"); 
+					datos.append("<strong>Nombre:</strong> ").append(Nombre).append("<br>").append("<br>");
+					datos.append("<strong>Apellido 1:</strong> ").append(apellido1).append("<br>").append("<br>");
+					datos.append("<strong>Apellido 2:</strong> ").append(apellido2).append("<br>").append("<br>");
+					datos.append("<strong>Dirección:</strong> ").append(direccion).append("<br>").append("<br>");
+					datos.append("<strong>Fecha de nacimiento:</strong> ").append(fecha).append("<br>").append("<br>");
+					datos.append("<strong>Nacionalidad:</strong> ").append(nacionalidad).append("<br>").append("<br>");
+					datos.append("<strong>Contraseña:</strong> ").append(contraseña).append("<br>").append("<br>");
+					break; // Salir del bucle si se ha encontrado el usuario
+   				
+   				}	
+					
+   				stmt.close();
+   				
+   				System.out.println("Usuario registrado con éxito.");
+
+   		        conn.close();
+   				
+   			
+   			}catch (SQLException e1) {
+			e1.printStackTrace();
+   			}
+			return datos.length() > 0 ? datos.toString() : "Usuario no encontrado."; 
+			    	 
+
+	}		
+// ----------------------------------------------------------------------------------------------------------
+>>>>>>> branch 'main' of https://github.com/MateoCifrianG/EcoCloset.git
 }
