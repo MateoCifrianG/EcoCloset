@@ -95,20 +95,20 @@ public class Asistencia {
     }
 
     // Método para guardar el mensaje en la base de datos j
-    private void guardarProblema(String usuario, String correo, String comentario, String fecha) {
+    private void guardarProblema(String usuario, String correo, String mensaje, String fecha) {
         // Datos de conexión a la base de datos
         String url = "jdbc:sqlite:resources/db/asistencias.db";
-        String user = "tu_usuario";
-        String password = "tu_contraseña";
+        String user = "usuario";
+        String password = "contraseña";
 
-        String query = "INSERT INTO problemas (usuario, correo, comentario, fecha) VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO Asistencias (usuario, correo, comentario, fecha) VALUES (?, ?, ?, ?)";
 
         try (Connection conn = DriverManager.getConnection(url, user, password);
              PreparedStatement pstmt = conn.prepareStatement(query)) {
 
             pstmt.setString(1, usuario);
             pstmt.setString(2, correo);
-            pstmt.setString(3, comentario);
+            pstmt.setString(3, mensaje);
             pstmt.setString(4, fecha);
 
             pstmt.executeUpdate(); // Ejecutar la inserción
