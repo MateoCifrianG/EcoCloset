@@ -283,7 +283,6 @@ public class FormularioRegistro {
    			}    	
     }
 
-    // ------------------------------------------------------------------------
     
     
     public static void main(String[] args) {
