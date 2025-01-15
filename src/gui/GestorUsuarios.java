@@ -31,11 +31,7 @@ public class GestorUsuarios {
     private DefaultTableModel modeloTabla;
     private JTextField campoBusqueda;
     private List<String[]> listaUsuarios;
-<<<<<<< HEAD
-    //prueba
-=======
-// prueba
->>>>>>> branch 'main' of https://github.com/MateoCifrianG/EcoCloset.git
+
     public GestorUsuarios() {
         // Creo la ventana del gestor de usuarios
         ventana = new JFrame("Gestor de Usuarios");
