@@ -166,10 +166,6 @@ public class VentanaPrincipal {
 		JButton mostrarMenu = new JButton("Mostrar Opciones");
 		JPopupMenu popupMenu = new JPopupMenu();
 
-		// Crear los ActionListeners
-		// Crear los ActionListeners
-		BotonesPrincipal popupListener = new BotonesPrincipal(this); // Cambié el nombre de la clase a BotonesPrincipal
-
 		// Añadir opciones al JPopupMenu
 		JMenuItem opcion1 = new JMenuItem("Cuenta");
 		opcion1.addActionListener(e -> abrirVentanaCuenta()); // Abrir la ventana de cuenta
