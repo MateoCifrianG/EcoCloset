@@ -126,86 +126,8 @@ public class GestorUsuarios {
         
 		ventana.setVisible(true);
 	}
-		//Para hacer los métodos nos hemos apoyado en ChatGPT y los apuntes de Programación II
-		
-	//Método para cargar usuarios desde un csv
-		private List<String[]> cargarUsuariosDesdeCSV(String filePath){
-			List<String[]> usuarios = new ArrayList<>();
-			try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-	            String linea;
-	            while ((linea = reader.readLine()) != null) { //mientras la línea no sea nula
-	                String[] valores = linea.split(";"); // Suponiendo que el separador es ";"
-	                usuarios.add(valores); // Guardar cada línea
-	            }
-	        } catch (IOException e) { 
-	            JOptionPane.showMessageDialog(ventana, "Error al leer el archivo CSV: " + e.getMessage());
-	        }
-	        return usuarios; //devuelve la lista de usuarios
-		}
-		
-		//Método para actualizar la tabla con usuarios
-		private void actualizarTabla(List<String[]> usuarios) {
-			modeloTabla.setRowCount(0); //Eliminamos las filas de la tabla
-			for(String[] usuario: usuarios) {
-				modeloTabla.addRow(usuario); //Añadir cada usuario a la tabla
-			}
-		}
-		
-		//Método para buscar un usuario por nombre
-		private void buscarUsuario(String nombre) {
-			List<String[]> usuariosFiltrados=new ArrayList<>();
-			for(String[] usuario : listaUsuarios) {
-				if(usuario[0].toLowerCase().contains(nombre.toLowerCase()) ||
-				   usuario[1].toLowerCase().contains(nombre.toLowerCase()) ||
-				   usuario[2].toLowerCase().contains(nombre.toLowerCase())) {
-					usuariosFiltrados.add(usuario); //Añadir usuario si coincide con la búsqueda
-				}
-			}
-			actualizarTabla(usuariosFiltrados); //Mostrar solo los usuarios filtrados
-		}
-		
-		//Método para eliminar el usuario seleccionado 
-		private void eliminarUsuarioSeleccionado() {
-			int filaSeleccionada=tablaUsuarios.getSelectedRow();
-			if(filaSeleccionada>=0) {
-				String nombreUsuario = (String) modeloTabla.getValueAt(filaSeleccionada, 0);
-				int confirmacion=JOptionPane.showConfirmDialog(ventana, "¿Estás seguro de eliminar el usuario: " + nombreUsuario+ "?", "Confirmación", JOptionPane.YES_NO_OPTION);
-			
-				if(confirmacion==JOptionPane.YES_OPTION) {
-					//Eliminar el usuario de la lista y del modelo de la tabla
-					listaUsuarios.remove(filaSeleccionada);
-					modeloTabla.removeRow(filaSeleccionada);
-					
-					//Guardar los cambios en el CSV
-					guardarUsuariosEnCSV("usuarios1.csv");
-				}
-			}else {
-				JOptionPane.showMessageDialog(ventana, "Por favor, selecciona un usuario para eliminar");
-			}
-		}
-	
-		// Método para guardar los usuarios modificados en el archivo CSV
-	    private void guardarUsuariosEnCSV(String filePath) {
-	        try (PrintWriter writer = new PrintWriter(new FileWriter(filePath))) {
-	            for (String[] usuario : listaUsuarios) {
-	                writer.println(String.join(";", usuario)); // Escribir cada usuario de nuevo al archivo
-	            }
-	        } catch (IOException e) {
-	            JOptionPane.showMessageDialog(ventana, "Error al guardar el archivo CSV: " + e.getMessage());
-	        }
-	    }
-	    
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                eliminarUsuarioSeleccionado();
-            }
-        });
-
-
-        ventana.setVisible(true);
-    }
-
+		//Para hacer los métodos nos hemos apoyado en ChatGPT y los apuntes de Programacion II
+    
     // Método para cargar usuarios desde la base de datos
     private List<String[]> cargarUsuariosDesdeBD() {
         List<String[]> usuarios = new ArrayList<>();
