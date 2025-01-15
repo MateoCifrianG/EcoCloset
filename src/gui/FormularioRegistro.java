@@ -283,8 +283,6 @@ public class FormularioRegistro {
    				JOptionPane.showMessageDialog(ventana, "Error al registrar: usuario repetido");
    			}    	
     }
-
-    //de
     
     public static void main(String[] args) {
     	new FormularioRegistro();
