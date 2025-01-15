@@ -155,6 +155,7 @@ public class VentanaCuenta {
    			System.out.println("No se ha podido cargar el driver de la base de datos"); 
    		}
    		
+   		//Prueba
    	// conectar a la base de datos
    			try {
    				Connection conn = DriverManager.getConnection("jdbc:sqlite:resources/db/usuarios.db");
