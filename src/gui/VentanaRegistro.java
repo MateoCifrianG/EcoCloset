@@ -36,7 +36,7 @@ public class VentanaRegistro {
         mensaje = new JLabel(" ");
         mensaje.setHorizontalAlignment(SwingConstants.CENTER);
 
-        // Crear un GridBagConstraints para posicionar los componentes
+        // Crear un GridBagConstraints para posicionar los componentes --> nos apoyamos en ia para conocer de que trataba.
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(10, 10, 10, 10);
 
