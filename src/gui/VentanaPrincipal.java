@@ -444,23 +444,23 @@ public class VentanaPrincipal {
 	
 // BASE DE DATOS sql -------------------------------------------------------------------------------------------------
 	
-	private void guardarPrendaEnBD (int id, String nombreUsuario, Ropa prenda) {
-		//Se abre la conexión y se obtiene el Statement
-				try (Connection con = DriverManager.getConnection("jdbc:sqlite:resources/db/pedidos.db");
-				     Statement stmt = con.createStatement()) {
-					//Se define la plantilla de la sentencia SQL
-					String sql = "INSERT INTO Productos (Nombre, Marca, Talla, Cantidad, Precio, Estado) VALUES ('%s', '%s', '%s','%i', '%d '%s');";
-					
-					stmt.executeUpdate(String.format(sql, prenda.getNombre(), prenda.getTalla(), prenda.getEstado(), 
-							prenda.getCantidad(), prenda.getPrecio(), prenda.getMarca())); {					
-							
-						
-					}			
-				} catch (Exception ex) { 
-					System.err.format("\n* Error al insertar datos de la BD de pedidos: %s", ex.getMessage());
-					ex.printStackTrace();						
-				}	
-	}
+//	private void guardarPrendaEnBD (int id, String nombreUsuario, Ropa prenda) {
+//		//Se abre la conexión y se obtiene el Statement
+//				try (Connection con = DriverManager.getConnection("jdbc:sqlite:resources/db/pedidos.db");
+//				     Statement stmt = con.createStatement()) {
+//					//Se define la plantilla de la sentencia SQL
+//					String sql = "INSERT INTO Productos (Nombre, Marca, Talla, Cantidad, Precio, Estado) VALUES ('%s', '%s', '%s','%i', '%d '%s');";
+//					
+//					stmt.executeUpdate(String.format(sql, prenda.getNombre(), prenda.getTalla(), prenda.getEstado(), 
+//							prenda.getCantidad(), prenda.getPrecio(), prenda.getMarca())); {					
+//							
+//						
+//					}			
+//				} catch (Exception ex) { 
+//					System.err.format("\n* Error al insertar datos de la BD de pedidos: %s", ex.getMessage());
+//					ex.printStackTrace();						
+//				}	
+//	}
 	
 // ----------------------------------------------------------------------------------------------------------------------
 
