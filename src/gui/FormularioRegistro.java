@@ -173,6 +173,7 @@ public class FormularioRegistro {
         gbc.anchor = GridBagConstraints.CENTER; // Centrar el botón
         ventana.add(registrarButton, gbc);
         
+        //prueba bd
      // Crear un ActionListener para el botón de registro
         registrarButton.addActionListener(e -> {
             String contraseña = new String(contraseñaField.getPassword());
