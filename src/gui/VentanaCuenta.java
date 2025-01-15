@@ -8,6 +8,12 @@ import java.awt.event.MouseListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -49,7 +55,7 @@ public class VentanaCuenta {
 		panelInformacion.add(titulo);
 
 		// Obtener datos del usuario y mostrarlos
-		String datosUsuario = obtenerDatosUsuario();
+		String datosUsuario = obtenerDatosUsuarioBD(nombreUsuario); 
 		JLabel datosLabel = new JLabel("<html>" + datosUsuario.replace("\n", "<br>") + "</html>");
 		datosLabel.setFont(new Font("Arial", Font.PLAIN, 14)); // Fuente del texto
 		datosLabel.setForeground(Color.DARK_GRAY); // Color del texto de los datos
@@ -99,7 +105,7 @@ public class VentanaCuenta {
 		ventanaCuenta.setVisible(true);
 
 	}
-
+// -----------------------------------------------------------------------------------------------------
 	private String obtenerDatosUsuario() {
 
 		StringBuilder datos = new StringBuilder();
@@ -128,7 +134,7 @@ public class VentanaCuenta {
 			return "Error al leer los datos del usuario.";
 		}
 
-		return datos.length() > 0 ? datos.toString() : "Usuario no encontrado.";
+		return datos.length() > 0 ? datos.toString() : "Usuario no encontrado."; 
 
 	}
 
@@ -136,5 +142,63 @@ public class VentanaCuenta {
 
 		new VentanaCuenta("usuarioEjemplo");
 	}
+	 
+	public String obtenerDatosUsuarioBD(String nombre) {
+    	
+		StringBuilder datos = new StringBuilder();
+		
+    	// cargar el driver de SQLite para JDBC
+    	// se hace una vez en todo el programa
+   		try { 
+   			Class.forName("org.sqlite.JDBC"); 
+   		} catch (ClassNotFoundException e) { 
+   			System.out.println("No se ha podido cargar el driver de la base de datos"); 
+   		}
+   		
+   	// conectar a la base de datos
+   			try {
+   				Connection conn = DriverManager.getConnection("jdbc:sqlite:resources/db/usuarios.db");
+   				
+   				Statement stmt = conn.createStatement();
+   				
+   				String sql = "SELECT * FROM Usuarios WHERE Nombre = " + nombre + ";";
+   				
+   				ResultSet rs = stmt.executeQuery(sql); 				
+   				 
+   				while (rs.next()) { 
+   					String Nombre = rs.getString("Nombre");  
+   					String apellido1 = rs.getString("Apellido1");
+   					String apellido2 = rs.getString("Apellido2");
+   					String direccion = rs.getString("Direccion");  
+   					String fecha = rs.getString("FechaNac");
+   					String nacionalidad = rs.getString("Nacionalidad");
+   					String contraseña = rs.getString("Contraseña");
+   				
+	   				datos.append("<br>"); 
+					datos.append("<strong>Nombre:</strong> ").append(Nombre).append("<br>").append("<br>");
+					datos.append("<strong>Apellido 1:</strong> ").append(apellido1).append("<br>").append("<br>");
+					datos.append("<strong>Apellido 2:</strong> ").append(apellido2).append("<br>").append("<br>");
+					datos.append("<strong>Dirección:</strong> ").append(direccion).append("<br>").append("<br>");
+					datos.append("<strong>Fecha de nacimiento:</strong> ").append(fecha).append("<br>").append("<br>");
+					datos.append("<strong>Nacionalidad:</strong> ").append(nacionalidad).append("<br>").append("<br>");
+					datos.append("<strong>Contraseña:</strong> ").append(contraseña).append("<br>").append("<br>");
+					break; // Salir del bucle si se ha encontrado el usuario
+   				
+   				}	
+					
+   				stmt.close();
+   				
+   				System.out.println("Usuario registrado con éxito.");
 
+   		        conn.close();
+   				
+   			
+   			}catch (SQLException e1) {
+			e1.printStackTrace();
+   			}
+			return datos.length() > 0 ? datos.toString() : "Usuario no encontrado."; 
+			    	 
+
+	}		
+// ----------------------------------------------------------------------------------------------------------
 }

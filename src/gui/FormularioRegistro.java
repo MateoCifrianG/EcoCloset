@@ -1,6 +1,5 @@
 package gui;
- import java.awt.Color;
-import java.awt.Dimension;
+ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -37,7 +36,7 @@ public class FormularioRegistro {
     	ventana.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);//se cierra el programa al darle a la x
         ventana.setSize(400, 500); //tamaño de ventana
         ventana.setLayout(new GridBagLayout()); //GridBagLayout lo utilizamos para que todo mantenga su tamaño a pesar de que se maximice o minimice la pantalla.
-        ventana.getContentPane().setBackground(Color.decode("#cff9ff"));
+        
     
         //Crear los componentes del formulario sin añadirlos a la pantalla
         JLabel nombreLabel = new JLabel("Nombre:");
@@ -137,7 +136,6 @@ public class FormularioRegistro {
         fechaPanel.add(comboDia);
         fechaPanel.add(comboMes);
         fechaPanel.add(comboAnho);
-        fechaPanel.setBackground(Color.decode("#cff9ff"));
         
         	//Añadimos Fecha
         gbc.gridx= 1;
@@ -259,12 +257,10 @@ public class FormularioRegistro {
    	// conectar a la base de datos
    			try {
    				Connection conn = DriverManager.getConnection("jdbc:sqlite:resources/db/usuarios.db");
-   				
-   				
+   				 				
    				String sql = "INSERT INTO Usuarios VALUES(?, ?, ?, ?, ?, ?, ?, ?);";
    				PreparedStatement ps = conn.prepareStatement(sql);
-   				
-   				
+   				 				
    				ps.setString(1, nombre); 
    				ps.setString(2, apellido1);
    				ps.setString(3, apellido2);
@@ -280,18 +276,13 @@ public class FormularioRegistro {
    				
    				System.out.println("Usuario registrado con éxito.");
 
-   		        
    		        conn.close();
    				
    			} catch (SQLException e1) {
    				e1.printStackTrace();
-   			}
-			
-   			
-    	
+   			}    	
     }
-    
-    
+
     // ------------------------------------------------------------------------
     
     
