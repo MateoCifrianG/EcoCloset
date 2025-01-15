@@ -138,9 +138,9 @@ public class VentanaAsistencia {
         actualizarTablaAsistencias(asistenciasFiltradas);
     }
 
-    //Ayuda con ChatGPT --> dudas en el código, ya que daba errores.
-    // File (https://chatgpt.com/share/6787f0ab-7c88-800c-b7d4-dba04dacaa9d)
-    // el JOptionPane nos daba error. También nos apoyamos en la ia para hacer este metodo.
+    //IAG --> dudas en el código, ya que daba errores.
+    // FILE (https://chatgpt.com/share/6787f0ab-7c88-800c-b7d4-dba04dacaa9d)
+    //CAMBIOS el JOptionPane nos daba error. También nos apoyamos en la ia para hacer este metodo.
     private void eliminarAsistenciaSeleccionada() {
         int filaSeleccionada = tablaAsistencia.getSelectedRow();
         if (filaSeleccionada >= 0) {
@@ -161,6 +161,7 @@ public class VentanaAsistencia {
                     modeloTabla.removeRow(filaSeleccionada); // Eliminar de la tabla visual
 
                 } catch (SQLException e) {
+                	//CAMBIOS EN EL JOPTIONPANE EL FORMATO ESTABA MAL PUESTO
                     JOptionPane.showMessageDialog(ventana, "Error al eliminar la asistencia: " + e.getMessage());
                 }
             }

@@ -292,8 +292,12 @@ public class VentanaPrincipal {
 		for (Ropa ropa : lista) {
 			// Crear un panel para cada artículo
 			JPanel articuloPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-			articuloPanel.setBorder(BorderFactory.createLineBorder(Color.GRAY)); // Añadir un borde para separar los
+			articuloPanel.setBorder(BorderFactory.createLineBorder(Color.GRAY)); // Añadir un borde para separar los. 
 																					// artículos
+			
+			//FUENTE-EXTERNA: 
+			// URL: https://docs.oracle.com/javase/8/docs/api/javax/swing/BorderFactory.html 
+			// SIN CAMBIOS: como funciona el BorderFactory
 
 			// Mostrar el nombre, talla, precio y marca
 			JLabel nombreLabel = new JLabel(ropa.getNombre() + " - Talla: " + ropa.getTalla() + " - Precio: "
