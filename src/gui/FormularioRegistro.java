@@ -209,7 +209,7 @@ public class FormularioRegistro {
 //                } 
             }
         });
- 
+        //h
         // Ajustes para hacer que la ventana sea adaptable
         ventana.setMinimumSize(new Dimension(400, 500)); // Tamaño mínimo para que se vea correctamente
         ventana.setVisible(true);
