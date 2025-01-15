@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 Chaqueta;UrbanStyle;S;16;19.99;Nuevo
 Camiseta;Trendsetters;M;4;24.99;Desgastado
 Chaqueta;CasualVibe;L;45;14.99;Semi-nuevo
 Sudadera;CozyFashion;XL;7;34.99;Usado
+=======
+Chaqueta;UrbanStyle;S;14;19.99;Nuevo
+Camiseta;Trendsetters;M;6;24.99;Desgastado
+Chaqueta;CasualVibe;L;47;14.99;Semi-nuevo
+Sudadera;CozyFashion;XL;8;34.99;Usado
+>>>>>>> branch 'main' of https://github.com/MateoCifrianG/EcoCloset.git
 Camiseta;FreshLook;XS;4;27.99;Nuevo
 Chaqueta;StyleHaven;S;30;18.99;Nuevo
 Sudadera;UrbanChill;M;5;42.99;Usado

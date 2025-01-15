@@ -31,7 +31,11 @@ public class GestorUsuarios {
     private DefaultTableModel modeloTabla;
     private JTextField campoBusqueda;
     private List<String[]> listaUsuarios;
+<<<<<<< HEAD
     //prueba
+=======
+// prueba
+>>>>>>> branch 'main' of https://github.com/MateoCifrianG/EcoCloset.git
     public GestorUsuarios() {
         // Creo la ventana del gestor de usuarios
         ventana = new JFrame("Gestor de Usuarios");
@@ -114,15 +118,20 @@ public class GestorUsuarios {
 
         // Acción para eliminar el usuario seleccionado
         botonEliminar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                eliminarUsuarioSeleccionado();
-            }
-        });
 
-        ventana.setVisible(true);
-    }
-
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				eliminarUsuarioSeleccionado();
+				
+			}
+		});
+        
+        
+		ventana.setVisible(true);
+	}
+		//Para hacer los métodos nos hemos apoyado en ChatGPT y los apuntes de Programacion II
+    
     // Método para cargar usuarios desde la base de datos
     private List<String[]> cargarUsuariosDesdeBD() {
         List<String[]> usuarios = new ArrayList<>();

@@ -215,14 +215,36 @@ public class VentanaPrincipal {
 		ventana.setVisible(true);
 	}
 
-	// Método para abrir la ventana de pedidos
-	private void mostrarPedidos() {
-		System.out.println("Mostrando pedidos para: " + nombreUsuario);
-		for (Pedido pedido : listaPedidos) {
-			System.out.println(pedido); // Suponiendo que Pedido tiene un método toString
-		}
-		new VentanaPedidos(nombreUsuario); // Crear y mostrar la ventana de pedidos
+//	// Método para abrir la ventana de pedidos
+//	private void mostrarPedidos() {
+//		System.out.println("Mostrando pedidos para: " + nombreUsuario);
+//		for (Pedido pedido : listaPedidos) {
+//			System.out.println(pedido); // Suponiendo que Pedido tiene un método toString
+//		}
+//		new VentanaPedidos(nombreUsuario); // Crear y mostrar la ventana de pedidos
+//	}
+	
+	// ------------------------------
+	// Método principal para mostrar pedidos
+	private void mostrarPedidos() { 
+	    System.out.println("Mostrando pedidos para: " + nombreUsuario);
+	    mostrarPedidosRecursivo(0); // Iniciar recursión desde el primer pedido
+	    new VentanaPedidos(nombreUsuario); // Crear y mostrar la ventana de pedidos
 	}
+
+	// Método recursivo para imprimir los pedidos uno a uno
+	private void mostrarPedidosRecursivo(int posicion) {
+		// Caso base 
+	    if (posicion >= listaPedidos.size()) {
+	        return; 
+	    }  
+	    System.out.println(listaPedidos.get(posicion)); 
+	    // Llamada recursiva, llama al siguiente pedido
+	    mostrarPedidosRecursivo(posicion + 1); 
+	}
+
+	
+	//---------------------------------
 
 	public void abrirVentanaRegistro() {
 		new VentanaRegistro(); // Abre la ventana de registro

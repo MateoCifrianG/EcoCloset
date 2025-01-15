@@ -111,7 +111,7 @@ public class VentanaCuenta {
 
 	}
 	
-	//hola
+	//Método para obtener los los datos de los usuarios conectando con la bd
 	 public String obtenerDatosUsuario() {
 	        StringBuilder datos = new StringBuilder();
 	        // Ruta completa con el prefijo para SQLite
