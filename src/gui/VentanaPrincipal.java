@@ -31,7 +31,7 @@ public class VentanaPrincipal {
 	private List<Pedido> listaPedidos; // Almacena los pedidos del usuario
 	private JLabel totalArticulosLabel; // Label para mostrar el total de artículos
 	private JLabel totalPrecioLabel; // Label para mostrar el precio total
-
+	
 	public VentanaPrincipal(String nombreUsuario) {
 		// CREACION DE LA VENTANA
 		ventana = new JFrame("ECOCLOSET");
@@ -479,4 +479,5 @@ public class VentanaPrincipal {
 		String nombreUsuario = "usuarioPrueba"; // Esto se podría obtener de otro lado
 		new VentanaPrincipal(nombreUsuario);
 	}
+
 }
