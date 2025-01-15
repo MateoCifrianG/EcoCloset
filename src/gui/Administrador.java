@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
 	    private DefaultTableModel modeloTabla;
 	    private JTextField campoBusqueda;
 	    private List<String[]> listaProductos;
-	  
+	  //prueba
 	    public Administrador() {
 	        // CREACION DE LA VENTANA DEL ADMINISTRADOR
 	        ventana = new JFrame("Administrador de Productos");
