@@ -219,7 +219,6 @@ public class VentanaCuenta {
    				stmt.close();
    				
    				System.out.println("Usuario registrado con éxito.");
->>>>>>> branch 'main' of https://github.com/MateoCifrianG/EcoCloset.git
 
    		        conn.close();
    				
