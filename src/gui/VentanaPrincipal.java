@@ -35,7 +35,7 @@ public class VentanaPrincipal {
 	public VentanaPrincipal getVentana() {
 	    return this;
 	}
-	
+	//prueba
 	public void dispose() {
         ventana.dispose();
     }
