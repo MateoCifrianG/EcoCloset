@@ -101,7 +101,7 @@ public class Asistencia {
         String user = "usuario";
         String password = "contraseña";
 
-        String query = "INSERT INTO Asistencias (usuario, correo, comentario, fecha) VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO Asistencias (usuario, correo, mensaje, fecha) VALUES (?, ?, ?, ?)";
 
         try (Connection conn = DriverManager.getConnection(url, user, password);
              PreparedStatement pstmt = conn.prepareStatement(query)) {
