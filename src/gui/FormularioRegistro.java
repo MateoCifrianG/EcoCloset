@@ -279,7 +279,7 @@ public class FormularioRegistro {
    		        conn.close();
    				
    			} catch (SQLException e1) {
-   				e1.printStackTrace();
+   				JOptionPane.showMessageDialog(ventana, "Error al registrar el usuario: usuario ya registrado ");
    			}    	
     }
 
