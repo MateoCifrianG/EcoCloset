@@ -139,10 +139,7 @@ public class VentanaCuenta {
 	            return "Error al leer los datos del usuario desde la base de datos.";
 	        }
 
-<<<<<<< HEAD
-	        return datos.toString();
-	    }
-=======
+
 		try (BufferedReader br = new BufferedReader(new FileReader(archivoCSV))) {
 			String linea;
 			while ((linea = br.readLine()) != null) {
