@@ -6,6 +6,11 @@ import java.util.Objects;
 public class Usuario {
 
 	private String nombre; // Nombre del usuario
+	private String apellido1;
+	private String apellido2;
+	private String direccion;
+	private String fechaNac;
+	private String nacionalidad;
 	private String contraseña;
 
 	public Usuario(String nombre)
@@ -15,6 +20,22 @@ public class Usuario {
 		
 	}
 	
+	
+
+	public Usuario(String nombre, String apellido1, String apellido2, String direccion, String fechaNac,
+			String nacionalidad, String contraseña) {
+		super();
+		this.nombre = nombre;
+		this.apellido1 = apellido1;
+		this.apellido2 = apellido2;
+		this.direccion = direccion;
+		this.fechaNac = fechaNac;
+		this.nacionalidad = nacionalidad;
+		this.contraseña = contraseña;
+	}
+
+
+
 	public Usuario(String nombre, String contraseña) {
 		super();
 		this.nombre = nombre;
