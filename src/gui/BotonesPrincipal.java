@@ -5,12 +5,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import domain.Ropa;
-	
-
-
 import javax.swing.JOptionPane;
-
-import domain.Ropa;
  	
 	public class BotonesPrincipal {
 	    private VentanaPrincipal ventanaPrincipal;
