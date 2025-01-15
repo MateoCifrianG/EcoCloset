@@ -20,6 +20,9 @@ public class Usuario {
 		this.nombre = nombre;
 		this.contraseña = contraseña;
 	}
+	
+	
+	
 
 	public String getNombre() {
 		return nombre;

@@ -147,7 +147,7 @@ public class GestorUsuarios {
 	                String[] valores = linea.split(";"); // Suponiendo que el separador es ";"
 	                usuarios.add(valores); // Guardar cada línea
 	            }
-	        } catch (IOException e) {
+	        } catch (IOException e) { 
 	            JOptionPane.showMessageDialog(ventana, "Error al leer el archivo CSV: " + e.getMessage());
 	        }
 	        return usuarios; //devuelve la lista de usuarios
