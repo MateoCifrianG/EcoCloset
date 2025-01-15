@@ -40,6 +40,10 @@ public class VentanaPrincipal {
         ventana.dispose();
     }
 	
+	public DefaultListModel<Ropa> getModeloCarrito() {
+	    return modeloCarrito;
+	}
+	
 	public VentanaPrincipal(String nombreUsuario) {
 		// CREACION DE LA VENTANA
 		ventana = new JFrame("ECOCLOSET");
