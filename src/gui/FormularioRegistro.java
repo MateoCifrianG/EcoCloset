@@ -215,23 +215,7 @@ public class FormularioRegistro {
         ventana.setVisible(true);
     }
 
- // Método para verificar si ya existe un usuario con el mismo nombre y apellidos
-    private boolean existeUsuario(String nombre, String apellido1, String apellido2) {
-        try (BufferedReader br = new BufferedReader(new FileReader("usuarios1.csv"))) {
-            String linea;
-            while ((linea = br.readLine()) != null) {
-                String[] datos = linea.split(";"); // Separar por ';'
-                if (datos[0].equals(nombre) && datos[1].equals(apellido1) && datos[2].equals(apellido2)) {
-                    return true; // Usuario encontrado
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return false; // No se encontró el usuario
-    }
-
-    //--------------------------------------------------------------------------
+ //--------------------------------------------------------------------------
     public void registrarUsuarioBD(String nombre, String apellido1, String apellido2, String direccion, String fechaNacimiento, String nacionalidad, String contraseña, String repetirContraseña) {
     	
     	// cargar el driver de SQLite para JDBC
