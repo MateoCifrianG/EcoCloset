@@ -97,7 +97,7 @@ public class Asistencia {
     // Método para guardar el mensaje en la base de datos j
     private void guardarProblema(String usuario, String correo, String comentario, String fecha) {
         // Datos de conexión a la base de datos
-        String url = "jdbc:mysql://localhost:3306/tu_base_de_datos";
+        String url = "jdbc:sqlite:resources/db/asistencias.db";
         String user = "tu_usuario";
         String password = "tu_contraseña";
 
