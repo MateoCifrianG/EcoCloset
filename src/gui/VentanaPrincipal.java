@@ -396,7 +396,7 @@ public class VentanaPrincipal {
 					maxId = id; // Actualizar el ID máximo
 				}
 			}
-		} catch (IOException e) {
+		} catch (IOException e) { 
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(ventana, "Error al leer el archivo CSV para obtener el ID.");
 		}

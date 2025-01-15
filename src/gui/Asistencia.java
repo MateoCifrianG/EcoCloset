@@ -95,7 +95,7 @@ public class Asistencia {
 		
 		
 		ventanaProblemas.setVisible(true);
-		
+		 
 	}
 	
 	//Método para guardar el mensaje en el archivo CSV
