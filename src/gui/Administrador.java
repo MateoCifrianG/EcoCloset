@@ -62,11 +62,16 @@ import javax.swing.table.DefaultTableModel;
 	        
 	        //Creo un renderer para que aparezcan las imágenes de las prendas
 	        class iconoRenderer extends DefaultTableCellRenderer {
-	            @Override
+	            /**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
+				@Override
 	            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
 	            	String nombre=(String) value;
 	        		JLabel celda=new JLabel();
-	        		celda.setHorizontalAlignment(celda.CENTER);
+	        		celda.setHorizontalAlignment(SwingConstants.CENTER);
 	        		
 	        		if(nombre.equals("Chaqueta")){	        			
 	        			ImageIcon iconoOriginal = new ImageIcon(getClass().getResource("/images/chaqueta.png"));
