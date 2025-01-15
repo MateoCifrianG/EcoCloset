@@ -193,7 +193,7 @@ public class FormularioRegistro {
                 JOptionPane.showMessageDialog(ventana, "Por favor, completa todos los campos obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
                 return; // No continuar si hay campos vacíos
             }
- 
+            //prueba
             // Comprobar si las contraseñas coinciden, en el caso de que no, pedirla de nuevo
             if (!contraseña.equals(repetirContraseña)) {
                 JOptionPane.showMessageDialog(ventana, "Las contraseñas no coinciden", "Error", JOptionPane.ERROR_MESSAGE);
