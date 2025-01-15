@@ -143,7 +143,7 @@ public class VentanaCuenta {
 		new VentanaCuenta("usuarioEjemplo");
 	}
 	 
-	public String obtenerDatosUsuarioBD(String nombre) {
+	public String obtenerDatosUsuarioBD(String nombreUsuario) {
     	
 		StringBuilder datos = new StringBuilder();
 		
@@ -161,10 +161,14 @@ public class VentanaCuenta {
    				
    				Statement stmt = conn.createStatement();
    				
-   				String sql = "SELECT * FROM Usuarios WHERE Nombre = " + nombre + ";";
+   				String sql = "SELECT * FROM Usuarios WHERE Nombre = " + nombreUsuario + ";";
    				
-   				ResultSet rs = stmt.executeQuery(sql); 				
-   				 
+   				System.out.println("Hola");
+   				
+   				ResultSet rs = stmt.executeQuery(sql); 
+   				
+   				
+   				
    				while (rs.next()) { 
    					String Nombre = rs.getString("Nombre");  
    					String apellido1 = rs.getString("Apellido1");
@@ -173,7 +177,7 @@ public class VentanaCuenta {
    					String fecha = rs.getString("FechaNac");
    					String nacionalidad = rs.getString("Nacionalidad");
    					String contraseña = rs.getString("Contraseña");
-   				
+   					
 	   				datos.append("<br>"); 
 					datos.append("<strong>Nombre:</strong> ").append(Nombre).append("<br>").append("<br>");
 					datos.append("<strong>Apellido 1:</strong> ").append(apellido1).append("<br>").append("<br>");
