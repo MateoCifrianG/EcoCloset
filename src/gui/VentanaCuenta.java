@@ -13,7 +13,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
+import javax.naming.spi.DirStateFactory.Result;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -30,6 +32,10 @@ public class VentanaCuenta {
 
 		this.nombreUsuario = nombreUsuario;
 
+        // Prueba obtener datos del usuario
+        String datos = obtenerDatosUsuario();
+        System.out.println(datos);
+    
 		// Creación de la ventana
 		ventanaCuenta = new JFrame("Cuenta de " + nombreUsuario);
 		ventanaCuenta.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -54,7 +60,7 @@ public class VentanaCuenta {
 		panelInformacion.add(titulo);
 
 		// Obtener datos del usuario y mostrarlos
-		String datosUsuario = obtenerDatosUsuario(nombreUsuario);
+		String datosUsuario = obtenerDatosUsuario();
 		JLabel datosLabel = new JLabel("<html>" + datosUsuario.replace("\n", "<br>") + "</html>");
 		datosLabel.setFont(new Font("Arial", Font.PLAIN, 14)); // Fuente del texto
 		datosLabel.setForeground(Color.DARK_GRAY); // Color del texto de los datos
@@ -104,21 +110,19 @@ public class VentanaCuenta {
 		ventanaCuenta.setVisible(true);
 
 	}
-
-	public String obtenerDatosUsuario(String nom) {
-		 StringBuilder datos = new StringBuilder();
-
-	        // Ruta del archivo SQLite
-	        String url = "jdbc:sqlite:resources/db/usuarios.db"; // Asegúrate de que el archivo exista en tu proyecto
+	
+	//hola
+	 public String obtenerDatosUsuario() {
+	        StringBuilder datos = new StringBuilder();
+	        // Ruta completa con el prefijo para SQLite
+	        String url = "jdbc:sqlite:resources/db/usuarios.db"; 
 	        String consultaSQL = "SELECT * FROM usuarios WHERE nombre = ?";
 
 	        try (Connection conexion = DriverManager.getConnection(url);
 	             PreparedStatement ps = conexion.prepareStatement(consultaSQL)) {
 
-	            // Establecer el parámetro de búsqueda
-	            ps.setString(1, nom);
+	            ps.setString(1, nombreUsuario);
 
-	            // Ejecutar la consulta
 	            try (ResultSet rs = ps.executeQuery()) {
 	                if (rs.next()) {
 	                    datos.append("<br>");
@@ -126,9 +130,9 @@ public class VentanaCuenta {
 	                    datos.append("<strong>Apellido 1:</strong> ").append(rs.getString("apellido1")).append("<br><br>");
 	                    datos.append("<strong>Apellido 2:</strong> ").append(rs.getString("apellido2")).append("<br><br>");
 	                    datos.append("<strong>Dirección:</strong> ").append(rs.getString("direccion")).append("<br><br>");
-	                    datos.append("<strong>Fecha de nacimiento:</strong> ").append(rs.getDate("fecha_nacimiento")).append("<br><br>");
+	                    datos.append("<strong>Fecha de nacimiento:</strong> ").append(rs.getString("fechaNac")).append("<br><br>");
 	                    datos.append("<strong>Nacionalidad:</strong> ").append(rs.getString("nacionalidad")).append("<br><br>");
-	                    datos.append("<strong>Contraseña:</strong> ").append(rs.getString("contrasena")).append("<br><br>");
+	                    datos.append("<strong>Contraseña:</strong> ").append(rs.getString("contraseña")).append("<br><br>");
 	                } else {
 	                    return "Usuario no encontrado.";
 	                }
@@ -141,4 +145,5 @@ public class VentanaCuenta {
 	        return datos.toString();
 	    }
 
-} //h
+	    
+	}
