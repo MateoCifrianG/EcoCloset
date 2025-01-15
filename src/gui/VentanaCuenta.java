@@ -13,7 +13,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+<<<<<<< HEAD
+=======
 import java.sql.Statement;
+>>>>>>> branch 'main' of https://github.com/MateoCifrianG/EcoCloset.git
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -26,7 +29,7 @@ public class VentanaCuenta {
 
 	private JFrame ventanaCuenta;
 	private String nombreUsuario;
-
+	
 	public VentanaCuenta(String nombreUsuario) {
 
 		this.nombreUsuario = nombreUsuario;
@@ -105,11 +108,37 @@ public class VentanaCuenta {
 		ventanaCuenta.setVisible(true);
 
 	}
-// -----------------------------------------------------------------------------------------------------
-	private String obtenerDatosUsuario() {
 
-		StringBuilder datos = new StringBuilder();
-		String archivoCSV = "usuarios1.csv"; // Asegúrate de usar la ruta correcta
+	public String obtenerDatosUsuario() {
+		 StringBuilder datos = new StringBuilder();
+	        String url = "Usuarios.db"; 
+	        String consultaSQL = "SELECT * FROM usuarios WHERE nombre = ?";
+
+	        try (Connection conexion = DriverManager.getConnection(url);
+	             PreparedStatement ps = conexion.prepareStatement(consultaSQL)) {
+	            
+	            ps.setString(1, nombreUsuario);
+
+	           
+	            try (ResultSet rs = ps.executeQuery()) {
+	                if (rs.next()) {
+	                    datos.append("<br>");
+	                    datos.append("<strong>Nombre:</strong> ").append(rs.getString("nombre")).append("<br><br>");
+	                    datos.append("<strong>Apellido 1:</strong> ").append(rs.getString("apellido1")).append("<br><br>");
+	                    datos.append("<strong>Apellido 2:</strong> ").append(rs.getString("apellido2")).append("<br><br>");
+	                    datos.append("<strong>Dirección:</strong> ").append(rs.getString("direccion")).append("<br><br>");
+	                    datos.append("<strong>Fecha de nacimiento:</strong> ").append(rs.getDate("fecha_nacimiento")).append("<br><br>");
+	                    datos.append("<strong>Nacionalidad:</strong> ").append(rs.getString("nacionalidad")).append("<br><br>");
+	                    datos.append("<strong>Contraseña:</strong> ").append(rs.getString("contrasena")).append("<br><br>");
+	                } else {
+	                    return "Usuario no encontrado.";
+	                }
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	            return "Error al leer los datos del usuario desde la base de datos.";
+	        }
+
 
 		try (BufferedReader br = new BufferedReader(new FileReader(archivoCSV))) {
 			String linea;
@@ -190,6 +219,7 @@ public class VentanaCuenta {
    				stmt.close();
    				
    				System.out.println("Usuario registrado con éxito.");
+>>>>>>> branch 'main' of https://github.com/MateoCifrianG/EcoCloset.git
 
    		        conn.close();
    				
