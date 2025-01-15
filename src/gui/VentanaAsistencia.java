@@ -138,6 +138,7 @@ public class VentanaAsistencia {
         actualizarTablaAsistencias(asistenciasFiltradas);
     }
 
+    //Ayuda con ChatGPT --> dudas en el código, ya que daba errores.
     private void eliminarAsistenciaSeleccionada() {
         int filaSeleccionada = tablaAsistencia.getSelectedRow();
         if (filaSeleccionada >= 0) {
