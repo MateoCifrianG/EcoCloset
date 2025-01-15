@@ -8,6 +8,10 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -76,38 +80,44 @@ public class Asistencia {
 			String correo = correoField.getText().trim(); //Obtener correo electrónico
 			String comentario = mensajeArea.getText().trim();
 			
-			//Validar que todos los campos están llenos
-			if (usuario.isEmpty() || correo.isEmpty() || comentario.isEmpty()) {
-				//Mostrar mensaje de error si algún campo está vacío
-				JOptionPane.showMessageDialog(ventanaProblemas, "Todos los campos son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
-				return; // Salir del método si hay un campo vacío
-			}
-			
-			String fecha = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
-			
-			//Guardar en el archivo CSV
-			guardarProblema(usuario, correo, comentario, fecha);
-			
-			//Mostrar mensaje éxito
-			JOptionPane.showMessageDialog(ventanaProblemas, "Mensaje enviado con éxito", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-			ventanaProblemas.dispose();
-		});
-		
-		
-		ventanaProblemas.setVisible(true);
-		 
-	}
-	
-	//Método para guardar el mensaje en el archivo CSV
-	private void guardarProblema(String usuario, String correo, String comentario, String fecha) {
-		String lineaRegistro = usuario + ";" + correo + ";" + comentario + ";" + fecha + "\n"; // Formato de línea en CSV
-		
-		try(BufferedWriter bw = new BufferedWriter(new FileWriter("asistencia.csv", true))) {
-			bw.write(lineaRegistro); //Escribir la linea en el archivo
-		}catch(IOException e){
-			e.printStackTrace();
-		}
-	}
+			String fecha = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+
+            // Guardar en la base de datos
+            guardarProblema(usuario, correo, comentario, fecha);
+
+            // Mostrar mensaje éxito
+            JOptionPane.showMessageDialog(ventanaProblemas, "Mensaje enviado con éxito", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            ventanaProblemas.dispose();
+        });
+
+        ventanaProblemas.setVisible(true);
+
+    }
+
+    // Método para guardar el mensaje en la base de datos
+    private void guardarProblema(String usuario, String correo, String comentario, String fecha) {
+        // Datos de conexión a la base de datos
+        String url = "jdbc:mysql://localhost:3306/tu_base_de_datos";
+        String user = "tu_usuario";
+        String password = "tu_contraseña";
+
+        String query = "INSERT INTO problemas (usuario, correo, comentario, fecha) VALUES (?, ?, ?, ?)";
+
+        try (Connection conn = DriverManager.getConnection(url, user, password);
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+            pstmt.setString(1, usuario);
+            pstmt.setString(2, correo);
+            pstmt.setString(3, comentario);
+            pstmt.setString(4, fecha);
+
+            pstmt.executeUpdate(); // Ejecutar la inserción
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(ventanaProblemas, "Error al guardar en la base de datos: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 	
 	public static void main(String[] args) {
 		new Asistencia();
