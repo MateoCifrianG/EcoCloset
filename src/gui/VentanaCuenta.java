@@ -15,6 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.naming.spi.DirStateFactory.Result;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -140,8 +141,7 @@ public class VentanaCuenta {
 	        return datos.toString();
 	    }
 
-<<<<<<< HEAD
-=======
+
 //		try (BufferedReader br = new BufferedReader(new FileReader(archivoCSV))) {
 //			String linea;
 //			while ((linea = br.readLine()) != null) {
@@ -170,7 +170,7 @@ public class VentanaCuenta {
 //	}
 
 	public static void main(String[] args) {
-
+ 
 		new VentanaCuenta("usuarioEjemplo");
 	}
 	 
@@ -188,16 +188,16 @@ public class VentanaCuenta {
    		
    		//Prueba
    	// conectar a la base de datos
-   			try {
-   				Connection conn = DriverManager.getConnection("jdbc:sqlite:resources/db/usuarios.db");
+   			try (Connection conn = DriverManager.getConnection("jdbc:sqlite:resources/db/usuarios.db");
    				
-   				Statement stmt = conn.createStatement();
+  
    				
-   				String sql = "SELECT * FROM Usuarios WHERE Nombre = " + nombreUsuario + ";";
+   				PreparedStatement ps = conn.prepareStatement("SELECT * FROM Usuarios WHERE Nombre = ? ;")){
+	 				
+   				ps.setString(1, nombreUsuario); 
    				
-   				System.out.println("Hola");
    				
-   				ResultSet rs = stmt.executeQuery(sql); 
+   				ResultSet rs = ps.executeQuery();  
    				
    				
    				
@@ -222,7 +222,7 @@ public class VentanaCuenta {
    				
    				}	
 					
-   				stmt.close();
+   				ps.close();
    				
    				System.out.println("Usuario registrado con éxito.");
 
