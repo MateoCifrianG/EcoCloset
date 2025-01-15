@@ -173,6 +173,7 @@ public class FormularioRegistro {
         gbc.anchor = GridBagConstraints.CENTER; // Centrar el botón
         ventana.add(registrarButton, gbc);
         
+        //prueba bd
      // Crear un ActionListener para el botón de registro
         registrarButton.addActionListener(e -> {
             String contraseña = new String(contraseñaField.getPassword());
@@ -192,7 +193,7 @@ public class FormularioRegistro {
                 JOptionPane.showMessageDialog(ventana, "Por favor, completa todos los campos obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
                 return; // No continuar si hay campos vacíos
             }
- 
+            //prueba
             // Comprobar si las contraseñas coinciden, en el caso de que no, pedirla de nuevo
             if (!contraseña.equals(repetirContraseña)) {
                 JOptionPane.showMessageDialog(ventana, "Las contraseñas no coinciden", "Error", JOptionPane.ERROR_MESSAGE);
@@ -208,7 +209,7 @@ public class FormularioRegistro {
 //                } 
             }
         });
- 
+        //h
         // Ajustes para hacer que la ventana sea adaptable
         ventana.setMinimumSize(new Dimension(400, 500)); // Tamaño mínimo para que se vea correctamente
         ventana.setVisible(true);
@@ -279,12 +280,9 @@ public class FormularioRegistro {
    		        conn.close();
    				
    			} catch (SQLException e1) {
-   				e1.printStackTrace();
+   				JOptionPane.showMessageDialog(ventana, "Error al registrar: usuario repetido");
    			}    	
     }
-
-    // ------------------------------------------------------------------------
-    
     
     public static void main(String[] args) {
     	new FormularioRegistro();

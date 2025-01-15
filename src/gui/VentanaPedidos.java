@@ -64,8 +64,13 @@ public class VentanaPedidos {
         StringBuilder sb = new StringBuilder();
         for (Pedido pedido : listaPedidosUsuario) { 
             sb.append("ID: ").append(pedido.getId()).append("\n");
+
             sb.append("Usuario: ").append(pedido.getUsuario()).append("\n");
             sb.append("Prendas:\n"); 
+
+            sb.append("Usuario: ").append(pedido.getUsuario().getNombre()).append("\n");
+            sb.append("Prendas:\n");
+
             for (Ropa prenda : pedido.getPrendas()) {
                 sb.append("  - ").append(prenda.toString()).append("\n");
             }

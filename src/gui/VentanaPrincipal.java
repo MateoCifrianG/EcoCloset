@@ -35,7 +35,7 @@ public class VentanaPrincipal {
 	public VentanaPrincipal getVentana() {
 	    return this;
 	}
-	
+
 	public void dispose() {
         ventana.dispose();
     }
@@ -50,6 +50,7 @@ public class VentanaPrincipal {
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventana.setSize(800, 600);
 		this.nombreUsuario = nombreUsuario;
+		ventana.setLocationRelativeTo(null);
 
 		// Inicializar la lista de pedidos
 		listaPedidos = new ArrayList<>();
@@ -214,14 +215,36 @@ public class VentanaPrincipal {
 		ventana.setVisible(true);
 	}
 
-	// Método para abrir la ventana de pedidos
-	private void mostrarPedidos() {
-		System.out.println("Mostrando pedidos para: " + nombreUsuario);
-		for (Pedido pedido : listaPedidos) {
-			System.out.println(pedido); // Suponiendo que Pedido tiene un método toString
-		}
-		new VentanaPedidos(nombreUsuario); // Crear y mostrar la ventana de pedidos
+//	// Método para abrir la ventana de pedidos
+//	private void mostrarPedidos() {
+//		System.out.println("Mostrando pedidos para: " + nombreUsuario);
+//		for (Pedido pedido : listaPedidos) {
+//			System.out.println(pedido); // Suponiendo que Pedido tiene un método toString
+//		}
+//		new VentanaPedidos(nombreUsuario); // Crear y mostrar la ventana de pedidos
+//	}
+	
+	// ------------------------------
+	// Método principal para mostrar pedidos
+	private void mostrarPedidos() { 
+	    System.out.println("Mostrando pedidos para: " + nombreUsuario);
+	    mostrarPedidosRecursivo(0); // Iniciar recursión desde el primer pedido
+	    new VentanaPedidos(nombreUsuario); // Crear y mostrar la ventana de pedidos
 	}
+
+	// Método recursivo para imprimir los pedidos uno a uno
+	private void mostrarPedidosRecursivo(int posicion) {
+		// Caso base 
+	    if (posicion >= listaPedidos.size()) {
+	        return; 
+	    }  
+	    System.out.println(listaPedidos.get(posicion)); 
+	    // Llamada recursiva, llama al siguiente pedido
+	    mostrarPedidosRecursivo(posicion + 1); 
+	}
+
+	
+	//---------------------------------
 
 	public void abrirVentanaRegistro() {
 		new VentanaRegistro(); // Abre la ventana de registro
@@ -291,8 +314,12 @@ public class VentanaPrincipal {
 		for (Ropa ropa : lista) {
 			// Crear un panel para cada artículo
 			JPanel articuloPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-			articuloPanel.setBorder(BorderFactory.createLineBorder(Color.GRAY)); // Añadir un borde para separar los
+			articuloPanel.setBorder(BorderFactory.createLineBorder(Color.GRAY)); // Añadir un borde para separar los. 
 																					// artículos
+			
+			//FUENTE-EXTERNA: 
+			// URL: https://docs.oracle.com/javase/8/docs/api/javax/swing/BorderFactory.html 
+			// SIN CAMBIOS: como funciona el BorderFactory
 
 			// Mostrar el nombre, talla, precio y marca
 			JLabel nombreLabel = new JLabel(ropa.getNombre() + " - Talla: " + ropa.getTalla() + " - Precio: "
