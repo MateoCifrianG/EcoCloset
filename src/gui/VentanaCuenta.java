@@ -8,6 +8,11 @@ import java.awt.event.MouseListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -20,7 +25,7 @@ public class VentanaCuenta {
 
 	private JFrame ventanaCuenta;
 	private String nombreUsuario;
-
+	
 	public VentanaCuenta(String nombreUsuario) {
 
 		this.nombreUsuario = nombreUsuario;
@@ -99,42 +104,39 @@ public class VentanaCuenta {
 		ventanaCuenta.setVisible(true);
 
 	}
+	
+	//hola
+	public String obtenerDatosUsuario() {
+		 StringBuilder datos = new StringBuilder();
+	        String url = "Usuarios.db"; 
+	        String consultaSQL = "SELECT * FROM usuarios WHERE nombre = ?";
 
-	private String obtenerDatosUsuario() {
+	        try (Connection conexion = DriverManager.getConnection(url);
+	             PreparedStatement ps = conexion.prepareStatement(consultaSQL)) {
+	            
+	            ps.setString(1, nombreUsuario);
 
-		StringBuilder datos = new StringBuilder();
-		String archivoCSV = "usuarios1.csv"; // Asegúrate de usar la ruta correcta
+	           
+	            try (ResultSet rs = ps.executeQuery()) {
+	                if (rs.next()) {
+	                    datos.append("<br>");
+	                    datos.append("<strong>Nombre:</strong> ").append(rs.getString("nombre")).append("<br><br>");
+	                    datos.append("<strong>Apellido 1:</strong> ").append(rs.getString("apellido1")).append("<br><br>");
+	                    datos.append("<strong>Apellido 2:</strong> ").append(rs.getString("apellido2")).append("<br><br>");
+	                    datos.append("<strong>Dirección:</strong> ").append(rs.getString("direccion")).append("<br><br>");
+	                    datos.append("<strong>Fecha de nacimiento:</strong> ").append(rs.getDate("fecha_nacimiento")).append("<br><br>");
+	                    datos.append("<strong>Nacionalidad:</strong> ").append(rs.getString("nacionalidad")).append("<br><br>");
+	                    datos.append("<strong>Contraseña:</strong> ").append(rs.getString("contrasena")).append("<br><br>");
+	                } else {
+	                    return "Usuario no encontrado.";
+	                }
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	            return "Error al leer los datos del usuario desde la base de datos.";
+	        }
 
-		try (BufferedReader br = new BufferedReader(new FileReader(archivoCSV))) {
-			String linea;
-			while ((linea = br.readLine()) != null) {
-				String[] valores = linea.split(";"); // Cambiar a punto y coma como delimitador
-				if (valores.length >= 7 && valores[0].equalsIgnoreCase(nombreUsuario)) { // Asegurarse de que hay
-																							// suficientes columnas
-					datos.append("<br>");
-					datos.append("<strong>Nombre:</strong> ").append(valores[0]).append("<br>").append("<br>");
-					datos.append("<strong>Apellido 1:</strong> ").append(valores[1]).append("<br>").append("<br>");
-					datos.append("<strong>Apellido 2:</strong> ").append(valores[2]).append("<br>").append("<br>");
-					datos.append("<strong>Dirección:</strong> ").append(valores[3]).append("<br>").append("<br>");
-					datos.append("<strong>Fecha de nacimiento:</strong> ").append(valores[4]).append("<br>")
-							.append("<br>");
-					datos.append("<strong>Nacionalidad:</strong> ").append(valores[5]).append("<br>").append("<br>");
-					datos.append("<strong>Contraseña:</strong> ").append(valores[6]).append("<br>").append("<br>");
-					break; // Salir del bucle si se ha encontrado el usuario
-				}
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-			return "Error al leer los datos del usuario.";
-		}
-
-		return datos.length() > 0 ? datos.toString() : "Usuario no encontrado.";
-
-	}
-
-	public static void main(String[] args) {
-
-		new VentanaCuenta("usuarioEjemplo");
-	}
+	        return datos.toString();
+	    }
 
 }
