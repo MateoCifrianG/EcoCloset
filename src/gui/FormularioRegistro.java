@@ -231,19 +231,6 @@ public class FormularioRegistro {
         return false; // No se encontró el usuario
     }
 
-    // Método para registrar el usuario en el archivo CSV
-    private boolean registrarUsuario(String nombre, String apellido1, String apellido2, String direccion, String fechaNacimiento, String nacionalidad, String contraseña, String repetirContraseña) {
-        String lineaRegistro = nombre + ";" + apellido1 + ";" + apellido2 + ";" + direccion + ";" + fechaNacimiento + ";" + nacionalidad + ";" + contraseña + ";" + repetirContraseña + "\n"; // Formato de línea en CSV
-
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("usuarios1.csv", true))) {
-            bw.write(lineaRegistro); // Escribir la línea en el archivo
-            return true; // Registro exitoso
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false; // Error al registrar
-        }
-    }
-    
     //--------------------------------------------------------------------------
     public void registrarUsuarioBD(String nombre, String apellido1, String apellido2, String direccion, String fechaNacimiento, String nacionalidad, String contraseña, String repetirContraseña) {
     	
