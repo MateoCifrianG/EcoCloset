@@ -50,6 +50,7 @@ public class VentanaPrincipal {
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventana.setSize(800, 600);
 		this.nombreUsuario = nombreUsuario;
+		ventana.setLocationRelativeTo(null);
 
 		// Inicializar la lista de pedidos
 		listaPedidos = new ArrayList<>();
