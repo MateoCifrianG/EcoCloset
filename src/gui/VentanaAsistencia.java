@@ -16,7 +16,7 @@ public class VentanaAsistencia {
     private JTable tablaAsistencia;
 
     // Ruta de conexión a la base de datos
-    private static final String url = "jdbc:sqlite:asistencias.db";
+    private static final String url = "jdbc:sqlite:resources/db/asistencias.db";
 
     public VentanaAsistencia() {
         // Creación de la ventana
@@ -76,28 +76,29 @@ public class VentanaAsistencia {
 
     // Métodos para conectar la asistencia con la bd 
     private List<String[]> cargarAsistenciasDesdeBD() {
-        List<String[]> asistencias = new ArrayList<>();
-        String consultaSQL = "SELECT usuario, correo, mensaje, fecha FROM asistencias";
+    	List<String[]> asistencia = new ArrayList<>();
+        String url = "jdbc:sqlite:resources/db/asistencias.db";
+        String consultaSQL = "SELECT * FROM Asistencias";
 
         try (Connection conexion = DriverManager.getConnection(url);
              PreparedStatement ps = conexion.prepareStatement(consultaSQL);
              ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
-                String[] asistencia = {
-                    rs.getString("usuario"),
-                    rs.getString("correo"),
-                    rs.getString("mensaje"),
-                    rs.getString("fecha")
+                String[] usuario = {
+                    rs.getString("Id"),
+                    rs.getString("Usuario"),
+                    rs.getString("Correo"),
+                    rs.getString("Mensaje"),
+                    rs.getString("Fecha")
                 };
-                asistencias.add(asistencia);
+                asistencia.add(usuario);
             }
-
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(ventana, "Error al cargar asistencias: " + e.getMessage());
+            JOptionPane.showMessageDialog(ventana, "Error al leer asistencia ");
         }
 
-        return asistencias;
+        return asistencia;
     }
 
     private void actualizarTablaAsistencias(List<String[]> asistencias) {
