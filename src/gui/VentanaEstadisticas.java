@@ -13,6 +13,11 @@ import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.*;
 import java.util.List;
 
@@ -77,7 +82,7 @@ public class VentanaEstadisticas {
     private void cargarDatos() {
         cargarProductos("productos.csv");
         cargarPedidos("pedidos.csv");
-        cargarUsuarios("usuarios1.csv");
+        cargarUsuariosBD();
     }
 
     private void cargarProductos(String archivo) {
@@ -144,19 +149,25 @@ public class VentanaEstadisticas {
         return null; // Si no se encuentra la prenda
     }
 
-    private void cargarUsuarios(String archivo) {
-        try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
-            String linea;
-            while ((linea = br.readLine()) != null) {
-                String[] partes = linea.split(";");
-                if (partes.length > 0) {
-                    Usuario usuario = new Usuario(partes[0]);
-                    usuarios.add(usuario);
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+    private void cargarUsuariosBD() { 
+        
+        String url = "jdbc:sqlite:resources/db/Usuarios.db";
+        String consultaSQL = "SELECT * FROM usuarios";
+
+        try (Connection conexion = DriverManager.getConnection(url);
+             PreparedStatement ps = conexion.prepareStatement(consultaSQL);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                Usuario usuario = new Usuario(rs.getString("nombre"));
+                usuarios.add(usuario);                };
+                
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(panelEstadisticas, "Error al leer los usuarios de la base de datos: " + e.getMessage());
         }
+
+        
     }
 
     private void agregarEstadisticas() {
