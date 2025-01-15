@@ -139,6 +139,8 @@ public class VentanaAsistencia {
     }
 
     //Ayuda con ChatGPT --> dudas en el código, ya que daba errores.
+    // File (https://chatgpt.com/share/6787f0ab-7c88-800c-b7d4-dba04dacaa9d)
+    // el JOptionPane nos daba error. También nos apoyamos en la ia para hacer este metodo.
     private void eliminarAsistenciaSeleccionada() {
         int filaSeleccionada = tablaAsistencia.getSelectedRow();
         if (filaSeleccionada >= 0) {
